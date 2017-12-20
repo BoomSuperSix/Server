@@ -37,7 +37,7 @@ const int MPNetObject::GetPort()const
 }
 
 MPTCPObject::MPTCPObject(const std::shared_ptr<evpp::TCPConn>& pConn)
-	: MPNetObject()
+	: MPNetObject(),m_pConn(pConn)
 {
 	if (pConn == nullptr)
 	{

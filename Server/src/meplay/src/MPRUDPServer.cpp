@@ -74,9 +74,9 @@ bool MPRUDPServer::Final()
 		(pNetObject.get())->Close();
 	}
 
-	enet_host_destroy(m_pENetServer);
-
 	MPThread::ThreadFinal();
+
+	enet_host_destroy(m_pENetServer);
 	return true;
 }
 
