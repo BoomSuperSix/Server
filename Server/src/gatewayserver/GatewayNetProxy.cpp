@@ -21,8 +21,8 @@ GatewayNetProxy::~GatewayNetProxy()
 
 bool GatewayNetProxy::InitServerCfg(const std::string& filename)
 {
-	/*AddTCPServerModule(MP_ST_GAME, 3000, 16123);
-	AddTCPServerModule(MP_ST_GATE, 3000, 16124);*/
+	AddTCPClientModule(MP_ST_GAME, "127.0.0.1", 16125, false);
+	//AddTCPClientModule(MP_ST_SUPER, "127.0.0.1", 16124, false);
 
 	//AddTCPClientModule(MP_ST_GAME, "127.0.0.1", 16125, true);
 	AddTCPClientModule(MP_ST_SUPER, "127.0.0.1", 16124, true);
