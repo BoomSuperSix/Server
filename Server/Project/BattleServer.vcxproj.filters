@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Base">
+      <UniqueIdentifier>{23489732-4c3c-4cab-b86e-49a24fe8026d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetProxy">
+      <UniqueIdentifier>{7bb67b56-164f-4d5e-a81b-28ebfd67cd64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protobuf">
+      <UniqueIdentifier>{5cbc00f9-44c3-4e7a-9097-93c5e63b88a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BattleCommon">
+      <UniqueIdentifier>{cf67b0df-9c3c-4cde-8cf8-bd9c80a27922}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic">
+      <UniqueIdentifier>{3a252f95-6831-4734-b690-e5c1d7916820}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\ModuleBase">
+      <UniqueIdentifier>{d46fdf95-0819-40ce-ab29-aeb9bd4fbdda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protobuf\pbcc">
+      <UniqueIdentifier>{de8cf1ce-5a6d-4aed-8ef2-f3176135297b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protobuf\ServerProto">
+      <UniqueIdentifier>{50742b70-5156-4583-b853-dd4e9f2ef628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protobuf\UserProto">
+      <UniqueIdentifier>{20431c72-651c-49d0-8e4a-eab82d0927f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\BattleTimeManager">
+      <UniqueIdentifier>{b7c2b542-fb1c-4006-b506-2d128509d611}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\GameServerManager">
+      <UniqueIdentifier>{7784e048-f2d5-4719-8705-e991b778da7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\CenterServerManager">
+      <UniqueIdentifier>{1340e35f-d07f-47af-91ea-d74597f8de09}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\base\CommDef.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\ManagerModule.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\ManagerModuleManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\ModuleRefresh.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\ModuleRely.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\ModuleTimeTick.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\NetProxy.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\NetProxyBuffer.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\TimeManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\TimeT.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\XmlManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\battleserver\BattleNetProxy.h">
+      <Filter>NetProxy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\battleserver\BattleCommDef.h">
+      <Filter>BattleCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\battleserver\BattleManagerModuleDefine.h">
+      <Filter>Logic\ModuleBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\netproto\MPDefine.pb.h">
+      <Filter>protobuf\pbcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\netproto\MPMsgBase.pb.h">
+      <Filter>protobuf\pbcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\battleserver\BattleTimeManager.h">
+      <Filter>Logic\BattleTimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\battleserver\GameServer.h">
+      <Filter>Logic\GameServerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\battleserver\GameServerManager.h">
+      <Filter>Logic\GameServerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\battleserver\CenterServer.h">
+      <Filter>Logic\CenterServerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\battleserver\CenterServerManager.h">
+      <Filter>Logic\CenterServerManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\base\ManagerModule.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\ManagerModuleManager.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\ModuleRefresh.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\ModuleRely.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\ModuleTimeTick.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\NetProxy.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\NetProxyBuffer.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\TimeManager.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\XmlManager.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\battleserver\BattleNetProxy.cpp">
+      <Filter>NetProxy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\netproto\MPMsgBase.pb.cc">
+      <Filter>protobuf\pbcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\netproto\MPDefine.pb.cc">
+      <Filter>protobuf\pbcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\battleserver\BattleTimeManager.cpp">
+      <Filter>Logic\BattleTimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\battleserver\GameServer.cpp">
+      <Filter>Logic\GameServerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\battleserver\GameServerManager.cpp">
+      <Filter>Logic\GameServerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\battleserver\CenterServer.cpp">
+      <Filter>Logic\CenterServerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\battleserver\CenterServerManager.cpp">
+      <Filter>Logic\CenterServerManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\common\command\MPMsgBase.proto">
+      <Filter>protobuf</Filter>
+    </None>
+    <None Include="..\common\command\MPDefine.proto">
+      <Filter>protobuf\ServerProto</Filter>
+    </None>
+  </ItemGroup>
+</Project>
