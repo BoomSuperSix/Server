@@ -1,6 +1,7 @@
 #pragma once
 #include "MPNet.h"
 #include "MPThread.h"
+#include "MPTime.h"
 #include <list>
 
 namespace evpp {
@@ -12,6 +13,21 @@ namespace evpp {
 
 
 namespace meplay {
+	enum TCP_CLIENT_STATUS : uint8_t
+	{
+		TCP_CLIENT_CONNECTING	= 1,
+		TCP_CLIENT_CONNECTED	= 2,
+		TCP_CLIENT_DISCONNECTED	= 3,
+	};
+
+	struct TCPConnectData
+	{
+		std::shared_ptr<evpp::TCPClient> m_pClient;
+		uint8_t m_nStatus;
+		bool m_bAutoConnect;
+		uint32_t m_nIntervalMSec;
+		meplay::MPTime m_tDisconnectTime;
+	};
 	class MPNetObject;
 	class MPTCPClient : public MPNet, public MPThread
 	{
@@ -46,14 +62,16 @@ namespace meplay {
 
 		virtual void Run()override;
 	private:
-		void connectCB(const std::shared_ptr<evpp::TCPConn>& pConn);
+		void connectCB(const std::shared_ptr<evpp::TCPConn>& pConn,TCPConnectData* pData);
 		void messageCB(const std::shared_ptr<evpp::TCPConn>& pConn, evpp::Buffer* pBuffer);
+
+		bool isAllDisConnected();
 	private:
 		int m_nPort;
 		int m_nThreadCount;
 		const std::string m_sServiceName;
 		std::shared_ptr<evpp::EventLoop> m_pEventLoop;
-		std::list<std::shared_ptr<evpp::TCPClient>> m_vWaitClients;
+		std::list<TCPConnectData*> m_vConnectData;
 
 		NET_CONNECT_FUNCTOR m_ConnectCB;
 		NET_DISCONNECT_FUNCTOR m_DisConnectCB;

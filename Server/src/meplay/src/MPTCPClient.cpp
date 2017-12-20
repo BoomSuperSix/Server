@@ -20,6 +20,29 @@ bool MPTCPClient::Execute()
 	{
 		Final();
 	}
+
+	auto now = meplay::MPTime();
+	//check reconnect
+	for (auto& pData : m_vConnectData)
+	{
+		if (!pData->m_bAutoConnect)
+		{
+			continue;
+		}
+		if (pData->m_nStatus != TCP_CLIENT_DISCONNECTED)
+		{
+			continue;
+		}
+
+		if (!pData->m_tDisconnectTime.IsMTimeOut(pData->m_nIntervalMSec))
+		{
+			continue;
+		}
+
+		pData->m_nStatus = TCP_CLIENT_CONNECTING;
+		pData->m_pClient->Connect();
+		MP_DEBUG("Reconnect To [%s]!",pData->m_pClient->remote_addr().c_str());
+	}
 	
 	return true;
 }
@@ -35,7 +58,7 @@ void MPTCPClient::Run()
 	MP_DEBUG("MPTCPClient Run Over!");
 }
 
-void MPTCPClient::connectCB(const std::shared_ptr<evpp::TCPConn>& pConn)
+void MPTCPClient::connectCB(const std::shared_ptr<evpp::TCPConn>& pConn, TCPConnectData* pData)
 {
 	if (pConn->IsConnected())
 	{
@@ -43,21 +66,21 @@ void MPTCPClient::connectCB(const std::shared_ptr<evpp::TCPConn>& pConn)
 		auto pNetObj = std::make_shared<MPTCPObject>(pConn);
 		AddNetObject(pConn->fd(), pNetObj);
 		m_ConnectCB(GetServerType(), pConn->fd());
+		pData->m_nStatus = TCP_CLIENT_CONNECTED;
+		MP_DEBUG("Connect To [%s] Success!",pData->m_pClient->remote_addr().c_str());
 	}
 	else
 	{
 		//disconnect
-		m_DisConnectCB(GetServerType(), pConn->fd());
-		DelNetObject(pConn->fd());
+		if (GetNetObject(pConn->fd()) != nullptr)
+		{
+			m_DisConnectCB(GetServerType(), pConn->fd());
+			DelNetObject(pConn->fd());
+		}
+		pData->m_nStatus = TCP_CLIENT_DISCONNECTED;
+		pData->m_tDisconnectTime = meplay::MPTime();
 
 		cv.notify_all();
-		//auto pNetObj = GetNetObject(pConn->fd());
-		//if (pNetObj != nullptr)
-		//{
-		//	auto pClient = (MPTCPClientObj*)pNetObj.get();
-		//	pClient->GetClient()->Disconnect();
-		//	//DelNetObject(pConn->fd());
-		//}
 	}
 }
 
@@ -70,6 +93,18 @@ void MPTCPClient::messageCB(const std::shared_ptr<evpp::TCPConn>& pConn, evpp::B
 	}
 	m_MsgCB(GetServerType(), pNetObj->GetRealFD(), pBuffer->data(), (uint32_t)pBuffer->length());
 	pBuffer->Reset();
+}
+
+bool MPTCPClient::isAllDisConnected()
+{
+	for (auto& pData : m_vConnectData)
+	{
+		if (pData->m_nStatus != TCP_CLIENT_DISCONNECTED)
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
 int MPTCPClient::InitializationAsClient(const char* strIP, const unsigned short nPort, bool bAutoReconnect, const uint32_t milliseconds)
@@ -90,23 +125,22 @@ int MPTCPClient::InitializationAsClient(const char* strIP, const unsigned short 
 	if (m_pEventLoop == nullptr)
 	{
 		m_pEventLoop.reset(new EventLoop());
-		//m_pEventLoop = new EventLoop();
 	}
-	auto pClient = std::make_shared<TCPClient>(m_pEventLoop.get(), std::string(strIP) + ":" + std::to_string(nPort), m_sServiceName);
-	//auto pClient = new TCPClient(m_pEventLoop, std::string(strIP) + ":" + std::to_string(nPort), m_sServiceName);
 
-	pClient->SetConnectionCallback(std::bind(&MPTCPClient::connectCB, this, std::placeholders::_1));
-	pClient->SetMessageCallback(std::bind(&MPTCPClient::messageCB, this, std::placeholders::_1, std::placeholders::_2));
+	auto pData = new TCPConnectData();
+	pData->m_pClient = std::make_shared<TCPClient>(m_pEventLoop.get(), std::string(strIP) + ":" + std::to_string(nPort), m_sServiceName);
+	pData->m_bAutoConnect = bAutoReconnect;
+	pData->m_pClient->set_auto_reconnect(false);
+	pData->m_nIntervalMSec = milliseconds - 1000;
+	pData->m_nStatus = TCP_CLIENT_CONNECTING;
 
-	pClient->Connect();
-	pClient->set_auto_reconnect(bAutoReconnect);
-	pClient->set_reconnect_interval(Duration(milliseconds/1000.0f));
+	pData->m_pClient->SetConnectionCallback([&,pData](const std::shared_ptr<evpp::TCPConn>& pConn) { connectCB(pConn, pData); });
+	pData->m_pClient->SetMessageCallback(std::bind(&MPTCPClient::messageCB, this, std::placeholders::_1, std::placeholders::_2));
 
-	m_vWaitClients.emplace_back(pClient);
+	pData->m_pClient->Connect();
+	MP_DEBUG("Try Connect To [%s]!", pData->m_pClient->remote_addr().c_str());
 
-	//auto pNetObject = std::make_shared<MPNetObject>(pClient);
-
-	//m_mNetObjects.emplace(pNetObject->GetRealFD(), pNetObject);
+	m_vConnectData.emplace_back(pData);
 
 	return 0;
 }
@@ -127,13 +161,15 @@ bool MPTCPClient::Final()
 		cv.wait(lck);
 	}
 
-	//auto vWaitClients = m_vWaitClients;
-	for (auto& pWaitObj : m_vWaitClients)
+	for (auto& pData : m_vConnectData)
 	{
-		pWaitObj->set_auto_reconnect(false);
-		pWaitObj->Disconnect();
-		/*std::unique_lock<std::mutex> lck(mtx);
-		cv.wait(lck);*/
+		pData->m_pClient->Disconnect();
+	}
+
+	while(!isAllDisConnected())
+	{
+		std::unique_lock<std::mutex> lck(mtx);
+		cv.wait(lck);
 	}
 
 	if (!m_pEventLoop->IsStopped())
@@ -151,19 +187,14 @@ bool MPTCPClient::Final()
 		}
 	}
 
-	/*for (auto& pWaitObj : m_vWaitClients)
+	for (auto& pData : m_vConnectData)
 	{
-		delete pWaitObj;
-		pWaitObj = nullptr;
-	}*/
-	m_vWaitClients.clear();
+		delete pData;
+		pData = nullptr;
+	}
+	m_vConnectData.clear();
 	
 	m_pEventLoop.reset();
-	/*if(m_pEventLoop != nullptr)
-	{
-		delete m_pEventLoop;
-		m_pEventLoop = nullptr;
-	}*/
 
 	MPThread::ThreadFinal();
 
