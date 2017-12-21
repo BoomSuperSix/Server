@@ -29,12 +29,17 @@
     <ClCompile Include="..\src\base\TimeManager.cpp" />
     <ClCompile Include="..\src\base\XmlManager.cpp" />
     <ClCompile Include="..\src\battleserver\BattleNetProxy.cpp" />
+    <ClCompile Include="..\src\battleserver\BattleRoom.cpp" />
     <ClCompile Include="..\src\battleserver\BattleTimeManager.cpp" />
+    <ClCompile Include="..\src\battleserver\BattleUser.cpp" />
+    <ClCompile Include="..\src\battleserver\BattleUserManager.cpp" />
     <ClCompile Include="..\src\battleserver\CenterServer.cpp" />
     <ClCompile Include="..\src\battleserver\CenterServerManager.cpp" />
     <ClCompile Include="..\src\battleserver\GameServer.cpp" />
     <ClCompile Include="..\src\battleserver\GameServerManager.cpp" />
     <ClCompile Include="..\src\battleserver\main.cpp" />
+    <ClCompile Include="..\src\battleserver\BattleRoomManager.cpp" />
+    <ClCompile Include="..\src\netproto\BattleUserMsg.pb.cc" />
     <ClCompile Include="..\src\netproto\MPDefine.pb.cc" />
     <ClCompile Include="..\src\netproto\MPMsgBase.pb.cc" />
   </ItemGroup>
@@ -53,11 +58,16 @@
     <ClInclude Include="..\src\battleserver\BattleCommDef.h" />
     <ClInclude Include="..\src\battleserver\BattleManagerModuleDefine.h" />
     <ClInclude Include="..\src\battleserver\BattleNetProxy.h" />
+    <ClInclude Include="..\src\battleserver\BattleRoom.h" />
     <ClInclude Include="..\src\battleserver\BattleTimeManager.h" />
+    <ClInclude Include="..\src\battleserver\BattleUser.h" />
+    <ClInclude Include="..\src\battleserver\BattleUserManager.h" />
     <ClInclude Include="..\src\battleserver\CenterServer.h" />
     <ClInclude Include="..\src\battleserver\CenterServerManager.h" />
     <ClInclude Include="..\src\battleserver\GameServer.h" />
     <ClInclude Include="..\src\battleserver\GameServerManager.h" />
+    <ClInclude Include="..\src\battleserver\BattleRoomManager.h" />
+    <ClInclude Include="..\src\netproto\BattleUserMsg.pb.h" />
     <ClInclude Include="..\src\netproto\MPDefine.pb.h" />
     <ClInclude Include="..\src\netproto\MPMsgBase.pb.h" />
   </ItemGroup>

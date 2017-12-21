@@ -7,5 +7,45 @@ enum BattleUserMsg
 	eBattleMsg_Unknown						= 0;
 	eBattleMsg_Login 						= 1;
 	eBattleMsg_Logout						= 2;
-	eBattleMsg_Broadcast					= 3;
+	eBattleMsg_SingleFrame					= 3;
+	eBattleMsg_UserOperate					= 4;
+}
+
+enum BattleErrCode
+{
+	eBEC_Success		= 0;
+	eBEC_Fail			= 1;
+}
+
+message BattleUserLogin_C2S
+{
+	uint64 uid			= 1;
+}
+
+message BattleUserLogin_S2C
+{
+	BattleErrCode errcode		= 1;
+	uint64 uid					= 2;
+}
+
+message BattleUserLogout
+{
+	
+}
+
+message BattleUserOperate_C2S
+{
+	bytes  data = 1;
+}
+
+message BattleSingleFrame_S2C
+{
+	uint64 frame_index		= 1;
+	uint64 milli_second		= 2;
+	repeated bytes datas	= 3;
+}
+
+message BattleUserBroadcast
+{
+	
 }

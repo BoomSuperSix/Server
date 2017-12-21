@@ -24,10 +24,10 @@ public:
 		m_objMemoryPool.clear();
 	};
 public:
-	template<typename... Args>
-	std::shared_ptr<T> Get(Args... args)
+	template<typename RET_T = T,typename... Args>
+	std::shared_ptr<RET_T> Get(Args... args)
 	{
-		std::shared_ptr<T> p(create<Args...>(static_cast<Args&>(args)...),[&](T* pb)->void{ DelMe(pb); });
+		std::shared_ptr<RET_T> p(create<Args...>(static_cast<Args&>(args)...),[&](T* pb)->void{ DelMe(pb); });
 		return p;
 	}
 

@@ -37,6 +37,12 @@
     <Filter Include="Logic\CenterServerManager">
       <UniqueIdentifier>{1340e35f-d07f-47af-91ea-d74597f8de09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Logic\BattleUserManager">
+      <UniqueIdentifier>{67d548d6-a984-422d-af1f-8c9ed44a656e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\RoomManager">
+      <UniqueIdentifier>{178264a2-7ec2-4907-b6ec-2e058ada526e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\base\CommDef.h">
@@ -102,6 +108,21 @@
     <ClInclude Include="..\src\battleserver\CenterServerManager.h">
       <Filter>Logic\CenterServerManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\battleserver\BattleUserManager.h">
+      <Filter>Logic\BattleUserManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\battleserver\BattleUser.h">
+      <Filter>Logic\BattleUserManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\netproto\BattleUserMsg.pb.h">
+      <Filter>protobuf\pbcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\battleserver\BattleRoomManager.h">
+      <Filter>Logic\RoomManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\battleserver\BattleRoom.h">
+      <Filter>Logic\RoomManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\base\ManagerModule.cpp">
@@ -156,6 +177,21 @@
       <Filter>Logic\CenterServerManager</Filter>
     </ClCompile>
     <ClCompile Include="..\src\battleserver\main.cpp" />
+    <ClCompile Include="..\src\battleserver\BattleUserManager.cpp">
+      <Filter>Logic\BattleUserManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\battleserver\BattleUser.cpp">
+      <Filter>Logic\BattleUserManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\netproto\BattleUserMsg.pb.cc">
+      <Filter>protobuf\pbcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\battleserver\BattleRoomManager.cpp">
+      <Filter>Logic\RoomManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\battleserver\BattleRoom.cpp">
+      <Filter>Logic\RoomManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\common\command\MPMsgBase.proto">

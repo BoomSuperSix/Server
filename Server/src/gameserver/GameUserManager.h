@@ -36,9 +36,6 @@ public:
 		const std::string& sData
 	);
 
-	void SendMsg(const MPGUID uid,google::protobuf::Message& pb);
-	void SendMsgAll(google::protobuf::Message& pb);
-
 	GameUserPtr GetGameUser(const MPGUID uid);
 
 	void GameUserLogon(GameUserPtr pGameUser);

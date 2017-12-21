@@ -25,11 +25,31 @@
 #include <google/protobuf/generated_message_table_driven.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata.h>
+#include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
+#include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 namespace BattleMsg {
+class BattleSingleFrame_S2C;
+class BattleSingleFrame_S2CDefaultTypeInternal;
+extern BattleSingleFrame_S2CDefaultTypeInternal _BattleSingleFrame_S2C_default_instance_;
+class BattleUserBroadcast;
+class BattleUserBroadcastDefaultTypeInternal;
+extern BattleUserBroadcastDefaultTypeInternal _BattleUserBroadcast_default_instance_;
+class BattleUserLogin_C2S;
+class BattleUserLogin_C2SDefaultTypeInternal;
+extern BattleUserLogin_C2SDefaultTypeInternal _BattleUserLogin_C2S_default_instance_;
+class BattleUserLogin_S2C;
+class BattleUserLogin_S2CDefaultTypeInternal;
+extern BattleUserLogin_S2CDefaultTypeInternal _BattleUserLogin_S2C_default_instance_;
+class BattleUserLogout;
+class BattleUserLogoutDefaultTypeInternal;
+extern BattleUserLogoutDefaultTypeInternal _BattleUserLogout_default_instance_;
+class BattleUserOperate_C2S;
+class BattleUserOperate_C2SDefaultTypeInternal;
+extern BattleUserOperate_C2SDefaultTypeInternal _BattleUserOperate_C2S_default_instance_;
 }  // namespace BattleMsg
 
 namespace BattleMsg {
@@ -53,13 +73,14 @@ enum BattleUserMsg {
   eBattleMsg_Unknown = 0,
   eBattleMsg_Login = 1,
   eBattleMsg_Logout = 2,
-  eBattleMsg_Broadcast = 3,
+  eBattleMsg_SingleFrame = 3,
+  eBattleMsg_UserOperate = 4,
   BattleUserMsg_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   BattleUserMsg_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool BattleUserMsg_IsValid(int value);
 const BattleUserMsg BattleUserMsg_MIN = eBattleMsg_Unknown;
-const BattleUserMsg BattleUserMsg_MAX = eBattleMsg_Broadcast;
+const BattleUserMsg BattleUserMsg_MAX = eBattleMsg_UserOperate;
 const int BattleUserMsg_ARRAYSIZE = BattleUserMsg_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* BattleUserMsg_descriptor();
@@ -72,9 +93,640 @@ inline bool BattleUserMsg_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<BattleUserMsg>(
     BattleUserMsg_descriptor(), name, value);
 }
+enum BattleErrCode {
+  eBEC_Success = 0,
+  eBEC_Fail = 1,
+  BattleErrCode_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  BattleErrCode_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool BattleErrCode_IsValid(int value);
+const BattleErrCode BattleErrCode_MIN = eBEC_Success;
+const BattleErrCode BattleErrCode_MAX = eBEC_Fail;
+const int BattleErrCode_ARRAYSIZE = BattleErrCode_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* BattleErrCode_descriptor();
+inline const ::std::string& BattleErrCode_Name(BattleErrCode value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    BattleErrCode_descriptor(), value);
+}
+inline bool BattleErrCode_Parse(
+    const ::std::string& name, BattleErrCode* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<BattleErrCode>(
+    BattleErrCode_descriptor(), name, value);
+}
 // ===================================================================
 
+class BattleUserLogin_C2S : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:BattleMsg.BattleUserLogin_C2S) */ {
+ public:
+  BattleUserLogin_C2S();
+  virtual ~BattleUserLogin_C2S();
 
+  BattleUserLogin_C2S(const BattleUserLogin_C2S& from);
+
+  inline BattleUserLogin_C2S& operator=(const BattleUserLogin_C2S& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BattleUserLogin_C2S(BattleUserLogin_C2S&& from) noexcept
+    : BattleUserLogin_C2S() {
+    *this = ::std::move(from);
+  }
+
+  inline BattleUserLogin_C2S& operator=(BattleUserLogin_C2S&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BattleUserLogin_C2S& default_instance();
+
+  static inline const BattleUserLogin_C2S* internal_default_instance() {
+    return reinterpret_cast<const BattleUserLogin_C2S*>(
+               &_BattleUserLogin_C2S_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    0;
+
+  void Swap(BattleUserLogin_C2S* other);
+  friend void swap(BattleUserLogin_C2S& a, BattleUserLogin_C2S& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BattleUserLogin_C2S* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  BattleUserLogin_C2S* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const BattleUserLogin_C2S& from);
+  void MergeFrom(const BattleUserLogin_C2S& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(BattleUserLogin_C2S* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 uid = 1;
+  void clear_uid();
+  static const int kUidFieldNumber = 1;
+  ::google::protobuf::uint64 uid() const;
+  void set_uid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:BattleMsg.BattleUserLogin_C2S)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 uid_;
+  mutable int _cached_size_;
+  friend struct protobuf_BattleUserMsg_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class BattleUserLogin_S2C : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:BattleMsg.BattleUserLogin_S2C) */ {
+ public:
+  BattleUserLogin_S2C();
+  virtual ~BattleUserLogin_S2C();
+
+  BattleUserLogin_S2C(const BattleUserLogin_S2C& from);
+
+  inline BattleUserLogin_S2C& operator=(const BattleUserLogin_S2C& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BattleUserLogin_S2C(BattleUserLogin_S2C&& from) noexcept
+    : BattleUserLogin_S2C() {
+    *this = ::std::move(from);
+  }
+
+  inline BattleUserLogin_S2C& operator=(BattleUserLogin_S2C&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BattleUserLogin_S2C& default_instance();
+
+  static inline const BattleUserLogin_S2C* internal_default_instance() {
+    return reinterpret_cast<const BattleUserLogin_S2C*>(
+               &_BattleUserLogin_S2C_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    1;
+
+  void Swap(BattleUserLogin_S2C* other);
+  friend void swap(BattleUserLogin_S2C& a, BattleUserLogin_S2C& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BattleUserLogin_S2C* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  BattleUserLogin_S2C* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const BattleUserLogin_S2C& from);
+  void MergeFrom(const BattleUserLogin_S2C& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(BattleUserLogin_S2C* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint64 uid = 2;
+  void clear_uid();
+  static const int kUidFieldNumber = 2;
+  ::google::protobuf::uint64 uid() const;
+  void set_uid(::google::protobuf::uint64 value);
+
+  // .BattleMsg.BattleErrCode errcode = 1;
+  void clear_errcode();
+  static const int kErrcodeFieldNumber = 1;
+  ::BattleMsg::BattleErrCode errcode() const;
+  void set_errcode(::BattleMsg::BattleErrCode value);
+
+  // @@protoc_insertion_point(class_scope:BattleMsg.BattleUserLogin_S2C)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 uid_;
+  int errcode_;
+  mutable int _cached_size_;
+  friend struct protobuf_BattleUserMsg_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class BattleUserLogout : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:BattleMsg.BattleUserLogout) */ {
+ public:
+  BattleUserLogout();
+  virtual ~BattleUserLogout();
+
+  BattleUserLogout(const BattleUserLogout& from);
+
+  inline BattleUserLogout& operator=(const BattleUserLogout& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BattleUserLogout(BattleUserLogout&& from) noexcept
+    : BattleUserLogout() {
+    *this = ::std::move(from);
+  }
+
+  inline BattleUserLogout& operator=(BattleUserLogout&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BattleUserLogout& default_instance();
+
+  static inline const BattleUserLogout* internal_default_instance() {
+    return reinterpret_cast<const BattleUserLogout*>(
+               &_BattleUserLogout_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    2;
+
+  void Swap(BattleUserLogout* other);
+  friend void swap(BattleUserLogout& a, BattleUserLogout& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BattleUserLogout* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  BattleUserLogout* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const BattleUserLogout& from);
+  void MergeFrom(const BattleUserLogout& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(BattleUserLogout* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:BattleMsg.BattleUserLogout)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_BattleUserMsg_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class BattleUserOperate_C2S : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:BattleMsg.BattleUserOperate_C2S) */ {
+ public:
+  BattleUserOperate_C2S();
+  virtual ~BattleUserOperate_C2S();
+
+  BattleUserOperate_C2S(const BattleUserOperate_C2S& from);
+
+  inline BattleUserOperate_C2S& operator=(const BattleUserOperate_C2S& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BattleUserOperate_C2S(BattleUserOperate_C2S&& from) noexcept
+    : BattleUserOperate_C2S() {
+    *this = ::std::move(from);
+  }
+
+  inline BattleUserOperate_C2S& operator=(BattleUserOperate_C2S&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BattleUserOperate_C2S& default_instance();
+
+  static inline const BattleUserOperate_C2S* internal_default_instance() {
+    return reinterpret_cast<const BattleUserOperate_C2S*>(
+               &_BattleUserOperate_C2S_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    3;
+
+  void Swap(BattleUserOperate_C2S* other);
+  friend void swap(BattleUserOperate_C2S& a, BattleUserOperate_C2S& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BattleUserOperate_C2S* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  BattleUserOperate_C2S* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const BattleUserOperate_C2S& from);
+  void MergeFrom(const BattleUserOperate_C2S& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(BattleUserOperate_C2S* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bytes data = 1;
+  void clear_data();
+  static const int kDataFieldNumber = 1;
+  const ::std::string& data() const;
+  void set_data(const ::std::string& value);
+  #if LANG_CXX11
+  void set_data(::std::string&& value);
+  #endif
+  void set_data(const char* value);
+  void set_data(const void* value, size_t size);
+  ::std::string* mutable_data();
+  ::std::string* release_data();
+  void set_allocated_data(::std::string* data);
+
+  // @@protoc_insertion_point(class_scope:BattleMsg.BattleUserOperate_C2S)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr data_;
+  mutable int _cached_size_;
+  friend struct protobuf_BattleUserMsg_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class BattleSingleFrame_S2C : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:BattleMsg.BattleSingleFrame_S2C) */ {
+ public:
+  BattleSingleFrame_S2C();
+  virtual ~BattleSingleFrame_S2C();
+
+  BattleSingleFrame_S2C(const BattleSingleFrame_S2C& from);
+
+  inline BattleSingleFrame_S2C& operator=(const BattleSingleFrame_S2C& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BattleSingleFrame_S2C(BattleSingleFrame_S2C&& from) noexcept
+    : BattleSingleFrame_S2C() {
+    *this = ::std::move(from);
+  }
+
+  inline BattleSingleFrame_S2C& operator=(BattleSingleFrame_S2C&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BattleSingleFrame_S2C& default_instance();
+
+  static inline const BattleSingleFrame_S2C* internal_default_instance() {
+    return reinterpret_cast<const BattleSingleFrame_S2C*>(
+               &_BattleSingleFrame_S2C_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    4;
+
+  void Swap(BattleSingleFrame_S2C* other);
+  friend void swap(BattleSingleFrame_S2C& a, BattleSingleFrame_S2C& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BattleSingleFrame_S2C* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  BattleSingleFrame_S2C* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const BattleSingleFrame_S2C& from);
+  void MergeFrom(const BattleSingleFrame_S2C& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(BattleSingleFrame_S2C* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated bytes datas = 3;
+  int datas_size() const;
+  void clear_datas();
+  static const int kDatasFieldNumber = 3;
+  const ::std::string& datas(int index) const;
+  ::std::string* mutable_datas(int index);
+  void set_datas(int index, const ::std::string& value);
+  #if LANG_CXX11
+  void set_datas(int index, ::std::string&& value);
+  #endif
+  void set_datas(int index, const char* value);
+  void set_datas(int index, const void* value, size_t size);
+  ::std::string* add_datas();
+  void add_datas(const ::std::string& value);
+  #if LANG_CXX11
+  void add_datas(::std::string&& value);
+  #endif
+  void add_datas(const char* value);
+  void add_datas(const void* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField< ::std::string>& datas() const;
+  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_datas();
+
+  // uint64 frame_index = 1;
+  void clear_frame_index();
+  static const int kFrameIndexFieldNumber = 1;
+  ::google::protobuf::uint64 frame_index() const;
+  void set_frame_index(::google::protobuf::uint64 value);
+
+  // uint64 milli_second = 2;
+  void clear_milli_second();
+  static const int kMilliSecondFieldNumber = 2;
+  ::google::protobuf::uint64 milli_second() const;
+  void set_milli_second(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:BattleMsg.BattleSingleFrame_S2C)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> datas_;
+  ::google::protobuf::uint64 frame_index_;
+  ::google::protobuf::uint64 milli_second_;
+  mutable int _cached_size_;
+  friend struct protobuf_BattleUserMsg_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class BattleUserBroadcast : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:BattleMsg.BattleUserBroadcast) */ {
+ public:
+  BattleUserBroadcast();
+  virtual ~BattleUserBroadcast();
+
+  BattleUserBroadcast(const BattleUserBroadcast& from);
+
+  inline BattleUserBroadcast& operator=(const BattleUserBroadcast& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BattleUserBroadcast(BattleUserBroadcast&& from) noexcept
+    : BattleUserBroadcast() {
+    *this = ::std::move(from);
+  }
+
+  inline BattleUserBroadcast& operator=(BattleUserBroadcast&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BattleUserBroadcast& default_instance();
+
+  static inline const BattleUserBroadcast* internal_default_instance() {
+    return reinterpret_cast<const BattleUserBroadcast*>(
+               &_BattleUserBroadcast_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    5;
+
+  void Swap(BattleUserBroadcast* other);
+  friend void swap(BattleUserBroadcast& a, BattleUserBroadcast& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BattleUserBroadcast* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  BattleUserBroadcast* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const BattleUserBroadcast& from);
+  void MergeFrom(const BattleUserBroadcast& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(BattleUserBroadcast* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:BattleMsg.BattleUserBroadcast)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct protobuf_BattleUserMsg_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -85,10 +737,234 @@ inline bool BattleUserMsg_Parse(
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// BattleUserLogin_C2S
+
+// uint64 uid = 1;
+inline void BattleUserLogin_C2S::clear_uid() {
+  uid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 BattleUserLogin_C2S::uid() const {
+  // @@protoc_insertion_point(field_get:BattleMsg.BattleUserLogin_C2S.uid)
+  return uid_;
+}
+inline void BattleUserLogin_C2S::set_uid(::google::protobuf::uint64 value) {
+  
+  uid_ = value;
+  // @@protoc_insertion_point(field_set:BattleMsg.BattleUserLogin_C2S.uid)
+}
+
+// -------------------------------------------------------------------
+
+// BattleUserLogin_S2C
+
+// .BattleMsg.BattleErrCode errcode = 1;
+inline void BattleUserLogin_S2C::clear_errcode() {
+  errcode_ = 0;
+}
+inline ::BattleMsg::BattleErrCode BattleUserLogin_S2C::errcode() const {
+  // @@protoc_insertion_point(field_get:BattleMsg.BattleUserLogin_S2C.errcode)
+  return static_cast< ::BattleMsg::BattleErrCode >(errcode_);
+}
+inline void BattleUserLogin_S2C::set_errcode(::BattleMsg::BattleErrCode value) {
+  
+  errcode_ = value;
+  // @@protoc_insertion_point(field_set:BattleMsg.BattleUserLogin_S2C.errcode)
+}
+
+// uint64 uid = 2;
+inline void BattleUserLogin_S2C::clear_uid() {
+  uid_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 BattleUserLogin_S2C::uid() const {
+  // @@protoc_insertion_point(field_get:BattleMsg.BattleUserLogin_S2C.uid)
+  return uid_;
+}
+inline void BattleUserLogin_S2C::set_uid(::google::protobuf::uint64 value) {
+  
+  uid_ = value;
+  // @@protoc_insertion_point(field_set:BattleMsg.BattleUserLogin_S2C.uid)
+}
+
+// -------------------------------------------------------------------
+
+// BattleUserLogout
+
+// -------------------------------------------------------------------
+
+// BattleUserOperate_C2S
+
+// bytes data = 1;
+inline void BattleUserOperate_C2S::clear_data() {
+  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& BattleUserOperate_C2S::data() const {
+  // @@protoc_insertion_point(field_get:BattleMsg.BattleUserOperate_C2S.data)
+  return data_.GetNoArena();
+}
+inline void BattleUserOperate_C2S::set_data(const ::std::string& value) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:BattleMsg.BattleUserOperate_C2S.data)
+}
+#if LANG_CXX11
+inline void BattleUserOperate_C2S::set_data(::std::string&& value) {
+  
+  data_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:BattleMsg.BattleUserOperate_C2S.data)
+}
+#endif
+inline void BattleUserOperate_C2S::set_data(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:BattleMsg.BattleUserOperate_C2S.data)
+}
+inline void BattleUserOperate_C2S::set_data(const void* value, size_t size) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:BattleMsg.BattleUserOperate_C2S.data)
+}
+inline ::std::string* BattleUserOperate_C2S::mutable_data() {
+  
+  // @@protoc_insertion_point(field_mutable:BattleMsg.BattleUserOperate_C2S.data)
+  return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* BattleUserOperate_C2S::release_data() {
+  // @@protoc_insertion_point(field_release:BattleMsg.BattleUserOperate_C2S.data)
+  
+  return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void BattleUserOperate_C2S::set_allocated_data(::std::string* data) {
+  if (data != NULL) {
+    
+  } else {
+    
+  }
+  data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
+  // @@protoc_insertion_point(field_set_allocated:BattleMsg.BattleUserOperate_C2S.data)
+}
+
+// -------------------------------------------------------------------
+
+// BattleSingleFrame_S2C
+
+// uint64 frame_index = 1;
+inline void BattleSingleFrame_S2C::clear_frame_index() {
+  frame_index_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 BattleSingleFrame_S2C::frame_index() const {
+  // @@protoc_insertion_point(field_get:BattleMsg.BattleSingleFrame_S2C.frame_index)
+  return frame_index_;
+}
+inline void BattleSingleFrame_S2C::set_frame_index(::google::protobuf::uint64 value) {
+  
+  frame_index_ = value;
+  // @@protoc_insertion_point(field_set:BattleMsg.BattleSingleFrame_S2C.frame_index)
+}
+
+// uint64 milli_second = 2;
+inline void BattleSingleFrame_S2C::clear_milli_second() {
+  milli_second_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 BattleSingleFrame_S2C::milli_second() const {
+  // @@protoc_insertion_point(field_get:BattleMsg.BattleSingleFrame_S2C.milli_second)
+  return milli_second_;
+}
+inline void BattleSingleFrame_S2C::set_milli_second(::google::protobuf::uint64 value) {
+  
+  milli_second_ = value;
+  // @@protoc_insertion_point(field_set:BattleMsg.BattleSingleFrame_S2C.milli_second)
+}
+
+// repeated bytes datas = 3;
+inline int BattleSingleFrame_S2C::datas_size() const {
+  return datas_.size();
+}
+inline void BattleSingleFrame_S2C::clear_datas() {
+  datas_.Clear();
+}
+inline const ::std::string& BattleSingleFrame_S2C::datas(int index) const {
+  // @@protoc_insertion_point(field_get:BattleMsg.BattleSingleFrame_S2C.datas)
+  return datas_.Get(index);
+}
+inline ::std::string* BattleSingleFrame_S2C::mutable_datas(int index) {
+  // @@protoc_insertion_point(field_mutable:BattleMsg.BattleSingleFrame_S2C.datas)
+  return datas_.Mutable(index);
+}
+inline void BattleSingleFrame_S2C::set_datas(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:BattleMsg.BattleSingleFrame_S2C.datas)
+  datas_.Mutable(index)->assign(value);
+}
+#if LANG_CXX11
+inline void BattleSingleFrame_S2C::set_datas(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:BattleMsg.BattleSingleFrame_S2C.datas)
+  datas_.Mutable(index)->assign(std::move(value));
+}
+#endif
+inline void BattleSingleFrame_S2C::set_datas(int index, const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  datas_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:BattleMsg.BattleSingleFrame_S2C.datas)
+}
+inline void BattleSingleFrame_S2C::set_datas(int index, const void* value, size_t size) {
+  datas_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:BattleMsg.BattleSingleFrame_S2C.datas)
+}
+inline ::std::string* BattleSingleFrame_S2C::add_datas() {
+  // @@protoc_insertion_point(field_add_mutable:BattleMsg.BattleSingleFrame_S2C.datas)
+  return datas_.Add();
+}
+inline void BattleSingleFrame_S2C::add_datas(const ::std::string& value) {
+  datas_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:BattleMsg.BattleSingleFrame_S2C.datas)
+}
+#if LANG_CXX11
+inline void BattleSingleFrame_S2C::add_datas(::std::string&& value) {
+  datas_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:BattleMsg.BattleSingleFrame_S2C.datas)
+}
+#endif
+inline void BattleSingleFrame_S2C::add_datas(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  datas_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:BattleMsg.BattleSingleFrame_S2C.datas)
+}
+inline void BattleSingleFrame_S2C::add_datas(const void* value, size_t size) {
+  datas_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:BattleMsg.BattleSingleFrame_S2C.datas)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+BattleSingleFrame_S2C::datas() const {
+  // @@protoc_insertion_point(field_list:BattleMsg.BattleSingleFrame_S2C.datas)
+  return datas_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+BattleSingleFrame_S2C::mutable_datas() {
+  // @@protoc_insertion_point(field_mutable_list:BattleMsg.BattleSingleFrame_S2C.datas)
+  return &datas_;
+}
+
+// -------------------------------------------------------------------
+
+// BattleUserBroadcast
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -102,6 +978,11 @@ template <> struct is_proto_enum< ::BattleMsg::BattleUserMsg> : ::google::protob
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::BattleMsg::BattleUserMsg>() {
   return ::BattleMsg::BattleUserMsg_descriptor();
+}
+template <> struct is_proto_enum< ::BattleMsg::BattleErrCode> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::BattleMsg::BattleErrCode>() {
+  return ::BattleMsg::BattleErrCode_descriptor();
 }
 
 }  // namespace protobuf

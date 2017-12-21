@@ -1,6 +1,7 @@
 #include "BattleNetProxy.h"
 #include "BattleManagerModuleDefine.h"
 #include "CommDef.h"
+#include "BattleUserManager.h"
 
 MP_SINGLETON_IMPLEMENT(BattleNetProxy);
 
@@ -47,18 +48,6 @@ void BattleNetProxy::OnClientConnected(const uint8_t nType, const MPSOCK nSockIn
 	switch (nType)
 	{
 	case MP_ST_GAME:
-	/*{
-		auto pGameServerMgr = GetModule<GameServerManager>(eBattleMgr_GameServer);
-		pGameServerMgr->DelGameServer(nSockIndex);
-		MP_INFO("GameServer Disconnected![%lld]", nSockIndex);
-	}
-	break;
-	case MP_ST_GATE:
-	{
-		auto pGateServerMgr = GetModule<GateServerManager>(eBattleMgr_GateServer);
-		pGateServerMgr->DelGateServer(nSockIndex);
-		MP_INFO("GateServer Disconnected![%lld]", nSockIndex);
-	}*/
 	break;
 	case MP_ST_CENTER:
 	{
@@ -67,6 +56,8 @@ void BattleNetProxy::OnClientConnected(const uint8_t nType, const MPSOCK nSockIn
 	case MP_RUDP_CLIENT:
 	{
 		//temp client
+		auto pBattleUserMgr = g_pBattleNetProxy->GetModule<BattleUserManager>(eBattleMgr_BattleUser);
+		pBattleUserMgr->AddBattleUser(nSockIndex);
 		
 		MP_INFO("New RUDP Client [%llu] Connected!",nSockIndex);
 	}
@@ -104,6 +95,8 @@ void BattleNetProxy::OnClientDisconnect(const uint8_t nType, const MPSOCK nSockI
 	break;
 	case MP_RUDP_CLIENT:
 	{
+		auto pBattleUserMgr = g_pBattleNetProxy->GetModule<BattleUserManager>(eBattleMgr_BattleUser);
+		pBattleUserMgr->DelBattleUser(nSockIndex);
 		MP_INFO("RUDP Client [%llu] DisConnected!",nSockIndex);
 	}
 	break;
