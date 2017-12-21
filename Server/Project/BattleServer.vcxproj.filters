@@ -155,6 +155,7 @@
     <ClCompile Include="..\src\battleserver\CenterServerManager.cpp">
       <Filter>Logic\CenterServerManager</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\battleserver\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\common\command\MPMsgBase.proto">
@@ -162,6 +163,9 @@
     </None>
     <None Include="..\common\command\MPDefine.proto">
       <Filter>protobuf\ServerProto</Filter>
+    </None>
+    <None Include="..\common\command\BattleUserMsg.proto">
+      <Filter>protobuf\UserProto</Filter>
     </None>
   </ItemGroup>
 </Project>

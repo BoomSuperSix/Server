@@ -258,11 +258,11 @@ class MsgBase : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::std::string* release_msg_data();
   void set_allocated_msg_data(::std::string* msg_data);
 
-  // .MPMsg.MsgType msg_type = 1;
+  // uint32 msg_type = 1;
   void clear_msg_type();
   static const int kMsgTypeFieldNumber = 1;
-  ::MPMsg::MsgType msg_type() const;
-  void set_msg_type(::MPMsg::MsgType value);
+  ::google::protobuf::uint32 msg_type() const;
+  void set_msg_type(::google::protobuf::uint32 value);
 
   // uint32 msg_id = 2;
   void clear_msg_id();
@@ -275,7 +275,7 @@ class MsgBase : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr msg_data_;
-  int msg_type_;
+  ::google::protobuf::uint32 msg_type_;
   ::google::protobuf::uint32 msg_id_;
   mutable int _cached_size_;
   friend struct protobuf_MPMsgBase_2eproto::TableStruct;
@@ -324,15 +324,15 @@ inline void Ident::set_low(::google::protobuf::int64 value) {
 
 // MsgBase
 
-// .MPMsg.MsgType msg_type = 1;
+// uint32 msg_type = 1;
 inline void MsgBase::clear_msg_type() {
-  msg_type_ = 0;
+  msg_type_ = 0u;
 }
-inline ::MPMsg::MsgType MsgBase::msg_type() const {
+inline ::google::protobuf::uint32 MsgBase::msg_type() const {
   // @@protoc_insertion_point(field_get:MPMsg.MsgBase.msg_type)
-  return static_cast< ::MPMsg::MsgType >(msg_type_);
+  return msg_type_;
 }
-inline void MsgBase::set_msg_type(::MPMsg::MsgType value) {
+inline void MsgBase::set_msg_type(::google::protobuf::uint32 value) {
   
   msg_type_ = value;
   // @@protoc_insertion_point(field_set:MPMsg.MsgBase.msg_type)

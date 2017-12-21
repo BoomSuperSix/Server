@@ -37,7 +37,7 @@ uint64_t GameUser::GetGateSock()const
 void GameUser::Send(uint32_t nMsgId,google::protobuf::Message& msg)
 {
 	MPMsg::MsgBase base;
-	base.set_msg_type(MPMsg::eMsgType_Client);
+	base.set_msg_type(0);
 	base.set_msg_id(nMsgId);
 	base.set_msg_data(msg.SerializeAsString());
 	auto sBaseData = base.SerializeAsString();

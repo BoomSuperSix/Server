@@ -91,7 +91,7 @@ bool TimeManager::checkTime(TimeEventPtr pEvent)const
 uint64_t TimeManager::generateId()const
 {
 	static uint32_t nSeed(0);
-	return MAKELONGLONG(m_CurrentTime.CurrentSec(), ++nSeed);
+	return MAKE_U64(m_CurrentTime.CurrentSec(), ++nSeed);
 }
 
 

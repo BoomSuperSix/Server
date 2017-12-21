@@ -21,6 +21,6 @@ enum eSuperAutoRegisterType
 #define REGISTER_GAME(CLASS,MSG,CALLBACK) g_pSuperNetProxy->AddReceiveCallBack(MP_ST_GAME,CLASS,MSG,&CALLBACK);
 #define REGISTER_CENTER(CLASS,MSG,CALLBACK) g_pSuperNetProxy->AddReceiveCallBack(MP_ST_CENTER,CLASS,MSG,&CALLBACK);
 
-#define SEND2GATE(FD,MSGID,MSG) g_pSuperNetProxy->SendMsg(MPMsg::MsgType::eMsgType_Super2Gate,MP_ST_SUPER,MP_ST_GATE,FD,MSGID,MSG);
-#define SEND2GAME(FD,MSGID,MSG) g_pSuperNetProxy->SendMsg(MPMsg::MsgType::eMsgType_Super2Game,MP_ST_SUPER,MP_ST_GAME,FD,MSGID,MSG);
-#define SEND2CENTER(FD,MSGID,MSG) g_pSuperNetProxy->SendMsg(MPMsg::MsgType::eMsgType_Super2Center,MP_ST_SUPER,MP_ST_CENTER,FD,MSGID,MSG);
+#define SEND2GATE(FD,MSGID,MSG) g_pSuperNetProxy->SendMsg(MP_ST_SUPER,MP_ST_GATE,FD,MSGID,MSG);
+#define SEND2GAME(FD,MSGID,MSG) g_pSuperNetProxy->SendMsg(MP_ST_SUPER,MP_ST_GAME,FD,MSGID,MSG);
+#define SEND2CENTER(FD,MSGID,MSG) g_pSuperNetProxy->SendMsg(MP_ST_SUPER,MP_ST_CENTER,FD,MSGID,MSG);

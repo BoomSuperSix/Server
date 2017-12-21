@@ -7,9 +7,6 @@
     <Filter Include="Base">
       <UniqueIdentifier>{060d378c-9452-43b6-b151-4edfc08c916b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NetProxy">
-      <UniqueIdentifier>{f7857a01-6592-467d-99c8-9969ac4600cd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Logic">
       <UniqueIdentifier>{962bb771-a27f-4315-b375-0958c1f9642c}</UniqueIdentifier>
     </Filter>
@@ -39,6 +36,9 @@
     </Filter>
     <Filter Include="protobuf\pbcc">
       <UniqueIdentifier>{57bb3ce2-bb3e-404c-b8c7-cf6d72a84e90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetProxy">
+      <UniqueIdentifier>{f7857a01-6592-467d-99c8-9969ac4600cd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

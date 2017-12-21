@@ -18,6 +18,7 @@ namespace meplay {
 		TCP_CLIENT_CONNECTING	= 1,
 		TCP_CLIENT_CONNECTED	= 2,
 		TCP_CLIENT_DISCONNECTED	= 3,
+		TCP_CLIENT_RECONNECT	= 4,
 	};
 
 	struct TCPConnectData

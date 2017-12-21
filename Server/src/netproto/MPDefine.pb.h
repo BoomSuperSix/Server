@@ -49,34 +49,6 @@ void AddDescriptors();
 void InitDefaults();
 }  // namespace protobuf_MPDefine_2eproto
 
-enum MsgType {
-  eMsgType_Client = 0,
-  eMsgType_Super2Center = 1,
-  eMsgType_Center2Super = 2,
-  eMsgType_Gate2Super = 3,
-  eMsgType_Super2Gate = 4,
-  eMsgType_Game2Super = 5,
-  eMsgType_Super2Game = 6,
-  eMsgType_Gate2Game = 7,
-  eMsgType_Game2Gate = 8,
-  MsgType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  MsgType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool MsgType_IsValid(int value);
-const MsgType MsgType_MIN = eMsgType_Client;
-const MsgType MsgType_MAX = eMsgType_Game2Gate;
-const int MsgType_ARRAYSIZE = MsgType_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* MsgType_descriptor();
-inline const ::std::string& MsgType_Name(MsgType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    MsgType_descriptor(), value);
-}
-inline bool MsgType_Parse(
-    const ::std::string& name, MsgType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<MsgType>(
-    MsgType_descriptor(), name, value);
-}
 enum EGameEventCode {
   EGEC_SUCCESS = 0,
   EGEC_UNKOWN_ERROR = 1,
@@ -140,49 +112,49 @@ inline bool EGameMsgID_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<EGameMsgID>(
     EGameMsgID_descriptor(), name, value);
 }
-enum Gate2Super_Msg {
+enum GateSuper_Msg {
   eGate2Super_Unkonwn = 0,
   eGate2Super_VerifyMe = 1,
-  Gate2Super_Msg_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  Gate2Super_Msg_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+  GateSuper_Msg_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  GateSuper_Msg_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-bool Gate2Super_Msg_IsValid(int value);
-const Gate2Super_Msg Gate2Super_Msg_MIN = eGate2Super_Unkonwn;
-const Gate2Super_Msg Gate2Super_Msg_MAX = eGate2Super_VerifyMe;
-const int Gate2Super_Msg_ARRAYSIZE = Gate2Super_Msg_MAX + 1;
+bool GateSuper_Msg_IsValid(int value);
+const GateSuper_Msg GateSuper_Msg_MIN = eGate2Super_Unkonwn;
+const GateSuper_Msg GateSuper_Msg_MAX = eGate2Super_VerifyMe;
+const int GateSuper_Msg_ARRAYSIZE = GateSuper_Msg_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* Gate2Super_Msg_descriptor();
-inline const ::std::string& Gate2Super_Msg_Name(Gate2Super_Msg value) {
+const ::google::protobuf::EnumDescriptor* GateSuper_Msg_descriptor();
+inline const ::std::string& GateSuper_Msg_Name(GateSuper_Msg value) {
   return ::google::protobuf::internal::NameOfEnum(
-    Gate2Super_Msg_descriptor(), value);
+    GateSuper_Msg_descriptor(), value);
 }
-inline bool Gate2Super_Msg_Parse(
-    const ::std::string& name, Gate2Super_Msg* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<Gate2Super_Msg>(
-    Gate2Super_Msg_descriptor(), name, value);
+inline bool GateSuper_Msg_Parse(
+    const ::std::string& name, GateSuper_Msg* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<GateSuper_Msg>(
+    GateSuper_Msg_descriptor(), name, value);
 }
-enum Gate2Game_Msg {
+enum GateGame_Msg {
   eGameMsg_Unknown = 0,
   eGameMsg_GameMsgWrapper = 1,
   eGameMsg_GameUserLogonSuccess = 2,
   eGameMsg_GateUserLogout = 3,
-  Gate2Game_Msg_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  Gate2Game_Msg_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+  GateGame_Msg_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  GateGame_Msg_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-bool Gate2Game_Msg_IsValid(int value);
-const Gate2Game_Msg Gate2Game_Msg_MIN = eGameMsg_Unknown;
-const Gate2Game_Msg Gate2Game_Msg_MAX = eGameMsg_GateUserLogout;
-const int Gate2Game_Msg_ARRAYSIZE = Gate2Game_Msg_MAX + 1;
+bool GateGame_Msg_IsValid(int value);
+const GateGame_Msg GateGame_Msg_MIN = eGameMsg_Unknown;
+const GateGame_Msg GateGame_Msg_MAX = eGameMsg_GateUserLogout;
+const int GateGame_Msg_ARRAYSIZE = GateGame_Msg_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* Gate2Game_Msg_descriptor();
-inline const ::std::string& Gate2Game_Msg_Name(Gate2Game_Msg value) {
+const ::google::protobuf::EnumDescriptor* GateGame_Msg_descriptor();
+inline const ::std::string& GateGame_Msg_Name(GateGame_Msg value) {
   return ::google::protobuf::internal::NameOfEnum(
-    Gate2Game_Msg_descriptor(), value);
+    GateGame_Msg_descriptor(), value);
 }
-inline bool Gate2Game_Msg_Parse(
-    const ::std::string& name, Gate2Game_Msg* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<Gate2Game_Msg>(
-    Gate2Game_Msg_descriptor(), name, value);
+inline bool GateGame_Msg_Parse(
+    const ::std::string& name, GateGame_Msg* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<GateGame_Msg>(
+    GateGame_Msg_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -210,11 +182,6 @@ inline bool Gate2Game_Msg_Parse(
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::MPMsg::MsgType> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MPMsg::MsgType>() {
-  return ::MPMsg::MsgType_descriptor();
-}
 template <> struct is_proto_enum< ::MPMsg::EGameEventCode> : ::google::protobuf::internal::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::MPMsg::EGameEventCode>() {
@@ -230,15 +197,15 @@ template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::MPMsg::EGameMsgID>() {
   return ::MPMsg::EGameMsgID_descriptor();
 }
-template <> struct is_proto_enum< ::MPMsg::Gate2Super_Msg> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::MPMsg::GateSuper_Msg> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MPMsg::Gate2Super_Msg>() {
-  return ::MPMsg::Gate2Super_Msg_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::MPMsg::GateSuper_Msg>() {
+  return ::MPMsg::GateSuper_Msg_descriptor();
 }
-template <> struct is_proto_enum< ::MPMsg::Gate2Game_Msg> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::MPMsg::GateGame_Msg> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MPMsg::Gate2Game_Msg>() {
-  return ::MPMsg::Gate2Game_Msg_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::MPMsg::GateGame_Msg>() {
+  return ::MPMsg::GateGame_Msg_descriptor();
 }
 
 }  // namespace protobuf

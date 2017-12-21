@@ -1,39 +1,39 @@
-#include "BattleNetProxy.h"
-#include "BattleManagerModuleDefine.h"
+#include "MatchNetProxy.h"
+#include "MatchManagerModuleDefine.h"
 #include "CommDef.h"
 
-MP_SINGLETON_IMPLEMENT(BattleNetProxy);
+MP_SINGLETON_IMPLEMENT(MatchNetProxy);
 
-BattleNetProxy::BattleNetProxy()
-	: NetProxy(10), m_Mgrs(eBattleManagerModule, eBattleMgr_End)
+MatchNetProxy::MatchNetProxy()
+	: NetProxy(10), m_Mgrs(eMatchManagerModule, eMatchMgr_End)
 {
 }
 
-BattleNetProxy::~BattleNetProxy()
+MatchNetProxy::~MatchNetProxy()
 {
 }
 
-bool BattleNetProxy::InitServerCfg(const std::string& filename)
+bool MatchNetProxy::InitServerCfg(const std::string& filename)
 {
-	AddTCPServerModule(MP_ST_GAME, 3000, "127.0.0.1", 16130, 1);
-	AddRUDPServerModule(MP_RUDP_CLIENT, 2048, "127.0.0.1", 17002);
+	AddTCPClientModule(MP_ST_CENTER, "127.0.0.1", 12345);
+	AddTCPServerModule(MP_ST_SUPER, 3000, "127.0.0.1", 16131);
 
 	return true;
 }
 
-void BattleNetProxy::LogicStart()
+void MatchNetProxy::LogicStart()
 {
 	if (!m_Mgrs.Awake())
 	{
 		ImmediatelyFinal("Awake Failed!");
 	}
 }
-void BattleNetProxy::LogicFinal()
+void MatchNetProxy::LogicFinal()
 {
 	m_Mgrs.ShutDown();
 }
 
-void BattleNetProxy::LogicRun()
+void MatchNetProxy::LogicRun()
 {
 	m_Mgrs.Execute();
 	if (0)
@@ -42,20 +42,20 @@ void BattleNetProxy::LogicRun()
 	}
 }
 
-void BattleNetProxy::OnClientConnected(const uint8_t nType, const MPSOCK nSockIndex)
+void MatchNetProxy::OnClientConnected(const uint8_t nType, const MPSOCK nSockIndex)
 {
 	switch (nType)
 	{
 	case MP_ST_GAME:
 	/*{
-		auto pGameServerMgr = GetModule<GameServerManager>(eBattleMgr_GameServer);
+		auto pGameServerMgr = GetModule<GameServerManager>(eMatchMgr_GameServer);
 		pGameServerMgr->DelGameServer(nSockIndex);
 		MP_INFO("GameServer Disconnected![%lld]", nSockIndex);
 	}
 	break;
 	case MP_ST_GATE:
 	{
-		auto pGateServerMgr = GetModule<GateServerManager>(eBattleMgr_GateServer);
+		auto pGateServerMgr = GetModule<GateServerManager>(eMatchMgr_GateServer);
 		pGateServerMgr->DelGateServer(nSockIndex);
 		MP_INFO("GateServer Disconnected![%lld]", nSockIndex);
 	}*/
@@ -75,7 +75,7 @@ void BattleNetProxy::OnClientConnected(const uint8_t nType, const MPSOCK nSockIn
 	}
 }
 
-void BattleNetProxy::OnClientDisconnect(const uint8_t nType, const MPSOCK nSockIndex)
+void MatchNetProxy::OnClientDisconnect(const uint8_t nType, const MPSOCK nSockIndex)
 {
 	auto pNetModule = GetNetModule(nType);
 	auto pNetObject = pNetModule->GetNetObject(nSockIndex);
@@ -88,13 +88,13 @@ void BattleNetProxy::OnClientDisconnect(const uint8_t nType, const MPSOCK nSockI
 	{
 	case MP_ST_GAME:
 	/*{
-		auto pGameServerMgr = GetModule<GameServerManager>(eBattleMgr_GameServer);
+		auto pGameServerMgr = GetModule<GameServerManager>(eMatchMgr_GameServer);
 		pGameServerMgr->AddGameServer(nSockIndex, pNetObject->GetIP().c_str(), pNetObject->GetPort());
 	}
 	break;
 	case MP_ST_GATE:
 	{
-		auto pGateServerMgr = GetModule<GateServerManager>(eBattleMgr_GateServer);
+		auto pGateServerMgr = GetModule<GateServerManager>(eMatchMgr_GateServer);
 		pGateServerMgr->AddGateServer(nSockIndex, pNetObject->GetIP().c_str(), pNetObject->GetPort());
 	}*/
 	break;
@@ -112,7 +112,7 @@ void BattleNetProxy::OnClientDisconnect(const uint8_t nType, const MPSOCK nSockI
 	}
 }
 
-const MPGUID BattleNetProxy::GetGUIDBySock(const uint8_t nType, const MPSOCK nSockIndex)const
+const MPGUID MatchNetProxy::GetGUIDBySock(const uint8_t nType, const MPSOCK nSockIndex)const
 {
 	return 0;
 }

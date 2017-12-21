@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package BattleMsg;
+
+enum BattleUserMsg
+{
+	eBattleMsg_Unknown						= 0;
+	eBattleMsg_Login 						= 1;
+	eBattleMsg_Logout						= 2;
+	eBattleMsg_Broadcast					= 3;
+}

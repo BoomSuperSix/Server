@@ -39,7 +39,7 @@ bool MPTCPClient::Execute()
 			continue;
 		}
 
-		pData->m_nStatus = TCP_CLIENT_CONNECTING;
+		pData->m_nStatus = TCP_CLIENT_RECONNECT;
 		pData->m_pClient->Connect();
 		MP_DEBUG("Reconnect To [%s]!",pData->m_pClient->remote_addr().c_str());
 	}
@@ -99,7 +99,8 @@ bool MPTCPClient::isAllDisConnected()
 {
 	for (auto& pData : m_vConnectData)
 	{
-		if (pData->m_nStatus != TCP_CLIENT_DISCONNECTED)
+		if (pData->m_nStatus != TCP_CLIENT_DISCONNECTED
+			&& pData->m_nStatus != TCP_CLIENT_CONNECTING)
 		{
 			return false;
 		}
@@ -168,8 +169,9 @@ bool MPTCPClient::Final()
 
 	while(!isAllDisConnected())
 	{
-		std::unique_lock<std::mutex> lck(mtx);
-		cv.wait(lck);
+		MSleep(100);
+		//std::unique_lock<std::mutex> lck(mtx);
+		//cv.wait(lck);
 	}
 
 	if (!m_pEventLoop->IsStopped())

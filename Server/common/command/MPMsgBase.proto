@@ -12,8 +12,7 @@ message Ident//The base protocol can not be transfer directly
 ///////////////////////////////////////////////////////////////////
 message MsgBase
 {
-	//Ident  player_id 	= 1;//only be used between proxy-server and game-server
-	MsgType msg_type	= 1;
+	uint32 msg_type		= 1;
 	uint32 msg_id 		= 2;
 	bytes  msg_data 	= 3;
 }

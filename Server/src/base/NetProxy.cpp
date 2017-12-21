@@ -369,7 +369,6 @@ std::shared_ptr<MPNet> NetProxy::GetNetModule(uint32_t nType)
 }
 
 bool NetProxy::SendMsg(
-	const MPMsg::MsgType nMsgType,
 	const uint8_t from,
 	const uint8_t to, 
 	const MPSOCK nSockIndex, 
@@ -378,7 +377,7 @@ bool NetProxy::SendMsg(
 )
 {
 	MPMsg::MsgBase msg_base;
-	msg_base.set_msg_type(nMsgType);
+	msg_base.set_msg_type(MAKE_U32(from,to));
 	msg_base.set_msg_id(nMsgId);
 	msg_base.set_msg_data(msg.SerializeAsString());
 	auto s = msg_base.SerializeAsString();
@@ -396,7 +395,6 @@ bool NetProxy::SendMsg(
 }
 
 bool NetProxy::SendMsg(
-	const MPMsg::MsgType nMsgType,
 	const uint8_t from,
 	const uint8_t to,
 	std::list<MPSOCK> vSockIndex,
@@ -405,7 +403,7 @@ bool NetProxy::SendMsg(
 )
 {
 	MPMsg::MsgBase msg_base;
-	msg_base.set_msg_type(nMsgType);
+	msg_base.set_msg_type(MAKE_U32(from,to));
 	msg_base.set_msg_id(nMsgId);
 	msg_base.set_msg_data(msg.SerializeAsString());
 	auto s = msg_base.SerializeAsString();
@@ -422,10 +420,15 @@ bool NetProxy::SendMsg(
 	return true;
 }
 
-bool NetProxy::SendMsgAll(const MPMsg::MsgType nMsgType, const uint8_t from, const uint8_t to, const uint16_t nMsgId, const google::protobuf::Message& msg)
+bool NetProxy::SendMsgAll(
+	const uint8_t from, 
+	const uint8_t to, 
+	const uint16_t nMsgId, 
+	const google::protobuf::Message& msg
+)
 {
 	MPMsg::MsgBase msg_base;
-	msg_base.set_msg_type(nMsgType);
+	msg_base.set_msg_type(MAKE_U32(from,to));
 	msg_base.set_msg_id(nMsgId);
 	msg_base.set_msg_data(msg.SerializeAsString());
 	auto s = msg_base.SerializeAsString();

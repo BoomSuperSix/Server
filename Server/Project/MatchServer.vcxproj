@@ -28,13 +28,13 @@
     <ClCompile Include="..\src\base\NetProxyBuffer.cpp" />
     <ClCompile Include="..\src\base\TimeManager.cpp" />
     <ClCompile Include="..\src\base\XmlManager.cpp" />
-    <ClCompile Include="..\src\battleserver\BattleNetProxy.cpp" />
-    <ClCompile Include="..\src\battleserver\BattleTimeManager.cpp" />
-    <ClCompile Include="..\src\battleserver\CenterServer.cpp" />
-    <ClCompile Include="..\src\battleserver\CenterServerManager.cpp" />
-    <ClCompile Include="..\src\battleserver\GameServer.cpp" />
-    <ClCompile Include="..\src\battleserver\GameServerManager.cpp" />
-    <ClCompile Include="..\src\battleserver\main.cpp" />
+    <ClCompile Include="..\src\matchserver\MatchNetProxy.cpp" />
+    <ClCompile Include="..\src\matchserver\MatchTimeManager.cpp" />
+    <ClCompile Include="..\src\matchserver\CenterServer.cpp" />
+    <ClCompile Include="..\src\matchserver\CenterServerManager.cpp" />
+    <ClCompile Include="..\src\matchserver\main.cpp" />
+    <ClCompile Include="..\src\matchserver\SuperServer.cpp" />
+    <ClCompile Include="..\src\matchserver\SuperServerManager.cpp" />
     <ClCompile Include="..\src\netproto\MPDefine.pb.cc" />
     <ClCompile Include="..\src\netproto\MPMsgBase.pb.cc" />
   </ItemGroup>
@@ -50,29 +50,28 @@
     <ClInclude Include="..\src\base\TimeManager.h" />
     <ClInclude Include="..\src\base\TimeT.h" />
     <ClInclude Include="..\src\base\XmlManager.h" />
-    <ClInclude Include="..\src\battleserver\BattleCommDef.h" />
-    <ClInclude Include="..\src\battleserver\BattleManagerModuleDefine.h" />
-    <ClInclude Include="..\src\battleserver\BattleNetProxy.h" />
-    <ClInclude Include="..\src\battleserver\BattleTimeManager.h" />
-    <ClInclude Include="..\src\battleserver\CenterServer.h" />
-    <ClInclude Include="..\src\battleserver\CenterServerManager.h" />
-    <ClInclude Include="..\src\battleserver\GameServer.h" />
-    <ClInclude Include="..\src\battleserver\GameServerManager.h" />
+    <ClInclude Include="..\src\matchserver\MatchCommDef.h" />
+    <ClInclude Include="..\src\matchserver\MatchManagerModuleDefine.h" />
+    <ClInclude Include="..\src\matchserver\MatchNetProxy.h" />
+    <ClInclude Include="..\src\matchserver\MatchTimeManager.h" />
+    <ClInclude Include="..\src\matchserver\CenterServer.h" />
+    <ClInclude Include="..\src\matchserver\CenterServerManager.h" />
+    <ClInclude Include="..\src\matchserver\SuperServer.h" />
+    <ClInclude Include="..\src\matchserver\SuperServerManager.h" />
     <ClInclude Include="..\src\netproto\MPDefine.pb.h" />
     <ClInclude Include="..\src\netproto\MPMsgBase.pb.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\common\command\BattleUserMsg.proto" />
     <None Include="..\common\command\MPDefine.proto" />
     <None Include="..\common\command\MPMsgBase.proto" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{2172F912-87F5-440C-8F14-4B041B0E5B5E}</ProjectGuid>
+    <ProjectGuid>{2C7B2251-6387-4185-940F-0BA12A7CED46}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Project</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
-    <ProjectName>BattleServer</ProjectName>
+    <ProjectName>MatchServer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -130,7 +129,7 @@
     <ExecutablePath>..\bin;$(ExecutablePath)</ExecutablePath>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>..\bin\</OutDir>
-    <ReferencePath>..\src\battleserver;$(ReferencePath)</ReferencePath>
+    <ReferencePath>..\src\matchserver;$(ReferencePath)</ReferencePath>
     <LibraryWPath>C:\Boost\lib;$(LibraryWPath)</LibraryWPath>
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>

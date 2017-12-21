@@ -79,7 +79,6 @@ public:
 	void OnDisConnCB(const uint8_t nType, const MPSOCK nSockIndex);
 
 	bool SendMsg(
-		const MPMsg::MsgType nMsgType, 
 		const uint8_t from, 
 		const uint8_t to, 
 		const MPSOCK nSockIndex, 
@@ -88,7 +87,6 @@ public:
 	);
 
 	bool SendMsg(
-		const MPMsg::MsgType nMsgType, 
 		const uint8_t from, 
 		const uint8_t to, 
 		std::list<MPSOCK> vSockIndex, 
@@ -97,7 +95,6 @@ public:
 	);
 
 	bool SendMsgAll(
-		const MPMsg::MsgType nMsgType, 
 		const uint8_t from, 
 		const uint8_t to, 
 		const uint16_t nMsgId, 

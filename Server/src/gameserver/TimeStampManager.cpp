@@ -39,7 +39,7 @@ bool TimeStampManager::ShutDown()
 
 void TimeStampManager::UpdateTimeStamp(MPGUID lUserId, uint32_t nMainType, uint32_t nSubType, time_t tTimeStamp)
 {
-	uint64_t nType = MAKELONGLONG(nMainType, nSubType);
+	uint64_t nType = MAKE_U64(nMainType, nSubType);
 	m_mTimeStamps[lUserId][nType] = tTimeStamp;
 
 	saveTimeStamp(lUserId,nMainType,nSubType,tTimeStamp);
@@ -49,7 +49,7 @@ time_t TimeStampManager::GetTimeStamp(MPGUID lUserId, uint32_t nMainType, uint32
 {
 	if (auto itUser = m_mTimeStamps.find(lUserId); itUser != m_mTimeStamps.end())
 	{
-		uint64_t nType = MAKELONGLONG(nMainType, nSubType);
+		uint64_t nType = MAKE_U64(nMainType, nSubType);
 		if (auto itTimeStamp = itUser->second.find(nType); itTimeStamp != itUser->second.end())
 		{
 			return itTimeStamp->second;
@@ -88,7 +88,7 @@ void TimeStampManager::loadTimeStamp()
 
 	for (auto& ts : vResults)
 	{
-		uint64_t nType = MAKELONGLONG(ts.main_type(), ts.sub_type());
+		uint64_t nType = MAKE_U64(ts.main_type(), ts.sub_type());
 		m_mTimeStamps[ts.id()][nType] = ts.time();
 	}
 }

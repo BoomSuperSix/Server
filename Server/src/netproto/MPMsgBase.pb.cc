@@ -122,13 +122,12 @@ void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\017MPMsgBase.proto\022\005MPMsg\032\016MPDefine.proto"
-      "\"\"\n\005Ident\022\014\n\004high\030\001 \001(\003\022\013\n\003low\030\002 \001(\003\"M\n\007"
-      "MsgBase\022 \n\010msg_type\030\001 \001(\0162\016.MPMsg.MsgTyp"
-      "e\022\016\n\006msg_id\030\002 \001(\r\022\020\n\010msg_data\030\003 \001(\014b\006pro"
-      "to3"
+      "\"\"\n\005Ident\022\014\n\004high\030\001 \001(\003\022\013\n\003low\030\002 \001(\003\"=\n\007"
+      "MsgBase\022\020\n\010msg_type\030\001 \001(\r\022\016\n\006msg_id\030\002 \001("
+      "\r\022\020\n\010msg_data\030\003 \001(\014b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 163);
+      descriptor, 147);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MPMsgBase.proto", &protobuf_RegisterTypes);
   ::MPMsg::protobuf_MPDefine_2eproto::AddDescriptors();
@@ -553,15 +552,14 @@ bool MsgBase::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .MPMsg.MsgType msg_type = 1;
+      // uint32 msg_type = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          int value;
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_msg_type(static_cast< ::MPMsg::MsgType >(value));
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &msg_type_)));
         } else {
           goto handle_unusual;
         }
@@ -620,10 +618,9 @@ void MsgBase::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .MPMsg.MsgType msg_type = 1;
+  // uint32 msg_type = 1;
   if (this->msg_type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->msg_type(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->msg_type(), output);
   }
 
   // uint32 msg_id = 2;
@@ -651,10 +648,9 @@ void MsgBase::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .MPMsg.MsgType msg_type = 1;
+  // uint32 msg_type = 1;
   if (this->msg_type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->msg_type(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->msg_type(), target);
   }
 
   // uint32 msg_id = 2;
@@ -693,10 +689,11 @@ size_t MsgBase::ByteSizeLong() const {
         this->msg_data());
   }
 
-  // .MPMsg.MsgType msg_type = 1;
+  // uint32 msg_type = 1;
   if (this->msg_type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->msg_type());
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->msg_type());
   }
 
   // uint32 msg_id = 2;
@@ -786,15 +783,15 @@ void MsgBase::InternalSwap(MsgBase* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // MsgBase
 
-// .MPMsg.MsgType msg_type = 1;
+// uint32 msg_type = 1;
 void MsgBase::clear_msg_type() {
-  msg_type_ = 0;
+  msg_type_ = 0u;
 }
-::MPMsg::MsgType MsgBase::msg_type() const {
+::google::protobuf::uint32 MsgBase::msg_type() const {
   // @@protoc_insertion_point(field_get:MPMsg.MsgBase.msg_type)
-  return static_cast< ::MPMsg::MsgType >(msg_type_);
+  return msg_type_;
 }
-void MsgBase::set_msg_type(::MPMsg::MsgType value) {
+void MsgBase::set_msg_type(::google::protobuf::uint32 value) {
   
   msg_type_ = value;
   // @@protoc_insertion_point(field_set:MPMsg.MsgBase.msg_type)
