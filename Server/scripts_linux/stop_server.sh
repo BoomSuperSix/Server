@@ -1,6 +1,6 @@
 #!/bin/bash
 
-project_name=(GatewayServer GameServer SuperServer)
+project_name=(GatewayServer GameServer SuperServer BattleServer MatchServer)
 sig=2
 if [ ! -n "$1" ] ; then
 	sig=2

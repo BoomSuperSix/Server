@@ -4,7 +4,7 @@ if [ ! -d "../log/" ] ; then
     mkdir ../log
 fi
 
-project_name=(SuperServer GameServer GatewayServer BattleServer)
+project_name=(SuperServer GameServer GatewayServer BattleServer MatchServer)
 #project_name=(GatewayServer)
 if [ ! -n "$1" -o "$1" == "debug" ] ; then
     for file in ${project_name[*]}

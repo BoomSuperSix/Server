@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <list>
 #include <google/protobuf/message.h>
 #include "MPTime.h"
 #include "BattleUserMsg.pb.h"
