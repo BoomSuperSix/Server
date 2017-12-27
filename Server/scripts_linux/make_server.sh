@@ -9,7 +9,7 @@ if [ ! -n "$1" -o "$1" == "debug" ] ; then
     do
         cd ./${file}
         cmake -DCMAKE_BUILD_TYPE=Debug ./
-        make -j10
+        make -j
         cd ..
     done
 elif [ "$1" == "release" ] ; then
@@ -18,7 +18,7 @@ elif [ "$1" == "release" ] ; then
     do
         cd ./${file}
         cmake -DCMAKE_BUILD_TYPE=Release ./
-        make -j8
+        make -j
         cd ..
     done
 elif [ "$1" == "clean" ] ; then

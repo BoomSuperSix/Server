@@ -1,4 +1,5 @@
 #include "MatchUser.h"
+#include <cmath>
 
 MatchUser::MatchUser(double fRating) 
 	: m_uid(),m_fRating(fRating)
