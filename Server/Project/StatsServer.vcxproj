@@ -123,7 +123,7 @@
     <LinkIncremental>true</LinkIncremental>
     <ExecutablePath>..\bin;$(ExecutablePath)</ExecutablePath>
     <IncludePath>..\common\command;..\src\meplay\include;..\src\third_party;..\src\meplay\;..\src\third_party\libevent;..\src\base;..\src\third_party\rocketmq;..\src\netproto;$(IncludePath)</IncludePath>
-    <ReferencePath>..\src\superserver;$(ReferencePath)</ReferencePath>
+    <ReferencePath>..\src\statisticserver;$(ReferencePath)</ReferencePath>
     <LibraryPath>..\lib;..\lib\static;$(LibraryPath)</LibraryPath>
     <LibraryWPath>C:\Boost\lib;$(LibraryWPath)</LibraryWPath>
     <OutDir>..\bin\</OutDir>
@@ -143,7 +143,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;BOOST_ALL_DYN_LINK;_WIN32_WINDOWS;WIN_SYSTEM;MONGOCXX_STATIC;BSONCXX_STATIC;NOMINMAX;_CRT_SECURE_NO_WARNINGS;SSJ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;BOOST_ALL_DYN_LINK;_WIN32_WINDOWS;WIN_SYSTEM;MONGOCXX_STATIC;BSONCXX_STATIC;NOMINMAX;_CRT_SECURE_NO_WARNINGS;SSJ_DEBUG;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MinimalRebuild>false</MinimalRebuild>

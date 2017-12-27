@@ -28,9 +28,20 @@ public:
 	{
 		return m_Mgrs.GetModule<T>(nType);
 	}
+
+	void SendGameMsgWrapper(
+		uint32_t nPlatfromId,
+		uint32_t nServerId,
+		uint8_t nServerType,
+		const uint16_t nMsgId,
+		google::protobuf::Message& msg
+	);
 private:
 private:
 	ManagerModuleManager m_Mgrs;
+
+	uint32_t m_nPlatformId;
+	uint32_t m_nServerId;
 };
 
 #define g_pGameNetProxy GameNetProxy::GetInstance()

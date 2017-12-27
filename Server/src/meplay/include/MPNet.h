@@ -22,8 +22,8 @@
 #include <vector>
 #include <assert.h>
 #include <unordered_map>
-#include <event2/listener.h>
-#include <event2/bufferevent.h>
+#include <libevent/event2/listener.h>
+#include <libevent/event2/bufferevent.h>
 #include "MPGUID.h"
 #include "MPNetDefine.h"
 #include "MPNetObject.h"

@@ -6,6 +6,7 @@
 #include "SuperServerManager.h"
 #include "DBClientMgr.h"
 #include "GameUserManager.h"
+#include "Game2Super.pb.h"
 
 MP_SINGLETON_IMPLEMENT(GameNetProxy);
 
@@ -20,6 +21,10 @@ GameNetProxy::~GameNetProxy()
 
 bool GameNetProxy::InitServerCfg(const std::string& filename)
 {
+	//server info
+	m_nPlatformId = 1;
+	m_nServerId = 1;
+
 	//AddTCPClientModule(MP_ST_SUPER, "127.0.0.1", 16123);
 	//AddTCPServerModule(MP_ST_GATE, 3000, "127.0.0.1", 16125,1);
 	AddRUDPServerModule(MP_RUDP_CLIENT, 2048, "127.0.0.1", 17002);
@@ -115,4 +120,21 @@ void GameNetProxy::OnClientConnected(const uint8_t nType, const MPSOCK nSockInde
 const MPGUID GameNetProxy::GetGUIDBySock(const uint8_t nType, const MPSOCK nSockIndex)const
 {
 	return 0;
+}
+
+void GameNetProxy::SendGameMsgWrapper(
+	uint32_t nPlatfromId,
+	uint32_t nServerId,
+	uint8_t nServerType,
+	const uint16_t nMsgId,
+	google::protobuf::Message& msg
+)
+{
+	MPMsg::GameMsg_Wrapper outMsg;
+	outMsg.set_platfrom_id_from(m_nPlatformId);
+	outMsg.set_server_id_from(m_nServerId);
+	outMsg.set_server_type_from(MP_ST_GAME);
+	outMsg.set_platfrom_id_to(nPlatfromId);
+	outMsg.set_server_id_to(nServerId);
+	outMsg.set_server_type_to(nServerType);
 }

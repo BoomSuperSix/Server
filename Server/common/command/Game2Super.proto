@@ -1,0 +1,31 @@
+﻿syntax = "proto3";
+
+package MPMsg;
+
+message StartMatchReq_Game2Match
+{
+	uint32 plat_id		= 1;
+	uint32 server_id	= 2;
+	repeated uint64	uid = 3;
+}
+
+message StartMatchRet_Super2Game
+{
+	uint32 err_code		= 1;
+	uint32 plat_id		= 2;
+	uint32 server_id	= 3;
+	repeated uint64	uid = 4;
+}
+
+message Game2GameTransferMsg
+{
+	uint32 platfrom_id_from		= 1;
+	uint32 server_type_from		= 2;
+	uint32 server_id_from		= 3;
+	uint32 platfrom_id_to		= 4;
+	uint32 server_type_to		= 5;
+	uint32 server_id_to			= 6;
+	uint32 msg_id				= 7;
+	bytes data					= 8;
+}
+

@@ -5,12 +5,19 @@
 #include "MPSingleton.h"
 #include <mutex>
 
+#ifndef MP_NO_LOG
 #define MP_INFO		meplay::MPLogger::GetInstance()->Info
 #define MP_DEBUG	meplay::MPLogger::GetInstance()->Debug
 #define MP_WARN		meplay::MPLogger::GetInstance()->Warn
 #define MP_ERROR	meplay::MPLogger::GetInstance()->Error
 #define MP_SYSTEM	meplay::MPLogger::GetInstance()->System
-
+#else
+#define MP_INFO		printf
+#define MP_DEBUG	printf
+#define MP_WARN		printf
+#define MP_ERROR	printf
+#define MP_SYSTEM	printf
+#endif
 namespace meplay {
 	class MPLogger final
 	{

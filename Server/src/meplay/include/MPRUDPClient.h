@@ -1,6 +1,4 @@
 #pragma once
-
-#pragma once
 #include "MPNet.h"
 #include "MPThread.h"
 #include "enet/enet.h"

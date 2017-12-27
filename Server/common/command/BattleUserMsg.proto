@@ -2,13 +2,15 @@ syntax = "proto3";
 
 package BattleMsg;
 
-enum BattleUserMsg
+enum EnumBattleUserMsg
 {
 	eBattleMsg_Unknown						= 0;
 	eBattleMsg_Login 						= 1;
-	eBattleMsg_Logout						= 2;
-	eBattleMsg_SingleFrame					= 3;
+	eBattleMsg_LoadOK						= 2;
+	eBattleMsg_GameStart					= 3;
 	eBattleMsg_UserOperate					= 4;
+	eBattleMsg_SingleFrame					= 5;
+	eBattleMsg_Logout						= 6;
 }
 
 enum BattleErrCode
@@ -20,22 +22,39 @@ enum BattleErrCode
 message BattleUserLogin_C2S
 {
 	uint64 uid			= 1;
+	uint64 room			= 2;
 }
 
 message BattleUserLogin_S2C
 {
 	BattleErrCode errcode		= 1;
-	uint64 uid					= 2;
 }
 
-message BattleUserLogout
+message BattleUserLoadOK_C2S
 {
-	
+	uint64 uid			= 1;
+	uint64 room			= 2;
+}
+
+message BattleUserLoadOK_S2C
+{
+	uint64 uid					= 1;
+}
+
+message BattleUserGameStart_S2C
+{
+	uint64 time					= 1;
 }
 
 message BattleUserOperate_C2S
 {
-	bytes  data = 1;
+	uint64 uid			= 1;
+	uint64 room			= 2;
+	uint64 time			= 3;
+	uint32 type			= 4;
+	uint32 x			= 5;
+	uint32 y			= 6;
+	uint32 skill_id		= 7;
 }
 
 message BattleSingleFrame_S2C
@@ -44,6 +63,12 @@ message BattleSingleFrame_S2C
 	uint64 milli_second		= 2;
 	repeated bytes datas	= 3;
 }
+
+message BattleUserLogout
+{
+	
+}
+
 
 message BattleUserBroadcast
 {

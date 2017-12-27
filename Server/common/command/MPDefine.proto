@@ -33,3 +33,9 @@ enum GateGame_Msg
 	eGameMsg_GameUserLogonSuccess			= 2;//玩家成功登陆，game通知gate
 	eGameMsg_GateUserLogout					= 3;//玩家登出，gate通知ganme
 }
+
+enum GameSuper_Msg
+{
+	eGame2Super_Unknown				= 0;
+	eGame2GameTransferWrapper		= 1;//转发协议
+}

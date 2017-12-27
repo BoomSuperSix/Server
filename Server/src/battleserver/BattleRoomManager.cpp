@@ -14,8 +14,14 @@ BattleRoomManager::~BattleRoomManager()
 
 bool BattleRoomManager::Awake()
 {
-	REGISTER_BATTLE_USER(this,BattleMsg::eBattleMsg_UserOperate, BattleRoomManager::OnBattleUserOperate);
+	REGISTER_BATTLE_USER(this, BattleMsg::eBattleMsg_Login, BattleRoomManager::OnBattleUserLogin);
+	REGISTER_BATTLE_USER(this, BattleMsg::eBattleMsg_LoadOK, BattleRoomManager::OnBattleUserLoadOK);
+	REGISTER_BATTLE_USER(this, BattleMsg::eBattleMsg_GameStart, BattleRoomManager::OnBattleUserGameStart);
+	REGISTER_BATTLE_USER(this, BattleMsg::eBattleMsg_UserOperate, BattleRoomManager::OnBattleUserOperate);
+	REGISTER_BATTLE_USER(this, BattleMsg::eBattleMsg_Logout, BattleRoomManager::OnBattleUserLogout);
+
 	m_nMaxRoom = 1024;
+
 	return true;
 }
 
@@ -34,7 +40,6 @@ bool BattleRoomManager::Execute()
 	}
 
 	//user server frame tick
-
 	for (auto&&[nRoomId, pRoom] : m_mBattleRooms)
 	{
 		pRoom->RoomExecuteBase();
@@ -52,20 +57,73 @@ bool BattleRoomManager::ShutDown()
 	return true;
 }
 
-void BattleRoomManager::OnBattleUserOperate(const std::string& sData, const uint64_t nSockIndex)
+void BattleRoomManager::OnBattleUserLogin(const std::string& sData, const uint64_t nSockIndex)
 {
-	BattleMsg::BattleUserOperate_C2S inMsg;
+	BattleMsg::BattleUserLogin_C2S inMsg;
 	if (!inMsg.ParseFromString(sData))
 	{
 		return;
 	}
+
+	inMsg.uid();
+	inMsg.room();
+	BattleMsg::BattleUserLogin_S2C outMsg;
 	auto nRoomId = GetTestRoomId();
 	auto pRoom = GetRoomByRoomId(nRoomId);
 	if (pRoom == nullptr)
 	{
+		outMsg.set_errcode(BattleMsg::eBEC_Fail);
+	}
+	else
+	{
+		outMsg.set_errcode(BattleMsg::eBEC_Success);
+	}
+	pRoom->Broadcast(BattleMsg::eBattleMsg_Login, outMsg);
+}
+
+void BattleRoomManager::OnBattleUserLoadOK(const std::string& sData, const uint64_t nSockIndex)
+{
+	BattleMsg::BattleUserLoadOK_C2S inMsg;
+	if (!inMsg.ParseFromString(sData))
+	{
 		return;
 	}
-	pRoom->AddPlayerOperate(inMsg.data());
+
+	BattleMsg::BattleUserLoadOK_S2C outMsg;
+	outMsg.set_uid(inMsg.uid());
+
+	auto nRoomId = GetTestRoomId();
+	auto pRoom = GetRoomByRoomId(nRoomId);
+	if (pRoom != nullptr)
+	{
+		pRoom->Broadcast(BattleMsg::eBattleMsg_LoadOK, outMsg);
+	}
+
+}
+
+void BattleRoomManager::OnBattleUserOperate(const std::string& sData, const uint64_t nSockIndex)
+{
+	//if (!inMsg.ParseFromString(sData))
+	//{
+	//	return;
+	//}
+
+	////BattleMsg::BattleUserOperate_C2S inMsg;
+	//auto nRoomId = GetTestRoomId();
+	//auto pRoom = GetRoomByRoomId(nRoomId);
+	//if (pRoom == nullptr)
+	//{
+	//	return;
+	//}
+	//pRoom->AddPlayerOperate(inMsg.data());
+}
+
+void BattleRoomManager::OnBattleUserGameStart(const std::string& sData, const uint64_t nSockIndex)
+{
+}
+
+void BattleRoomManager::OnBattleUserLogout(const std::string& sData, const uint64_t nSockIndex)
+{
 }
 
 uint64_t BattleRoomManager::AddBattleRoom(BattleRoomType nRoomType)

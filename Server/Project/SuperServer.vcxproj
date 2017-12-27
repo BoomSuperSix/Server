@@ -110,7 +110,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;BOOST_ALL_DYN_LINK;_WIN32_WINDOWS;WIN_SYSTEM;MONGOCXX_STATIC;BSONCXX_STATIC;NOMINMAX;SSJ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;BOOST_ALL_DYN_LINK;_WIN32_WINDOWS;WIN_SYSTEM;MONGOCXX_STATIC;BSONCXX_STATIC;NOMINMAX;SSJ_DEBUG;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -177,6 +177,7 @@
     <ClCompile Include="..\src\base\NetProxyBuffer.cpp" />
     <ClCompile Include="..\src\base\TimeManager.cpp" />
     <ClCompile Include="..\src\base\XmlManager.cpp" />
+    <ClCompile Include="..\src\netproto\Game2Super.pb.cc" />
     <ClCompile Include="..\src\netproto\Gate2Game.pb.cc" />
     <ClCompile Include="..\src\netproto\Gate2Super.pb.cc" />
     <ClCompile Include="..\src\netproto\MPDefine.pb.cc" />
@@ -207,6 +208,7 @@
     <ClInclude Include="..\src\base\TimeManager.h" />
     <ClInclude Include="..\src\base\TimeT.h" />
     <ClInclude Include="..\src\base\XmlManager.h" />
+    <ClInclude Include="..\src\netproto\Game2Super.pb.h" />
     <ClInclude Include="..\src\netproto\Gate2Game.pb.h" />
     <ClInclude Include="..\src\netproto\Gate2Super.pb.h" />
     <ClInclude Include="..\src\netproto\MPDefine.pb.h" />
@@ -228,6 +230,7 @@
     <ClInclude Include="..\src\superserver\tester.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\common\command\Game2Super.proto" />
     <None Include="..\common\command\Gate2Super.proto" />
     <None Include="..\common\command\MPDefine.proto" />
     <None Include="..\common\command\MPMsgBase.proto" />

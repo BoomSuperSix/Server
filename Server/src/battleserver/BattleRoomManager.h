@@ -17,7 +17,11 @@ public:
 	virtual bool ShutDown()override;
 public:
 	//
+	void OnBattleUserLogin(const std::string& sData, const uint64_t nSockIndex);
+	void OnBattleUserLoadOK(const std::string& sData, const uint64_t nSockIndex);
 	void OnBattleUserOperate(const std::string& sData, const uint64_t nSockIndex);
+	void OnBattleUserGameStart(const std::string& sData, const uint64_t nSockIndex);
+	void OnBattleUserLogout(const std::string& sData, const uint64_t nSockIndex);
 
 	uint64_t AddBattleRoom(BattleRoomType nRoomType);
 	bool DelBattleRoom(uint64_t nRoomId);

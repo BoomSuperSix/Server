@@ -156,6 +156,27 @@ inline bool GateGame_Msg_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<GateGame_Msg>(
     GateGame_Msg_descriptor(), name, value);
 }
+enum GameSuper_Msg {
+  eGame2Super_Unknown = 0,
+  eGame2Super_GameMsgWrapper = 1,
+  GameSuper_Msg_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  GameSuper_Msg_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool GameSuper_Msg_IsValid(int value);
+const GameSuper_Msg GameSuper_Msg_MIN = eGame2Super_Unknown;
+const GameSuper_Msg GameSuper_Msg_MAX = eGame2Super_GameMsgWrapper;
+const int GameSuper_Msg_ARRAYSIZE = GameSuper_Msg_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* GameSuper_Msg_descriptor();
+inline const ::std::string& GameSuper_Msg_Name(GameSuper_Msg value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    GameSuper_Msg_descriptor(), value);
+}
+inline bool GameSuper_Msg_Parse(
+    const ::std::string& name, GameSuper_Msg* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<GameSuper_Msg>(
+    GameSuper_Msg_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -206,6 +227,11 @@ template <> struct is_proto_enum< ::MPMsg::GateGame_Msg> : ::google::protobuf::i
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::MPMsg::GateGame_Msg>() {
   return ::MPMsg::GateGame_Msg_descriptor();
+}
+template <> struct is_proto_enum< ::MPMsg::GameSuper_Msg> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::MPMsg::GameSuper_Msg>() {
+  return ::MPMsg::GameSuper_Msg_descriptor();
 }
 
 }  // namespace protobuf

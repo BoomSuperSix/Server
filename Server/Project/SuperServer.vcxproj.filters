@@ -116,6 +116,9 @@
     <ClCompile Include="..\src\base\NetProxyBuffer.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\netproto\Game2Super.pb.cc">
+      <Filter>protobuf\pbcc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\base\NetProxy.h">
@@ -203,6 +206,9 @@
     <ClInclude Include="..\src\base\NetProxyBuffer.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\netproto\Game2Super.pb.h">
+      <Filter>protobuf\pbcc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\common\command\MPDefine.proto">
@@ -225,6 +231,9 @@
     </None>
     <None Include="..\common\command\UserMsgDefine.proto">
       <Filter>protobuf\UserProto</Filter>
+    </None>
+    <None Include="..\common\command\Game2Super.proto">
+      <Filter>protobuf\ServerProto</Filter>
     </None>
   </ItemGroup>
 </Project>

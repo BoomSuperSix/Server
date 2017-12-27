@@ -41,6 +41,7 @@ public:
 
 	void InitFrameData();
 	void SendFrameData();
+	void Send(uint64_t nSockIndex, const char * msg, uint32_t nLen);
 private:
 	meplay::MPTime m_CreateTime;
 	meplay::MPTime m_UpdateTime;

@@ -21,3 +21,5 @@ enum eGameAutoRegisterType
 #define SEND_USER_MSG(FD,MSGID,MSG) g_pGameNetProxy->SendMsg(MP_ST_GAME,MP_ST_GATE,FD,MSGID,MSG);
 #define SEND2SUPER(FD,MSGID,MSG) g_pGameNetProxy->SendMsg(MP_ST_GAME,MP_ST_SUPER,FD,MSGID,MSG);
 #define SEND2GATE(FD,MSGID,MSG) g_pGameNetProxy->SendMsg(MP_ST_GAME,MP_ST_GATE,FD,MSGID,MSG);
+
+#define SEND_TRANS_MSG(MSGID,MSG);

@@ -22,21 +22,24 @@
     <Filter Include="protobuf\ServerProto">
       <UniqueIdentifier>{58e924b9-00af-4c50-b5a4-9867f287ed1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Logic\CenterServerManager">
+      <UniqueIdentifier>{384a0995-22fd-4898-b19e-70bdfceb4083}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\TimeManager">
+      <UniqueIdentifier>{ad1f09c2-52a1-4b41-aa08-e68bf0cfa233}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\SuperServer">
+      <UniqueIdentifier>{15d8d470-91ce-4383-b107-65d773b2dff1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\RankManager">
+      <UniqueIdentifier>{7c2a7357-67af-4d06-b96a-2c5d30130c6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\MatchUserManager">
+      <UniqueIdentifier>{9c4a31b0-4233-4ca8-857d-726d4551a229}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\matchserver\main.cpp" />
-    <ClCompile Include="..\src\matchserver\CenterServerManager.cpp">
-      <Filter>Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\matchserver\CenterServer.cpp">
-      <Filter>Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\matchserver\SuperServer.cpp">
-      <Filter>Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\matchserver\SuperServerManager.cpp">
-      <Filter>Logic</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\base\ModuleTimeTick.cpp">
       <Filter>Base</Filter>
     </ClCompile>
@@ -64,9 +67,6 @@
     <ClCompile Include="..\src\base\ModuleRely.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\matchserver\MatchTimeManager.cpp">
-      <Filter>Logic</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\matchserver\MatchNetProxy.cpp">
       <Filter>NetProxy</Filter>
     </ClCompile>
@@ -76,20 +76,35 @@
     <ClCompile Include="..\src\netproto\MPDefine.pb.cc">
       <Filter>protobuf\pbcc</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\matchserver\CenterServer.cpp">
+      <Filter>Logic\CenterServerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\matchserver\CenterServerManager.cpp">
+      <Filter>Logic\CenterServerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\matchserver\MatchTimeManager.cpp">
+      <Filter>Logic\TimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\matchserver\SuperServer.cpp">
+      <Filter>Logic\SuperServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\matchserver\SuperServerManager.cpp">
+      <Filter>Logic\SuperServer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\matchserver\RankManager.cpp">
+      <Filter>Logic\RankManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\matchserver\MatchUserManager.cpp">
+      <Filter>Logic\MatchUserManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\matchserver\MatchUser.cpp">
+      <Filter>Logic\MatchUserManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\matchserver\MatchGroup.cpp">
+      <Filter>Logic\MatchUserManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\matchserver\CenterServer.h">
-      <Filter>Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\matchserver\CenterServerManager.h">
-      <Filter>Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\matchserver\SuperServer.h">
-      <Filter>Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\matchserver\SuperServerManager.h">
-      <Filter>Logic</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\base\ModuleTimeTick.h">
       <Filter>Base</Filter>
     </ClInclude>
@@ -126,9 +141,6 @@
     <ClInclude Include="..\src\matchserver\MatchManagerModuleDefine.h">
       <Filter>Logic</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\matchserver\MatchTimeManager.h">
-      <Filter>Logic</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\matchserver\MatchCommDef.h">
       <Filter>MatchCommon</Filter>
     </ClInclude>
@@ -140,6 +152,36 @@
     </ClInclude>
     <ClInclude Include="..\src\netproto\MPDefine.pb.h">
       <Filter>protobuf\pbcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\matchserver\CenterServer.h">
+      <Filter>Logic\CenterServerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\matchserver\CenterServerManager.h">
+      <Filter>Logic\CenterServerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\matchserver\MatchTimeManager.h">
+      <Filter>Logic\TimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\matchserver\SuperServer.h">
+      <Filter>Logic\SuperServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\matchserver\SuperServerManager.h">
+      <Filter>Logic\SuperServer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\matchserver\RankManager.h">
+      <Filter>Logic\RankManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\matchserver\MatchUserManager.h">
+      <Filter>Logic\MatchUserManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\matchserver\MatchUser.h">
+      <Filter>Logic\MatchUserManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\matchserver\MatchUserDistribution.h">
+      <Filter>Logic\MatchUserManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\matchserver\MatchGroup.h">
+      <Filter>Logic\MatchUserManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

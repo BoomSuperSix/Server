@@ -28,11 +28,15 @@
     <ClCompile Include="..\src\base\NetProxyBuffer.cpp" />
     <ClCompile Include="..\src\base\TimeManager.cpp" />
     <ClCompile Include="..\src\base\XmlManager.cpp" />
+    <ClCompile Include="..\src\matchserver\MatchGroup.cpp" />
     <ClCompile Include="..\src\matchserver\MatchNetProxy.cpp" />
     <ClCompile Include="..\src\matchserver\MatchTimeManager.cpp" />
     <ClCompile Include="..\src\matchserver\CenterServer.cpp" />
     <ClCompile Include="..\src\matchserver\CenterServerManager.cpp" />
     <ClCompile Include="..\src\matchserver\main.cpp" />
+    <ClCompile Include="..\src\matchserver\MatchUser.cpp" />
+    <ClCompile Include="..\src\matchserver\MatchUserManager.cpp" />
+    <ClCompile Include="..\src\matchserver\RankManager.cpp" />
     <ClCompile Include="..\src\matchserver\SuperServer.cpp" />
     <ClCompile Include="..\src\matchserver\SuperServerManager.cpp" />
     <ClCompile Include="..\src\netproto\MPDefine.pb.cc" />
@@ -51,11 +55,16 @@
     <ClInclude Include="..\src\base\TimeT.h" />
     <ClInclude Include="..\src\base\XmlManager.h" />
     <ClInclude Include="..\src\matchserver\MatchCommDef.h" />
+    <ClInclude Include="..\src\matchserver\MatchGroup.h" />
     <ClInclude Include="..\src\matchserver\MatchManagerModuleDefine.h" />
     <ClInclude Include="..\src\matchserver\MatchNetProxy.h" />
     <ClInclude Include="..\src\matchserver\MatchTimeManager.h" />
     <ClInclude Include="..\src\matchserver\CenterServer.h" />
     <ClInclude Include="..\src\matchserver\CenterServerManager.h" />
+    <ClInclude Include="..\src\matchserver\MatchUser.h" />
+    <ClInclude Include="..\src\matchserver\MatchUserDistribution.h" />
+    <ClInclude Include="..\src\matchserver\MatchUserManager.h" />
+    <ClInclude Include="..\src\matchserver\RankManager.h" />
     <ClInclude Include="..\src\matchserver\SuperServer.h" />
     <ClInclude Include="..\src\matchserver\SuperServerManager.h" />
     <ClInclude Include="..\src\netproto\MPDefine.pb.h" />
@@ -157,7 +166,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;BOOST_ALL_DYN_LINK;_WIN32_WINDOWS;WIN_SYSTEM;MONGOCXX_STATIC;BSONCXX_STATIC;NOMINMAX;SSJ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;BOOST_ALL_DYN_LINK;_WIN32_WINDOWS;WIN_SYSTEM;MONGOCXX_STATIC;BSONCXX_STATIC;NOMINMAX;SSJ_DEBUG;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
