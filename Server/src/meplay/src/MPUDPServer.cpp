@@ -40,6 +40,7 @@ void MPUDPServer::Run()
 	m_pEventLoop->Run();
 	while (!IsThreadFinal())
 	{
+		MSleep(100);
 	}
 }
 

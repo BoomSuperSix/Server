@@ -197,5 +197,7 @@ void MPRUDPServer::Run()
 				break;
 			}
 		}
+
+		MSleep(20);
 	}
 }

@@ -54,6 +54,7 @@ void MPTCPClient::Run()
 	MP_DEBUG("MPTCPClient End Run!");
 	while (!IsThreadFinal())
 	{
+		MSleep(100);
 	}
 	MP_DEBUG("MPTCPClient Run Over!");
 }

@@ -222,5 +222,6 @@ void MPRUDPClient::Run()
 				}
 			}
 		}
+		MSleep(20);
 	}
 }
