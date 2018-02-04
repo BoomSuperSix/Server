@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2010
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MePlay", "MePlay.vcxproj", "{E8A921F4-7398-423E-BDAB-8D3B7BA44D71}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BattleServer", "BattleServer.vcxproj", "{2172F912-87F5-440C-8F14-4B041B0E5B5E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MatchServer", "MatchServer.vcxproj", "{2C7B2251-6387-4185-940F-0BA12A7CED46}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CenterServer", "CenterServer.vcxproj", "{2DCF9058-FAC7-4090-8F58-0B8E6A903AF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,14 @@ Global
 		{2C7B2251-6387-4185-940F-0BA12A7CED46}.Release|x64.Build.0 = Release|x64
 		{2C7B2251-6387-4185-940F-0BA12A7CED46}.Release|x86.ActiveCfg = Release|Win32
 		{2C7B2251-6387-4185-940F-0BA12A7CED46}.Release|x86.Build.0 = Release|Win32
+		{2DCF9058-FAC7-4090-8F58-0B8E6A903AF1}.Debug|x64.ActiveCfg = Debug|x64
+		{2DCF9058-FAC7-4090-8F58-0B8E6A903AF1}.Debug|x64.Build.0 = Debug|x64
+		{2DCF9058-FAC7-4090-8F58-0B8E6A903AF1}.Debug|x86.ActiveCfg = Debug|Win32
+		{2DCF9058-FAC7-4090-8F58-0B8E6A903AF1}.Debug|x86.Build.0 = Debug|Win32
+		{2DCF9058-FAC7-4090-8F58-0B8E6A903AF1}.Release|x64.ActiveCfg = Release|x64
+		{2DCF9058-FAC7-4090-8F58-0B8E6A903AF1}.Release|x64.Build.0 = Release|x64
+		{2DCF9058-FAC7-4090-8F58-0B8E6A903AF1}.Release|x86.ActiveCfg = Release|Win32
+		{2DCF9058-FAC7-4090-8F58-0B8E6A903AF1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

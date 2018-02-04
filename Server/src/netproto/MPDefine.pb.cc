@@ -89,12 +89,12 @@ void AddDescriptorsImpl() {
       "ate2Super_VerifyMe\020\001*\201\001\n\014GateGame_Msg\022\024\n"
       "\020eGameMsg_Unknown\020\000\022\033\n\027eGameMsg_GameMsgW"
       "rapper\020\001\022!\n\035eGameMsg_GameUserLogonSucces"
-      "s\020\002\022\033\n\027eGameMsg_GateUserLogout\020\003*H\n\rGame"
-      "Super_Msg\022\027\n\023eGame2Super_Unknown\020\000\022\036\n\032eG"
-      "ame2Super_GameMsgWrapper\020\001b\006proto3"
+      "s\020\002\022\033\n\027eGameMsg_GateUserLogout\020\003*G\n\rGame"
+      "Super_Msg\022\027\n\023eGame2Super_Unknown\020\000\022\035\n\031eG"
+      "ame2GameTransferWrapper\020\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 474);
+      descriptor, 473);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MPDefine.proto", &protobuf_RegisterTypes);
 }

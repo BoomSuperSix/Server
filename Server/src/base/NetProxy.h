@@ -61,6 +61,8 @@ public:
 	void Start();
 	void Final(const char* reason);
 	void ImmediatelyFinal(const char* reason);
+
+	void NetStart();
 	void NetRun();
 	void NetFinal();
 

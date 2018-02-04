@@ -158,13 +158,13 @@ inline bool GateGame_Msg_Parse(
 }
 enum GameSuper_Msg {
   eGame2Super_Unknown = 0,
-  eGame2Super_GameMsgWrapper = 1,
+  eGame2GameTransferWrapper = 1,
   GameSuper_Msg_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   GameSuper_Msg_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool GameSuper_Msg_IsValid(int value);
 const GameSuper_Msg GameSuper_Msg_MIN = eGame2Super_Unknown;
-const GameSuper_Msg GameSuper_Msg_MAX = eGame2Super_GameMsgWrapper;
+const GameSuper_Msg GameSuper_Msg_MAX = eGame2GameTransferWrapper;
 const int GameSuper_Msg_ARRAYSIZE = GameSuper_Msg_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* GameSuper_Msg_descriptor();

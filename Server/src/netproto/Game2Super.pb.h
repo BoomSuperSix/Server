@@ -31,9 +31,9 @@
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 namespace MPMsg {
-class GameMsg_Wrapper;
-class GameMsg_WrapperDefaultTypeInternal;
-extern GameMsg_WrapperDefaultTypeInternal _GameMsg_Wrapper_default_instance_;
+class Game2GameTransferMsg;
+class Game2GameTransferMsgDefaultTypeInternal;
+extern Game2GameTransferMsgDefaultTypeInternal _Game2GameTransferMsg_default_instance_;
 class StartMatchReq_Game2Match;
 class StartMatchReq_Game2MatchDefaultTypeInternal;
 extern StartMatchReq_Game2MatchDefaultTypeInternal _StartMatchReq_Game2Match_default_instance_;
@@ -304,24 +304,24 @@ class StartMatchRet_Super2Game : public ::google::protobuf::Message /* @@protoc_
 };
 // -------------------------------------------------------------------
 
-class GameMsg_Wrapper : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MPMsg.GameMsg_Wrapper) */ {
+class Game2GameTransferMsg : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MPMsg.Game2GameTransferMsg) */ {
  public:
-  GameMsg_Wrapper();
-  virtual ~GameMsg_Wrapper();
+  Game2GameTransferMsg();
+  virtual ~Game2GameTransferMsg();
 
-  GameMsg_Wrapper(const GameMsg_Wrapper& from);
+  Game2GameTransferMsg(const Game2GameTransferMsg& from);
 
-  inline GameMsg_Wrapper& operator=(const GameMsg_Wrapper& from) {
+  inline Game2GameTransferMsg& operator=(const Game2GameTransferMsg& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  GameMsg_Wrapper(GameMsg_Wrapper&& from) noexcept
-    : GameMsg_Wrapper() {
+  Game2GameTransferMsg(Game2GameTransferMsg&& from) noexcept
+    : Game2GameTransferMsg() {
     *this = ::std::move(from);
   }
 
-  inline GameMsg_Wrapper& operator=(GameMsg_Wrapper&& from) noexcept {
+  inline Game2GameTransferMsg& operator=(Game2GameTransferMsg&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -331,29 +331,29 @@ class GameMsg_Wrapper : public ::google::protobuf::Message /* @@protoc_insertion
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GameMsg_Wrapper& default_instance();
+  static const Game2GameTransferMsg& default_instance();
 
-  static inline const GameMsg_Wrapper* internal_default_instance() {
-    return reinterpret_cast<const GameMsg_Wrapper*>(
-               &_GameMsg_Wrapper_default_instance_);
+  static inline const Game2GameTransferMsg* internal_default_instance() {
+    return reinterpret_cast<const Game2GameTransferMsg*>(
+               &_Game2GameTransferMsg_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     2;
 
-  void Swap(GameMsg_Wrapper* other);
-  friend void swap(GameMsg_Wrapper& a, GameMsg_Wrapper& b) {
+  void Swap(Game2GameTransferMsg* other);
+  friend void swap(Game2GameTransferMsg& a, Game2GameTransferMsg& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline GameMsg_Wrapper* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline Game2GameTransferMsg* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  GameMsg_Wrapper* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  Game2GameTransferMsg* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const GameMsg_Wrapper& from);
-  void MergeFrom(const GameMsg_Wrapper& from);
+  void CopyFrom(const Game2GameTransferMsg& from);
+  void MergeFrom(const Game2GameTransferMsg& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -369,7 +369,7 @@ class GameMsg_Wrapper : public ::google::protobuf::Message /* @@protoc_insertion
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(GameMsg_Wrapper* other);
+  void InternalSwap(Game2GameTransferMsg* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -441,7 +441,7 @@ class GameMsg_Wrapper : public ::google::protobuf::Message /* @@protoc_insertion
   ::google::protobuf::uint32 msg_id() const;
   void set_msg_id(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:MPMsg.GameMsg_Wrapper)
+  // @@protoc_insertion_point(class_scope:MPMsg.Game2GameTransferMsg)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -604,157 +604,157 @@ StartMatchRet_Super2Game::mutable_uid() {
 
 // -------------------------------------------------------------------
 
-// GameMsg_Wrapper
+// Game2GameTransferMsg
 
 // uint32 platfrom_id_from = 1;
-inline void GameMsg_Wrapper::clear_platfrom_id_from() {
+inline void Game2GameTransferMsg::clear_platfrom_id_from() {
   platfrom_id_from_ = 0u;
 }
-inline ::google::protobuf::uint32 GameMsg_Wrapper::platfrom_id_from() const {
-  // @@protoc_insertion_point(field_get:MPMsg.GameMsg_Wrapper.platfrom_id_from)
+inline ::google::protobuf::uint32 Game2GameTransferMsg::platfrom_id_from() const {
+  // @@protoc_insertion_point(field_get:MPMsg.Game2GameTransferMsg.platfrom_id_from)
   return platfrom_id_from_;
 }
-inline void GameMsg_Wrapper::set_platfrom_id_from(::google::protobuf::uint32 value) {
+inline void Game2GameTransferMsg::set_platfrom_id_from(::google::protobuf::uint32 value) {
   
   platfrom_id_from_ = value;
-  // @@protoc_insertion_point(field_set:MPMsg.GameMsg_Wrapper.platfrom_id_from)
+  // @@protoc_insertion_point(field_set:MPMsg.Game2GameTransferMsg.platfrom_id_from)
 }
 
 // uint32 server_type_from = 2;
-inline void GameMsg_Wrapper::clear_server_type_from() {
+inline void Game2GameTransferMsg::clear_server_type_from() {
   server_type_from_ = 0u;
 }
-inline ::google::protobuf::uint32 GameMsg_Wrapper::server_type_from() const {
-  // @@protoc_insertion_point(field_get:MPMsg.GameMsg_Wrapper.server_type_from)
+inline ::google::protobuf::uint32 Game2GameTransferMsg::server_type_from() const {
+  // @@protoc_insertion_point(field_get:MPMsg.Game2GameTransferMsg.server_type_from)
   return server_type_from_;
 }
-inline void GameMsg_Wrapper::set_server_type_from(::google::protobuf::uint32 value) {
+inline void Game2GameTransferMsg::set_server_type_from(::google::protobuf::uint32 value) {
   
   server_type_from_ = value;
-  // @@protoc_insertion_point(field_set:MPMsg.GameMsg_Wrapper.server_type_from)
+  // @@protoc_insertion_point(field_set:MPMsg.Game2GameTransferMsg.server_type_from)
 }
 
 // uint32 server_id_from = 3;
-inline void GameMsg_Wrapper::clear_server_id_from() {
+inline void Game2GameTransferMsg::clear_server_id_from() {
   server_id_from_ = 0u;
 }
-inline ::google::protobuf::uint32 GameMsg_Wrapper::server_id_from() const {
-  // @@protoc_insertion_point(field_get:MPMsg.GameMsg_Wrapper.server_id_from)
+inline ::google::protobuf::uint32 Game2GameTransferMsg::server_id_from() const {
+  // @@protoc_insertion_point(field_get:MPMsg.Game2GameTransferMsg.server_id_from)
   return server_id_from_;
 }
-inline void GameMsg_Wrapper::set_server_id_from(::google::protobuf::uint32 value) {
+inline void Game2GameTransferMsg::set_server_id_from(::google::protobuf::uint32 value) {
   
   server_id_from_ = value;
-  // @@protoc_insertion_point(field_set:MPMsg.GameMsg_Wrapper.server_id_from)
+  // @@protoc_insertion_point(field_set:MPMsg.Game2GameTransferMsg.server_id_from)
 }
 
 // uint32 platfrom_id_to = 4;
-inline void GameMsg_Wrapper::clear_platfrom_id_to() {
+inline void Game2GameTransferMsg::clear_platfrom_id_to() {
   platfrom_id_to_ = 0u;
 }
-inline ::google::protobuf::uint32 GameMsg_Wrapper::platfrom_id_to() const {
-  // @@protoc_insertion_point(field_get:MPMsg.GameMsg_Wrapper.platfrom_id_to)
+inline ::google::protobuf::uint32 Game2GameTransferMsg::platfrom_id_to() const {
+  // @@protoc_insertion_point(field_get:MPMsg.Game2GameTransferMsg.platfrom_id_to)
   return platfrom_id_to_;
 }
-inline void GameMsg_Wrapper::set_platfrom_id_to(::google::protobuf::uint32 value) {
+inline void Game2GameTransferMsg::set_platfrom_id_to(::google::protobuf::uint32 value) {
   
   platfrom_id_to_ = value;
-  // @@protoc_insertion_point(field_set:MPMsg.GameMsg_Wrapper.platfrom_id_to)
+  // @@protoc_insertion_point(field_set:MPMsg.Game2GameTransferMsg.platfrom_id_to)
 }
 
 // uint32 server_type_to = 5;
-inline void GameMsg_Wrapper::clear_server_type_to() {
+inline void Game2GameTransferMsg::clear_server_type_to() {
   server_type_to_ = 0u;
 }
-inline ::google::protobuf::uint32 GameMsg_Wrapper::server_type_to() const {
-  // @@protoc_insertion_point(field_get:MPMsg.GameMsg_Wrapper.server_type_to)
+inline ::google::protobuf::uint32 Game2GameTransferMsg::server_type_to() const {
+  // @@protoc_insertion_point(field_get:MPMsg.Game2GameTransferMsg.server_type_to)
   return server_type_to_;
 }
-inline void GameMsg_Wrapper::set_server_type_to(::google::protobuf::uint32 value) {
+inline void Game2GameTransferMsg::set_server_type_to(::google::protobuf::uint32 value) {
   
   server_type_to_ = value;
-  // @@protoc_insertion_point(field_set:MPMsg.GameMsg_Wrapper.server_type_to)
+  // @@protoc_insertion_point(field_set:MPMsg.Game2GameTransferMsg.server_type_to)
 }
 
 // uint32 server_id_to = 6;
-inline void GameMsg_Wrapper::clear_server_id_to() {
+inline void Game2GameTransferMsg::clear_server_id_to() {
   server_id_to_ = 0u;
 }
-inline ::google::protobuf::uint32 GameMsg_Wrapper::server_id_to() const {
-  // @@protoc_insertion_point(field_get:MPMsg.GameMsg_Wrapper.server_id_to)
+inline ::google::protobuf::uint32 Game2GameTransferMsg::server_id_to() const {
+  // @@protoc_insertion_point(field_get:MPMsg.Game2GameTransferMsg.server_id_to)
   return server_id_to_;
 }
-inline void GameMsg_Wrapper::set_server_id_to(::google::protobuf::uint32 value) {
+inline void Game2GameTransferMsg::set_server_id_to(::google::protobuf::uint32 value) {
   
   server_id_to_ = value;
-  // @@protoc_insertion_point(field_set:MPMsg.GameMsg_Wrapper.server_id_to)
+  // @@protoc_insertion_point(field_set:MPMsg.Game2GameTransferMsg.server_id_to)
 }
 
 // uint32 msg_id = 7;
-inline void GameMsg_Wrapper::clear_msg_id() {
+inline void Game2GameTransferMsg::clear_msg_id() {
   msg_id_ = 0u;
 }
-inline ::google::protobuf::uint32 GameMsg_Wrapper::msg_id() const {
-  // @@protoc_insertion_point(field_get:MPMsg.GameMsg_Wrapper.msg_id)
+inline ::google::protobuf::uint32 Game2GameTransferMsg::msg_id() const {
+  // @@protoc_insertion_point(field_get:MPMsg.Game2GameTransferMsg.msg_id)
   return msg_id_;
 }
-inline void GameMsg_Wrapper::set_msg_id(::google::protobuf::uint32 value) {
+inline void Game2GameTransferMsg::set_msg_id(::google::protobuf::uint32 value) {
   
   msg_id_ = value;
-  // @@protoc_insertion_point(field_set:MPMsg.GameMsg_Wrapper.msg_id)
+  // @@protoc_insertion_point(field_set:MPMsg.Game2GameTransferMsg.msg_id)
 }
 
 // bytes data = 8;
-inline void GameMsg_Wrapper::clear_data() {
+inline void Game2GameTransferMsg::clear_data() {
   data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& GameMsg_Wrapper::data() const {
-  // @@protoc_insertion_point(field_get:MPMsg.GameMsg_Wrapper.data)
+inline const ::std::string& Game2GameTransferMsg::data() const {
+  // @@protoc_insertion_point(field_get:MPMsg.Game2GameTransferMsg.data)
   return data_.GetNoArena();
 }
-inline void GameMsg_Wrapper::set_data(const ::std::string& value) {
+inline void Game2GameTransferMsg::set_data(const ::std::string& value) {
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:MPMsg.GameMsg_Wrapper.data)
+  // @@protoc_insertion_point(field_set:MPMsg.Game2GameTransferMsg.data)
 }
 #if LANG_CXX11
-inline void GameMsg_Wrapper::set_data(::std::string&& value) {
+inline void Game2GameTransferMsg::set_data(::std::string&& value) {
   
   data_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:MPMsg.GameMsg_Wrapper.data)
+  // @@protoc_insertion_point(field_set_rvalue:MPMsg.Game2GameTransferMsg.data)
 }
 #endif
-inline void GameMsg_Wrapper::set_data(const char* value) {
+inline void Game2GameTransferMsg::set_data(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:MPMsg.GameMsg_Wrapper.data)
+  // @@protoc_insertion_point(field_set_char:MPMsg.Game2GameTransferMsg.data)
 }
-inline void GameMsg_Wrapper::set_data(const void* value, size_t size) {
+inline void Game2GameTransferMsg::set_data(const void* value, size_t size) {
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:MPMsg.GameMsg_Wrapper.data)
+  // @@protoc_insertion_point(field_set_pointer:MPMsg.Game2GameTransferMsg.data)
 }
-inline ::std::string* GameMsg_Wrapper::mutable_data() {
+inline ::std::string* Game2GameTransferMsg::mutable_data() {
   
-  // @@protoc_insertion_point(field_mutable:MPMsg.GameMsg_Wrapper.data)
+  // @@protoc_insertion_point(field_mutable:MPMsg.Game2GameTransferMsg.data)
   return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* GameMsg_Wrapper::release_data() {
-  // @@protoc_insertion_point(field_release:MPMsg.GameMsg_Wrapper.data)
+inline ::std::string* Game2GameTransferMsg::release_data() {
+  // @@protoc_insertion_point(field_release:MPMsg.Game2GameTransferMsg.data)
   
   return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void GameMsg_Wrapper::set_allocated_data(::std::string* data) {
+inline void Game2GameTransferMsg::set_allocated_data(::std::string* data) {
   if (data != NULL) {
     
   } else {
     
   }
   data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
-  // @@protoc_insertion_point(field_set_allocated:MPMsg.GameMsg_Wrapper.data)
+  // @@protoc_insertion_point(field_set_allocated:MPMsg.Game2GameTransferMsg.data)
 }
 
 #ifdef __GNUC__

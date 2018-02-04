@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="protobuf">
+      <UniqueIdentifier>{e4a41022-aa8d-4396-a54f-4ad613b6f98b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{060d378c-9452-43b6-b151-4edfc08c916b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CenterCommon">
+      <UniqueIdentifier>{769ee70c-73d5-4890-bcf0-d7c90b4ae4df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetProxy">
+      <UniqueIdentifier>{fd23bd3c-c789-47d9-b9c9-a1a7eaf9abf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic">
+      <UniqueIdentifier>{9de9d0cd-2f34-4396-9c14-de7e03877733}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\ModuleBase">
+      <UniqueIdentifier>{c7007db3-c260-4bc8-9a96-26530f743114}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\CenterTimeManager">
+      <UniqueIdentifier>{fdd9af7a-dfe5-409c-a5e9-f3bab84c61f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protobuf\pbcc">
+      <UniqueIdentifier>{9379b6c5-c6f4-407c-ac67-a11bc86573e8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\base\NetProxy.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\XmlManager.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\ManagerModule.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\ManagerModuleManager.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\TimeManager.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\ModuleRely.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\ModuleTimeTick.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\NetProxyBuffer.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\centerserver\main.cpp" />
+    <ClCompile Include="..\src\centerserver\CenterNetProxy.cpp">
+      <Filter>NetProxy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\centerserver\CenterTimeManager.cpp">
+      <Filter>Logic\CenterTimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\netproto\MPDefine.pb.cc">
+      <Filter>protobuf\pbcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\netproto\MPMsgBase.pb.cc">
+      <Filter>protobuf\pbcc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\base\NetProxy.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\XmlManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\CommDef.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\ManagerModule.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\ManagerModuleManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\TimeT.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\TimeManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\ModuleRely.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\ModuleTimeTick.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\NetProxyBuffer.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\centerserver\CenterCommDef.h">
+      <Filter>CenterCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\centerserver\CenterNetProxy.h">
+      <Filter>NetProxy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\centerserver\CenterManagerModuleDefine.h">
+      <Filter>Logic\ModuleBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\centerserver\CenterTimeManager.h">
+      <Filter>Logic\CenterTimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\netproto\MPDefine.pb.h">
+      <Filter>protobuf\pbcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\netproto\MPMsgBase.pb.h">
+      <Filter>protobuf\pbcc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\common\command\MPDefine.proto">
+      <Filter>protobuf</Filter>
+    </None>
+    <None Include="..\common\command\MPMsgBase.proto">
+      <Filter>protobuf</Filter>
+    </None>
+  </ItemGroup>
+</Project>

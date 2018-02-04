@@ -3,7 +3,7 @@
 
 using namespace meplay;
 
-MPTimeTester::MPTimeTester(std::string_view name,uint64_t nMinDelay)
+MPTimeTester::MPTimeTester(const std::string& name,uint64_t nMinDelay)
 	: m_timepoint(std::chrono::steady_clock::now()),m_sName(name),m_nMinDelay(nMinDelay)
 {
 }

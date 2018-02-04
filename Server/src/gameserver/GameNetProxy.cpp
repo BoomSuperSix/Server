@@ -122,19 +122,19 @@ const MPGUID GameNetProxy::GetGUIDBySock(const uint8_t nType, const MPSOCK nSock
 	return 0;
 }
 
-void GameNetProxy::SendGameMsgWrapper(
-	uint32_t nPlatfromId,
-	uint32_t nServerId,
-	uint8_t nServerType,
-	const uint16_t nMsgId,
-	google::protobuf::Message& msg
-)
-{
-	MPMsg::GameMsg_Wrapper outMsg;
-	outMsg.set_platfrom_id_from(m_nPlatformId);
-	outMsg.set_server_id_from(m_nServerId);
-	outMsg.set_server_type_from(MP_ST_GAME);
-	outMsg.set_platfrom_id_to(nPlatfromId);
-	outMsg.set_server_id_to(nServerId);
-	outMsg.set_server_type_to(nServerType);
-}
+//void GameNetProxy::SendGameMsgWrapper(
+//	uint32_t nPlatfromId,
+//	uint32_t nServerId,
+//	uint8_t nServerType,
+//	const uint16_t nMsgId,
+//	google::protobuf::Message& msg
+//)
+//{
+//	MPMsg::GameMsg_Wrapper outMsg;
+//	outMsg.set_platfrom_id_from(m_nPlatformId);
+//	outMsg.set_server_id_from(m_nServerId);
+//	outMsg.set_server_type_from(MP_ST_GAME);
+//	outMsg.set_platfrom_id_to(nPlatfromId);
+//	outMsg.set_server_id_to(nServerId);
+//	outMsg.set_server_type_to(nServerType);
+//}

@@ -4,11 +4,10 @@
 #include "ManagerModuleManager.h"
 #include "CommDef.h"
 #include "MPSingleton.h"
-#include <google/protobuf/message.h>
 
-class GameNetProxy final : public NetProxy
+class CenterNetProxy final : public NetProxy
 {
-	MP_SINGLETON_DECLARE(GameNetProxy);
+	MP_SINGLETON_DECLARE(CenterNetProxy);
 public:
 	virtual bool InitServerCfg(const std::string& filename)override;
 	virtual void OnClientDisconnect(const uint8_t nType, const MPSOCK nSockIndex)override;
@@ -17,32 +16,14 @@ public:
 	virtual void LogicFinal()override;
 	virtual void LogicRun()override;
 	virtual const MPGUID GetGUIDBySock(const uint8_t nType,const MPSOCK nSockIndex)const override;
-public:
+
 	template<typename T>
 	T* GetModule(uint32_t nType)
 	{
 		return m_Mgrs.GetModule<T>(nType);
 	}
-
-	template<typename T>
-	const T* GetModule(uint32_t nType)const
-	{
-		return m_Mgrs.GetModule<T>(nType);
-	}
-
-	/*void SendGameMsgWrapper(
-		uint32_t nPlatfromId,
-		uint32_t nServerId,
-		uint8_t nServerType,
-		const uint16_t nMsgId,
-		google::protobuf::Message& msg
-	);*/
-private:
 private:
 	ManagerModuleManager m_Mgrs;
-
-	uint32_t m_nPlatformId;
-	uint32_t m_nServerId;
 };
 
-#define g_pGameNetProxy GameNetProxy::GetInstance()
+#define g_pCenterNetProxy CenterNetProxy::GetInstance()

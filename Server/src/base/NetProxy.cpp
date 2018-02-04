@@ -23,6 +23,7 @@ NetProxy::~NetProxy()
 
 void NetProxy::Start()
 {
+	NetStart();
 	LogicStart();
 
 	while (!IsFinal())
@@ -42,10 +43,14 @@ void NetProxy::Start()
 		std::this_thread::sleep_for(std::chrono::milliseconds(millisec));
 	}
 
-	NetFinal();
 	LogicFinal();
+	NetFinal();
 
 	//CV_NotifyAll();
+}
+
+void NetProxy::NetStart()
+{
 }
 
 void NetProxy::NetRun()
@@ -646,8 +651,10 @@ void NetProxy::asyncConn()
 	m_vConnectList.clear();
 	lck.unlock();
 
-	for (auto&&[nType, nSockIndex] : vConnList)
+	for (auto& ci : vConnList)
 	{
+		auto nType = std::get<0>(ci);
+		auto nSockIndex = std::get<1>(ci);
 		OnClientConnected(nType, nSockIndex);
 	}
 }
@@ -659,8 +666,10 @@ void NetProxy::asyncDisconn()
 	m_vDisConnectList.clear();
 	lck.unlock();
 
-	for (auto&&[nType, nSockIndex] : vDisConnList)
+	for (auto& ci : vDisConnList)
 	{
+		auto nType = std::get<0>(ci);
+		auto nSockIndex = std::get<1>(ci);
 		OnClientDisconnect(nType, nSockIndex);
 	}
 }

@@ -27,7 +27,7 @@ meplay::MPModule* MPModuleFactory::Create(uint32_t nType, uint32_t nIndex)
 	}
 }
 
-std::string_view MPModuleFactory::GetName(uint32_t nType, uint32_t nIndex)const
+const std::string& MPModuleFactory::GetName(uint32_t nType, uint32_t nIndex)const
 {
 	if (auto itType = m_mNameMap.find(nType); itType != m_mNameMap.end())
 	{
@@ -37,11 +37,11 @@ std::string_view MPModuleFactory::GetName(uint32_t nType, uint32_t nIndex)const
 		}
 		else
 		{
-			return "";
+			return m_sNullStr;
 		}
 	}
 	else
 	{
-		return "";
+		return m_sNullStr;
 	}
 }

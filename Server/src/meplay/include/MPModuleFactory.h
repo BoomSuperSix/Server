@@ -24,7 +24,7 @@ public:
 		return &instance;
 	}
 	meplay::MPModule* Create(uint32_t nType, uint32_t nIndex);
-	std::string_view GetName(uint32_t nType, uint32_t nIndex)const;
+	const std::string& GetName(uint32_t nType, uint32_t nIndex)const;
 private:
 	MPModuleFactory();
 	~MPModuleFactory();
@@ -33,6 +33,7 @@ private:
 private:
 	std::map<uint32_t, std::map<uint32_t, std::function<meplay::MPModule*()>>> m_mCreateMap;
 	std::map<uint32_t, std::map<uint32_t, std::string>> m_mNameMap;
+	std::string m_sNullStr;
 };
 
 #define AUTO_REGISTER(TYPE,INDEX,NAME) static MPModuleFactory::register_t<NAME> reg_##NAME##_(TYPE,INDEX,std::move(#NAME));
