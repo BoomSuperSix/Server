@@ -71,7 +71,7 @@
     <ProjectGuid>{DF237F35-B690-4BED-A4A8-D7B91FAD9668}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>StatisticServer</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
     <ProjectName>StatsServer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -124,7 +124,7 @@
     <ExecutablePath>..\bin;$(ExecutablePath)</ExecutablePath>
     <IncludePath>..\common\command;..\src\meplay\include;..\src\third_party;..\src\meplay\;..\src\third_party\libevent;..\src\base;..\src\third_party\rocketmq;..\src\netproto;$(IncludePath)</IncludePath>
     <ReferencePath>..\src\statisticserver;$(ReferencePath)</ReferencePath>
-    <LibraryPath>..\lib;..\lib\static;..\lib\rocketmq;C:\Boost_1_56\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\lib;..\lib\static;..\lib\rocketmq;C:\Boost_1_66_0\lib;$(LibraryPath)</LibraryPath>
     <LibraryWPath>$(LibraryWPath)</LibraryWPath>
     <OutDir>..\bin\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
@@ -143,9 +143,9 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;BOOST_ALL_DYN_LINK;_WIN32_WINDOWS;WIN_SYSTEM;MONGOCXX_STATIC;BSONCXX_STATIC;NOMINMAX;_CRT_SECURE_NO_WARNINGS;SSJ_DEBUG;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;BOOST_NO_AUTO_PTR;BOOST_NO_LONG_LONG;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_WIN32_WINDOWS;WIN_SYSTEM;MONGOCXX_STATIC;BSONCXX_STATIC;NOMINMAX;_CRT_SECURE_NO_WARNINGS;SSJ_DEBUG;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;BOOST_NO_AUTO_PTR;BOOST_NO_LONG_LONG;WIN32;ROCKETMQCLIENT_EXPORTS;_WIN32_WINNT=0x0A00;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Boost_1_56\include;..\src\third_party;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Boost_1_66_0\include;..\src\third_party;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <LanguageStandard>stdcpp14</LanguageStandard>
@@ -156,7 +156,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ws2_32.lib;Secur32.lib;Crypt32.lib;Bcrypt.lib;libevent_core.lib;libevent.lib;libprotobufd.lib;bson-static-1.0.lib;libbsoncxx.lib;mongoc-static-1.0.lib;libmongocxx.lib;MePlay.lib;libboost_system-vc141-mt-sgd-1_56.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;Secur32.lib;Crypt32.lib;Bcrypt.lib;libevent_core.lib;libevent.lib;libprotobufd.lib;bson-static-1.0.lib;libbsoncxx.lib;mongoc-static-1.0.lib;libmongocxx.lib;MePlay.lib;rocketmq.lib;jsoncpp.lib;Signature.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>

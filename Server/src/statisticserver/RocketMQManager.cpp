@@ -2,11 +2,8 @@
 #include "MPLogger.h"
 
 RocketMQManager::RocketMQManager()
-	: ManagerModule(eStatsMgr_Time)
-#ifdef WIN_SYSTEM
-#else
+	: ManagerModule(eStatsMgr_RocketMQ)
     ,m_producer("test_group_name")
-#endif
 {
 }
 
@@ -15,10 +12,8 @@ RocketMQManager::~RocketMQManager()
 }
 bool RocketMQManager::Awake()
 {
-#ifdef WIN_SYSTEM
-#else
+	m_producer.setNamesrvAddr("172.24.3.2:9876");
     m_producer.start();
-#endif
 	return true;
 }
 
@@ -29,8 +24,6 @@ bool RocketMQManager::AfterAwake()
 
 bool RocketMQManager::Execute()
 {
-#ifdef WIN_SYSTEM
-#else
     if(1)
     {
         MQMessage msg("test_topic",  // topic
@@ -42,7 +35,6 @@ bool RocketMQManager::Execute()
             sendResult.getMsgId().c_str();
         }
     }
-#endif
     return true;
 }
 
@@ -53,9 +45,6 @@ bool RocketMQManager::BeforeShutDown()
 
 bool RocketMQManager::ShutDown()
 {
-#ifdef WIN_SYSTEM
-#else
     m_producer.shutdown();
-#endif
     return true;
 }
