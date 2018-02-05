@@ -2,9 +2,8 @@
 #include "ManagerModule.h"
 #include "StatsCommDef.h"
 #include "MPTime.h"
-#include "DefaultMQProducer.h"
-
-using namespace rocketmq;
+#include "RocketMQPushConsumer.h"
+#include "RocketMQSyncProducer.h"
 
 class RocketMQManager final : public ManagerModule
 {
@@ -19,7 +18,8 @@ public:
 	virtual bool ShutDown()override;
 public:
 private:
-    DefaultMQProducer m_producer;
+	std::unordered_map<std::string, RocketMQProducer*> m_mProducers;
+	std::unordered_map<std::string, RocketMQConsumer*> m_mConsumers;
 };
 
 STATS_MANAGER_MODULE_REG(eStatsMgr_RocketMQ, RocketMQManager);

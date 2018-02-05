@@ -56,6 +56,18 @@
     <ClCompile Include="..\src\base\NetProxyBuffer.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\statisticserver\RocketMQProducer.cpp">
+      <Filter>Logic\RocketMQManager\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\statisticserver\RocketMQSyncProducer.cpp">
+      <Filter>Logic\RocketMQManager\Producer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\statisticserver\RocketMQConsumer.cpp">
+      <Filter>Logic\RocketMQManager\Consumer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\statisticserver\RocketMQPushConsumer.cpp">
+      <Filter>Logic\RocketMQManager\Consumer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NetProxy">
@@ -84,6 +96,12 @@
     </Filter>
     <Filter Include="protobuf\pbcc">
       <UniqueIdentifier>{d8b16c7f-8f60-477f-9151-babd384fddc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\RocketMQManager\Producer">
+      <UniqueIdentifier>{07c6af31-fb77-4e92-b130-206cdc19ac92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\RocketMQManager\Consumer">
+      <UniqueIdentifier>{fb993776-2b07-47be-ad55-497f11a3e02c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +167,18 @@
     </ClInclude>
     <ClInclude Include="..\src\base\NetProxyBuffer.h">
       <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\statisticserver\RocketMQProducer.h">
+      <Filter>Logic\RocketMQManager\Producer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\statisticserver\RocketMQSyncProducer.h">
+      <Filter>Logic\RocketMQManager\Producer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\statisticserver\RocketMQConsumer.h">
+      <Filter>Logic\RocketMQManager\Consumer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\statisticserver\RocketMQPushConsumer.h">
+      <Filter>Logic\RocketMQManager\Consumer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

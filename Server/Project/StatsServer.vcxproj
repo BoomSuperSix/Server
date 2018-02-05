@@ -35,7 +35,11 @@
     <ClCompile Include="..\src\netproto\UserErrCode.pb.cc" />
     <ClCompile Include="..\src\netproto\UserMsgDefine.pb.cc" />
     <ClCompile Include="..\src\statisticserver\main.cpp" />
+    <ClCompile Include="..\src\statisticserver\RocketMQConsumer.cpp" />
     <ClCompile Include="..\src\statisticserver\RocketMQManager.cpp" />
+    <ClCompile Include="..\src\statisticserver\RocketMQProducer.cpp" />
+    <ClCompile Include="..\src\statisticserver\RocketMQPushConsumer.cpp" />
+    <ClCompile Include="..\src\statisticserver\RocketMQSyncProducer.cpp" />
     <ClCompile Include="..\src\statisticserver\StatsNetProxy.cpp" />
     <ClCompile Include="..\src\statisticserver\StatsTimeManager.cpp" />
   </ItemGroup>
@@ -56,7 +60,11 @@
     <ClInclude Include="..\src\netproto\UserBase.pb.h" />
     <ClInclude Include="..\src\netproto\UserErrCode.pb.h" />
     <ClInclude Include="..\src\netproto\UserMsgDefine.pb.h" />
+    <ClInclude Include="..\src\statisticserver\RocketMQConsumer.h" />
     <ClInclude Include="..\src\statisticserver\RocketMQManager.h" />
+    <ClInclude Include="..\src\statisticserver\RocketMQProducer.h" />
+    <ClInclude Include="..\src\statisticserver\RocketMQPushConsumer.h" />
+    <ClInclude Include="..\src\statisticserver\RocketMQSyncProducer.h" />
     <ClInclude Include="..\src\statisticserver\StatsCommDef.h" />
     <ClInclude Include="..\src\statisticserver\StatsManagerModuleDefine.h" />
     <ClInclude Include="..\src\statisticserver\StatsNetProxy.h" />
@@ -145,7 +153,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_WIN32_WINDOWS;WIN_SYSTEM;MONGOCXX_STATIC;BSONCXX_STATIC;NOMINMAX;_CRT_SECURE_NO_WARNINGS;SSJ_DEBUG;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;BOOST_NO_AUTO_PTR;BOOST_NO_LONG_LONG;WIN32;ROCKETMQCLIENT_EXPORTS;_WIN32_WINNT=0x0A00;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Boost_1_66_0\include;..\src\third_party;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Boost_1_66_0\include;..\src\third_party;..\src\third_party\rocketmq;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <LanguageStandard>stdcpp14</LanguageStandard>
