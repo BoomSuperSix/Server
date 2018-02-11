@@ -33,6 +33,13 @@ bool RocketMQSyncProducer::AfterAwake()
 
 bool RocketMQSyncProducer::Execute()
 {
+	if (0)
+	{
+		StatMsg tmp;
+		tmp.sBody = "This is body.";
+		tmp.sTag = "*";
+		m_vStatMsg.emplace(tmp);
+	}
 	while (!m_vStatMsg.empty())
 	{
 		auto& statMsg = m_vStatMsg.front();

@@ -70,6 +70,9 @@
     <Filter Include="Logic\ManagerLogic\RefreshManager">
       <UniqueIdentifier>{2f1b9616-f041-4589-9917-c9795961a466}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Logic\BattleLogic">
+      <UniqueIdentifier>{18c20607-ec31-4b67-ab1b-f5b1e0c06192}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\base\XmlManager.cpp">
@@ -185,6 +188,15 @@
     </ClCompile>
     <ClCompile Include="..\src\netproto\Game2Super.pb.cc">
       <Filter>proto\pbcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\AStarPoint.cpp">
+      <Filter>Logic\BattleLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\Point2D.cpp">
+      <Filter>Logic\BattleLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\AStarPathFinder.cpp">
+      <Filter>Logic\BattleLogic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -318,6 +330,18 @@
     </ClInclude>
     <ClInclude Include="..\src\netproto\Game2Super.pb.h">
       <Filter>proto\pbcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\AStarPoint.h">
+      <Filter>Logic\BattleLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\BattleCommDef.h">
+      <Filter>Logic\BattleLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\Point2D.h">
+      <Filter>Logic\BattleLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\AStarPathFinder.h">
+      <Filter>Logic\BattleLogic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

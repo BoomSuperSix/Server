@@ -38,6 +38,7 @@
     <ClCompile Include="..\src\statisticserver\RocketMQConsumer.cpp" />
     <ClCompile Include="..\src\statisticserver\RocketMQManager.cpp" />
     <ClCompile Include="..\src\statisticserver\RocketMQProducer.cpp" />
+    <ClCompile Include="..\src\statisticserver\RocketMQPullConsumer.cpp" />
     <ClCompile Include="..\src\statisticserver\RocketMQPushConsumer.cpp" />
     <ClCompile Include="..\src\statisticserver\RocketMQSyncProducer.cpp" />
     <ClCompile Include="..\src\statisticserver\StatsNetProxy.cpp" />
@@ -63,6 +64,7 @@
     <ClInclude Include="..\src\statisticserver\RocketMQConsumer.h" />
     <ClInclude Include="..\src\statisticserver\RocketMQManager.h" />
     <ClInclude Include="..\src\statisticserver\RocketMQProducer.h" />
+    <ClInclude Include="..\src\statisticserver\RocketMQPullConsumer.h" />
     <ClInclude Include="..\src\statisticserver\RocketMQPushConsumer.h" />
     <ClInclude Include="..\src\statisticserver\RocketMQSyncProducer.h" />
     <ClInclude Include="..\src\statisticserver\StatsCommDef.h" />

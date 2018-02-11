@@ -1,4 +1,5 @@
 #include "MailManager.h"
+#include "AStarPathFinder.h"
 
 MailManager::MailManager() : ManagerModule(eGameMgr_Mail)
 {
@@ -10,6 +11,7 @@ MailManager::~MailManager()
 
 bool MailManager::Awake()
 {
+	
 	return true;
 }
 

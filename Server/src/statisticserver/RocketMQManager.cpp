@@ -13,13 +13,14 @@ bool RocketMQManager::Awake()
 {
 	RocketMQProducer* pProducer = new RocketMQSyncProducer("test_group_name");
 	m_mProducers.emplace("test_group_name", pProducer);
-	RocketMQConsumer* pConsumer = new RocketMQPushConsumer("test_group_name");
+	//RocketMQConsumer* pConsumer = new RocketMQPushConsumer("test_group_name");
+	RocketMQConsumer* pConsumer = new RocketMQPullConsumer("test_group_name");
 	m_mConsumers.emplace("test_group_name", pConsumer);
 
 	for (auto& pi : m_mProducers)
 	{
 		auto pProducer = pi.second;
-		pProducer->Awake("172.24.3.2:9876", "test_topic");
+		pProducer->Awake("172.24.3.2:9876", "test_topic_2");
 	}
 
 	for (auto& ci : m_mConsumers)

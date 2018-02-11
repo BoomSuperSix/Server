@@ -23,3 +23,9 @@ enum eGameAutoRegisterType
 #define SEND2GATE(FD,MSGID,MSG) g_pGameNetProxy->SendMsg(MP_ST_GAME,MP_ST_GATE,FD,MSGID,MSG);
 
 #define SEND_TRANS_MSG(MSGID,MSG);
+
+#define MAKE_INT_32(a,b) ((a&0xFFFF) << 16) | (b&0xFFFF)
+#define SPLIT_INT_32(a,b,x) a = x >> 16; b = x&0xFFFF;
+
+#define MAKE_INT_64(a,b) ((((int64_t)a)&0xFFFFFFFF) << 32) | (((int64_t)b)&0xFFFFFFFF)
+#define SPLIT_INT_64(a,b,x) a = x >> 32; b = x&0xFFFFFFFF;

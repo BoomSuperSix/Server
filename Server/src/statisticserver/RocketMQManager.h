@@ -3,6 +3,7 @@
 #include "StatsCommDef.h"
 #include "MPTime.h"
 #include "RocketMQPushConsumer.h"
+#include "RocketMQPullConsumer.h"
 #include "RocketMQSyncProducer.h"
 
 class RocketMQManager final : public ManagerModule

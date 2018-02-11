@@ -68,6 +68,9 @@
     <ClCompile Include="..\src\statisticserver\RocketMQPushConsumer.cpp">
       <Filter>Logic\RocketMQManager\Consumer</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\statisticserver\RocketMQPullConsumer.cpp">
+      <Filter>Logic\RocketMQManager\Consumer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NetProxy">
@@ -178,6 +181,9 @@
       <Filter>Logic\RocketMQManager\Consumer</Filter>
     </ClInclude>
     <ClInclude Include="..\src\statisticserver\RocketMQPushConsumer.h">
+      <Filter>Logic\RocketMQManager\Consumer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\statisticserver\RocketMQPullConsumer.h">
       <Filter>Logic\RocketMQManager\Consumer</Filter>
     </ClInclude>
   </ItemGroup>

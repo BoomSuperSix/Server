@@ -40,7 +40,10 @@ bool RocketMQPushConsumer::Awake(
 	m_sTag = sTag;
 
 	m_PushConsumer.setNamesrvAddr(sNameSrvAddr);
-	m_PushConsumer.setConsumeFromWhere(CONSUME_FROM_LAST_OFFSET);
+	m_PushConsumer.setGroupName(m_sGroupName);
+	//m_PushConsumer.setConsumeFromWhere(CONSUME_FROM_LAST_OFFSET);
+	m_PushConsumer.setConsumeFromWhere(CONSUME_FROM_LAST_OFFSET_AND_FROM_MIN_WHEN_BOOT_FIRST);
+	//m_PushConsumer.
 	m_PushConsumer.subscribe(sTopic, sTag);
 	m_PushConsumer.registerMessageListener(&m_PushListener);
 

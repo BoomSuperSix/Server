@@ -181,6 +181,8 @@
     <ClCompile Include="..\src\base\TimeManager.cpp" />
     <ClCompile Include="..\src\base\XmlManager.cpp" />
     <ClCompile Include="..\src\dbproto\DBGameServer.pb.cc" />
+    <ClCompile Include="..\src\gameserver\AStarPathFinder.cpp" />
+    <ClCompile Include="..\src\gameserver\AStarPoint.cpp" />
     <ClCompile Include="..\src\gameserver\BattleBase.cpp" />
     <ClCompile Include="..\src\gameserver\BattleManager.cpp" />
     <ClCompile Include="..\src\gameserver\DBManager.cpp" />
@@ -192,6 +194,7 @@
     <ClCompile Include="..\src\gameserver\main.cpp" />
     <ClCompile Include="..\src\gameserver\GameNetProxy.cpp" />
     <ClCompile Include="..\src\gameserver\GameTimeManager.cpp" />
+    <ClCompile Include="..\src\gameserver\Point2D.cpp" />
     <ClCompile Include="..\src\gameserver\RefreshManager.cpp" />
     <ClCompile Include="..\src\gameserver\StatsServer.cpp" />
     <ClCompile Include="..\src\gameserver\StatsServerManager.cpp" />
@@ -225,7 +228,9 @@
     <ClInclude Include="..\src\base\TimeT.h" />
     <ClInclude Include="..\src\base\XmlManager.h" />
     <ClInclude Include="..\src\dbproto\DBGameServer.pb.h" />
+    <ClInclude Include="..\src\gameserver\AStarPoint.h" />
     <ClInclude Include="..\src\gameserver\BattleBase.h" />
+    <ClInclude Include="..\src\gameserver\BattleCommDef.h" />
     <ClInclude Include="..\src\gameserver\BattleManager.h" />
     <ClInclude Include="..\src\gameserver\DBManager.h" />
     <ClInclude Include="..\src\gameserver\GameCommDef.h" />
@@ -238,6 +243,8 @@
     <ClInclude Include="..\src\gameserver\GateServerManager.h" />
     <ClInclude Include="..\src\gameserver\Mail.h" />
     <ClInclude Include="..\src\gameserver\MailManager.h" />
+    <ClInclude Include="..\src\gameserver\AStarPathFinder.h" />
+    <ClInclude Include="..\src\gameserver\Point2D.h" />
     <ClInclude Include="..\src\gameserver\RefreshManager.h" />
     <ClInclude Include="..\src\gameserver\RefreshT.h" />
     <ClInclude Include="..\src\gameserver\StatsServer.h" />
