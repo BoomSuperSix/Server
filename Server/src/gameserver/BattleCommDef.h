@@ -84,7 +84,7 @@ enum BATTLE_STATUS
 
 enum BATTLE_WEIGHT
 {
-	BASE_WEIGHT = 10,
+	BASE_WEIGHT = 100,
 	U_WEIGHT = BASE_WEIGHT,
 	R_WEIGHT = BASE_WEIGHT,
 	D_WEIGHT = BASE_WEIGHT,
@@ -130,39 +130,38 @@ enum DIRECTION_TYPE
 enum ATTACK_TYPE
 {
 	Enum_AT_PHYSICAL = 1,	//物理攻击
-							//Enum_AT_MAGICAL				= 2,	//魔法攻击
-							Enum_AT_HOLY = 3,	//神圣攻击
-							Enum_AT_HEALTH = 4,	//治疗
-							Enum_AT_ANGER = 5,	//怒气
-							Enum_AT_BUFF = 6,	//buff技能
-							Enum_AT_AURA = 7,	//光环技能
-							Enum_AT_LOSTHPHEALTH = 8,	//血量损失回血
-							Enum_AT_LOSTHPATK = 9,	//损失血量物理攻击		
-													//Enum_AT_LOSTHPATKMAGIC		= 10,	//损失血量魔法攻击
-													Enum_AT_REPEL = 11,	//击退
-													Enum_AT_CONNECT = 12,	//检测型effect，用于转接技能
-													Enum_AT_REACT = 13,	//再次行动
-													Enum_AT_EXTRADAMAGE = 14,	//额外伤害
-													Enum_AT_REPELSTUN = 15,	//击退，未被击退则眩晕
-													Enum_AT_Dispel = 16,	//驱散
+	//Enum_AT_MAGICAL				= 2,	//魔法攻击
+	Enum_AT_HOLY = 3,	//神圣攻击
+	Enum_AT_HEALTH = 4,	//治疗
+	Enum_AT_ANGER = 5,	//怒气
+	Enum_AT_BUFF = 6,	//buff技能
+	Enum_AT_AURA = 7,	//光环技能
+	Enum_AT_LOSTHPHEALTH = 8,	//血量损失回血
+	Enum_AT_LOSTHPATK = 9,	//损失血量物理攻击		
+	//Enum_AT_LOSTHPATKMAGIC		= 10,	//损失血量魔法攻击
+	Enum_AT_REPEL = 11,	//击退
+	Enum_AT_CONNECT = 12,	//检测型effect，用于转接技能
+	Enum_AT_REACT = 13,	//再次行动
+	Enum_AT_EXTRADAMAGE = 14,	//额外伤害
+	Enum_AT_REPELSTUN = 15,	//击退，未被击退则眩晕
+	Enum_AT_Dispel = 16,	//驱散
 
-													Enum_AT_SPECIAL = 100,	//特殊
-													Enum_AT_VampireLordUltra = 100,	//吸血鬼伯爵特殊攻击
+	Enum_AT_SPECIAL = 100,	//特殊
+	Enum_AT_VampireLordUltra = 100,	//吸血鬼伯爵特殊攻击
 
-													Enum_PS_ATK_PASSIVE = 200,	//攻击被动
-													Enum_PS_COMBO = 200,	//连击
-													Enum_PS_REPELSTUN = 201,	//击退，不成功则眩晕
-													Enum_PS_SPUTTER = 202,	//溅射
-													Enum_PS_TRAMPLE = 203,	//践踏
-													Enum_PS_ATKATTR = 204,	//攻击方属性变化
-													Enum_PS_RESTOREHP = 205,	//恢复血量
-													Enum_PS_TARGETBUFF = 206,	//目标BUFF
-													Enum_PS_REPELHURT = 207,	//击退，不成功伤害提升
-
-													Enum_PS_DEF_PASSIVE = 300,	//防御被动
-													Enum_PS_BEATBACK = 300,	//反击
-													Enum_PS_DODGE = 301,	//闪避
-													Enum_PS_DEFATTR = 302,	//防御方属性变化
+	Enum_PS_ATK_PASSIVE = 200,	//攻击被动
+	Enum_PS_COMBO = 200,	//连击
+	Enum_PS_REPELSTUN = 201,	//击退，不成功则眩晕
+	Enum_PS_SPUTTER = 202,	//溅射
+	Enum_PS_TRAMPLE = 203,	//践踏
+	Enum_PS_ATKATTR = 204,	//攻击方属性变化
+	Enum_PS_RESTOREHP = 205,	//恢复血量
+	Enum_PS_TARGETBUFF = 206,	//目标BUFF
+	Enum_PS_REPELHURT = 207,	//击退，不成功伤害提升
+	Enum_PS_DEF_PASSIVE = 300,	//防御被动
+	Enum_PS_BEATBACK = 300,	//反击
+	Enum_PS_DODGE = 301,	//闪避
+	Enum_PS_DEFATTR = 302,	//防御方属性变化
 };
 
 //是友军还是敌军或者全军由effect中的字段控制

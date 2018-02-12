@@ -1,6 +1,7 @@
 #include "AStarPathFinder.h"
 #include <algorithm>
 #include <iostream>
+#include "MPLogger.h"
 
 AStarPathFinder::AStarPathFinder(CHECK_FUNC_TYPE f)
 	: m_FuncCheckPosValid(f)
@@ -29,10 +30,11 @@ bool AStarPathFinder::FindPath(const POS_VEC& vBody, POS_TYPE& start, POS_TYPE& 
 		if (pMinPoint == nullptr)
 		{
 			//Œ¥’“µΩPath
+			calcClosestPath(endPoint, vPath);
 			return false;
 		}
-		std::cout << "MinPoint" << (int)pMinPoint->GetPos().GetX() << "," << (int)pMinPoint->GetPos().GetY() << "."
-			<< pMinPoint->GetF() << "," << pMinPoint->GetG() << "," << pMinPoint->GetH() << std::endl;
+		/*std::cout << "MinPoint" << (int)pMinPoint->GetPos().GetX() << "," << (int)pMinPoint->GetPos().GetY() << "."
+			<< pMinPoint->GetF() << "," << pMinPoint->GetG() << "," << pMinPoint->GetH() << std::endl;*/
 		
 		auto vSurroundPoints = calcSurroundPoints(vBody, *pMinPoint);
 		for (auto& surround : vSurroundPoints)
@@ -159,7 +161,7 @@ int AStarPathFinder::calcH(POS_TYPE nPos, const AStarPoint& point)const
 {
 	auto nDisX = std::fabs(nPos.GetX() - point.GetPos().GetX()) * BASE_WEIGHT;
 	auto nDisY = std::fabs(nPos.GetY() - point.GetPos().GetY()) * BASE_WEIGHT;
-	return std::sqrt(nDisX * nDisX + nDisY * nDisY) / BASE_WEIGHT;
+	return std::sqrt(nDisX * nDisX + nDisY * nDisY);
 }
 
 bool AStarPathFinder::finishPath(AStarPoint& pt, POS_VEC& vPath)
@@ -182,9 +184,43 @@ bool AStarPathFinder::finishPath(AStarPoint& pt, POS_VEC& vPath)
 	return false;
 }
 
+void AStarPathFinder::calcClosestPath(AStarPoint& pt, POS_VEC& vPath)
+{
+	static auto CloseComp = []
+	(const std::pair<uint32_t, AStarPoint>& it1, const std::pair<uint32_t, AStarPoint> it2)->bool
+	{
+		auto h1 = it1.second.GetH();
+		auto h2 = it2.second.GetH();
+		if (h1 == 0)
+		{
+			return false;
+		}
+		if (h2 == 0)
+		{
+			return true;
+		}
+		return h1 < h2 ? true : h1 == h2 ? it1.second.GetF() < it2.second.GetF() : false;
+	};
+	for (auto& close_info : m_mCloseList)
+	{
+		auto& close = close_info.second;
+		std::cout << "pos" << (int)close.GetPos().GetX() << "," << (int)close.GetPos().GetY()
+			<< "|" << close.GetF() << "," << close.GetG() << "," << close.GetH() << std::endl;
+	}
+	auto itMin = std::min_element(m_mCloseList.begin(), m_mCloseList.end(),CloseComp);
+	//auto itMin = std::min_element(m_mOpenList.begin(), m_mOpenList.end(),CloseComp);
+	auto cur_point = itMin->second;
+	while (cur_point.GetParent() != nullptr)
+	{
+		cur_point = *(cur_point.GetParent());
+		vPath.emplace_back(cur_point.GetPos());
+	}
+	std::reverse(vPath.begin(), vPath.end());
+}
+
 void AStarPathFinder::addToOpenList(AStarPoint& pt)
 {
-	m_mOpenList.emplace(pt.GetUniqueId(),pt);
+	m_mOpenList.emplace(pt.GetUniqueId(), pt);
 }
 
 bool AStarPathFinder::delFromOpenList(AStarPoint& pt)
@@ -214,86 +250,91 @@ bool AStarPathFinder::isInCloseList(AStarPoint& pt)
 }
 
 //test code£°
-//std::vector<POS_TYPE> vBlocks
-//	{
-//		POS_TYPE(1,1),
-//		POS_TYPE(2,2),
-//		POS_TYPE(3,3),
-//		POS_TYPE(4,4),
-//		POS_TYPE(5,5),
-//		POS_TYPE(2,1),
-//		POS_TYPE(3,2),
-//		POS_TYPE(4,3),
-//		POS_TYPE(5,4)
-//	};
-//#define MAX_EDGE 5 
-//	AStarPathFinder finder(
-//		[vBlocks](const POS_TYPE pos)->bool 
-//	{
-//		if (pos.GetX() < 0 || pos.GetX() > MAX_EDGE || pos.GetY() < 0 || pos.GetY() > MAX_EDGE)
-//		{
-//			return false;
-//		}
-//
-//		for (auto& block : vBlocks)
-//		{
-//			if (pos.GetX() == block.GetX() && pos.GetY() == block.GetY())
-//			{
-//				return false;
-//			}
-//		}
-//		return true;
-//	}
-//	);
-//	POS_TYPE start(MAX_EDGE, 0);
-//	POS_TYPE end(4, MAX_EDGE);
-//	POS_VEC vPath;
-//	bool bFind = finder.FindPath(POS_VEC{ POS_TYPE(0,0) }, start, end, vPath);
-//	MP_DEBUG("Path Result : %d.", bFind);
-//	std::stringstream ss;
-//	for (auto path : vPath)
-//	{
-//		MP_DEBUG("Path Is: %d,%d.", path.GetX(), path.GetY());
-//	}
-//
-//	std::cout << "-----------------------------------------------" << std::endl;
-//
-//	for (int y = 0; y <= MAX_EDGE; ++y)
-//	{
-//		std::cout << "|";
-//		for (int x = 0; x <= MAX_EDGE; ++x)
-//		{
-//			bool bBlock(false);
-//			for (auto& block : vBlocks)
-//			{
-//				if (x == block.GetX() & y == block.GetY())
-//				{
-//					bBlock = true;
-//					break;
-//				}
-//			}
-//			if (bBlock)
-//			{
-//				std::cout << "X";
-//				std::cout << "|";
-//			}
-//			else
-//			{
-//				bool bFind(false);
-//				for (auto pt : vPath)
-//				{
-//					if (pt.GetX() == x && pt.GetY() == y)
-//					{
-//						bFind = true;
-//						break;
-//					}
-//				}
-//
-//				std::cout << bFind ? "1" : "0";
-//				std::cout << "|";
-//			}
-//		}
-//		std::cout << "\n";
-//	}
-//
-//	getchar();
+void AStarPathFinder::TestMe()
+{
+	std::vector<POS_TYPE> vBlocks
+	{
+		//POS_TYPE(0,0),
+		POS_TYPE(1,1),
+		POS_TYPE(2,2),
+		POS_TYPE(3,3),
+		POS_TYPE(4,4),
+		POS_TYPE(5,5),
+		//POS_TYPE(1,0),
+		POS_TYPE(2,1),
+		POS_TYPE(3,2),
+		POS_TYPE(4,3),
+		POS_TYPE(5,4)
+	};
+#define MAX_EDGE 5 
+	AStarPathFinder finder(
+		[vBlocks](const POS_TYPE pos)->bool
+	{
+		if (pos.GetX() < 0 || pos.GetX() > MAX_EDGE || pos.GetY() < 0 || pos.GetY() > MAX_EDGE)
+		{
+			return false;
+		}
+
+		for (auto& block : vBlocks)
+		{
+			if (pos.GetX() == block.GetX() && pos.GetY() == block.GetY())
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	);
+	POS_TYPE start(MAX_EDGE, 0);
+	POS_TYPE end(0, MAX_EDGE);
+	POS_VEC vPath;
+	bool bFind = finder.FindPath(POS_VEC{ POS_TYPE(0,0) }, start, end, vPath);
+	MP_DEBUG("Path Result : %d.", bFind);
+	std::stringstream ss;
+	for (auto path : vPath)
+	{
+		MP_DEBUG("Path Is: %d,%d.", path.GetX(), path.GetY());
+	}
+
+	std::cout << "-----------------------------------------------" << std::endl;
+
+	for (int y = 0; y <= MAX_EDGE; ++y)
+	{
+		std::cout << "|";
+		for (int x = 0; x <= MAX_EDGE; ++x)
+		{
+			bool bBlock(false);
+			for (auto& block : vBlocks)
+			{
+				if (x == block.GetX() & y == block.GetY())
+				{
+					bBlock = true;
+					break;
+				}
+			}
+			if (bBlock)
+			{
+				std::cout << "X";
+				std::cout << "|";
+			}
+			else
+			{
+				bool bFind(false);
+				for (auto pt : vPath)
+				{
+					if (pt.GetX() == x && pt.GetY() == y)
+					{
+						bFind = true;
+						break;
+					}
+				}
+
+				std::cout << bFind ? "1" : "0";
+				std::cout << "|";
+			}
+		}
+		std::cout << "\n";
+	}
+
+	getchar();
+}

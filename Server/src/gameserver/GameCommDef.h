@@ -29,3 +29,5 @@ enum eGameAutoRegisterType
 
 #define MAKE_INT_64(a,b) ((((int64_t)a)&0xFFFFFFFF) << 32) | (((int64_t)b)&0xFFFFFFFF)
 #define SPLIT_INT_64(a,b,x) a = x >> 32; b = x&0xFFFFFFFF;
+
+#define GET_XML_DATA(FILE,...) g_pXmlMgr->ReadTableT_IMPL("../xml/"+std::string(FILE)+".xml", std::make_tuple(##__VA_ARGS__));

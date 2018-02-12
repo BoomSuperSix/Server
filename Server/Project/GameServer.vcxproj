@@ -44,7 +44,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -112,7 +112,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_WIN32_WINDOWS;WIN_SYSTEM;MONGOCXX_STATIC;BSONCXX_STATIC;NOMINMAX;SSJ_DEBUG;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../src/meplay/include;../src/base;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -190,6 +190,7 @@
     <ClCompile Include="..\src\gameserver\GameUserManager.cpp" />
     <ClCompile Include="..\src\gameserver\GateServer.cpp" />
     <ClCompile Include="..\src\gameserver\GateServerManager.cpp" />
+    <ClCompile Include="..\src\gameserver\ItemManager.cpp" />
     <ClCompile Include="..\src\gameserver\MailManager.cpp" />
     <ClCompile Include="..\src\gameserver\main.cpp" />
     <ClCompile Include="..\src\gameserver\GameNetProxy.cpp" />
@@ -241,6 +242,7 @@
     <ClInclude Include="..\src\gameserver\GameUserManager.h" />
     <ClInclude Include="..\src\gameserver\GateServer.h" />
     <ClInclude Include="..\src\gameserver\GateServerManager.h" />
+    <ClInclude Include="..\src\gameserver\ItemManager.h" />
     <ClInclude Include="..\src\gameserver\Mail.h" />
     <ClInclude Include="..\src\gameserver\MailManager.h" />
     <ClInclude Include="..\src\gameserver\AStarPathFinder.h" />

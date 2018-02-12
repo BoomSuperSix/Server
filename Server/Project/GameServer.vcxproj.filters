@@ -73,6 +73,9 @@
     <Filter Include="Logic\BattleLogic">
       <UniqueIdentifier>{18c20607-ec31-4b67-ab1b-f5b1e0c06192}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Logic\ManagerLogic\ItemManager">
+      <UniqueIdentifier>{ba28cf58-7929-4d6e-8fea-3757071f1739}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\base\XmlManager.cpp">
@@ -197,6 +200,9 @@
     </ClCompile>
     <ClCompile Include="..\src\gameserver\AStarPathFinder.cpp">
       <Filter>Logic\BattleLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\ItemManager.cpp">
+      <Filter>Logic\ManagerLogic\ItemManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -342,6 +348,9 @@
     </ClInclude>
     <ClInclude Include="..\src\gameserver\AStarPathFinder.h">
       <Filter>Logic\BattleLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\ItemManager.h">
+      <Filter>Logic\ManagerLogic\ItemManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

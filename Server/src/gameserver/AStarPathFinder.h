@@ -21,6 +21,7 @@ public:
 	~AStarPathFinder();
 public:
 	bool FindPath(const POS_VEC& vMe,POS_TYPE& start,POS_TYPE& end, POS_VEC& vPath);
+	void TestMe();
 private:
 	bool isPosValid(const POS_VEC& vPos)const;
 	bool isPosValid(const POS_TYPE& pos)const;
@@ -31,8 +32,9 @@ private:
 	void foundPoint(const AStarPoint& startPoint, AStarPoint& point);
 	void notFoundPoint(const AStarPoint& startPoint, const AStarPoint& endPoint, AStarPoint& point);
 	int calcG(const AStarPoint& startPoint, const AStarPoint& point)const;
-	int calcH(POS_TYPE nPos, const AStarPoint& point)const;
-	bool finishPath(AStarPoint& nPos, POS_VEC& vPath);
+	int calcH(POS_TYPE pos, const AStarPoint& point)const;
+	bool finishPath(AStarPoint& pt, POS_VEC& vPath);
+	void calcClosestPath(AStarPoint& pt, POS_VEC& vPath);
 
 	void addToOpenList(AStarPoint& pt);
 	bool delFromOpenList(AStarPoint& pt);
