@@ -63,6 +63,9 @@
     <ClInclude Include="LogMgr.h">
       <Filter>Logic\LogMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CommDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ExcelParser.cpp">

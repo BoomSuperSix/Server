@@ -10,6 +10,7 @@
 #include <chrono>
 #include <thread>
 #include "XmlMgr.h"
+#include "CommDef.h"
 
 ExcelParseMgr* ExcelParseMgr::m_pInstance = nullptr;
 
@@ -156,7 +157,7 @@ bool ExcelParseMgr::parseSheetHead(ISheetT<char>* pSheet,ExcelFormat& ef)
 	ExcelSheetFormat esf;
 	esf.sName = pSheet->name();
 
-	auto s = pSheet->readStr(0, 0);
+	auto s = pSheet->readStr(SERVER_ROW, DATA_COLUMN);
 	if (s == nullptr)
 	{
 		return false;
@@ -166,24 +167,25 @@ bool ExcelParseMgr::parseSheetHead(ISheetT<char>* pSheet,ExcelFormat& ef)
 		return false;
 	}
 
-	int i(0);
+	int i(DATA_COLUMN);
 	while (1)
 	{
-		auto sName = pSheet->readStr(0, i);
-		if (sName == nullptr)
+		auto sType = pSheet->readStr(TYPE_ROW, i);
+		if (sType == nullptr)
 		{
 			break;
 		}
-
-		esf.sTitle.emplace_back(sName);
-
-		auto sType = pSheet->readStr(2, i);
-		if (sType == nullptr)
-		{
-			//ÓÐÃû×Ö£¬Ã»type
-			return false;
-		}
 		esf.sType.emplace_back(sType);
+
+		auto sName = pSheet->readStr(SERVER_ROW, i);
+		if (sName == nullptr)
+		{
+			esf.sTitle.emplace_back("");
+		}
+		else
+		{
+			esf.sTitle.emplace_back(sName);
+		}
 
 		esf.sProtoType.emplace_back(parseToProtoType(esf.sType.back()));
 		++i;

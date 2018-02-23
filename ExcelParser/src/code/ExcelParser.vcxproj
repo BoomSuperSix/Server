@@ -201,6 +201,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CommDef.h" />
     <ClInclude Include="ExcelParseMgr.h" />
     <ClInclude Include="ExcelParser.h" />
     <ClInclude Include="ExcelParserDlg.h" />

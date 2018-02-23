@@ -10,6 +10,7 @@
 #include "FilePathMgr.h"
 #include <afxwin.h>
 #include <numeric>
+#include "CommDef.h"
 
 using namespace google::protobuf;
 using namespace rapidxml;
@@ -30,36 +31,46 @@ bool XmlMgr::WriteToXml(ISheetT<char>* pSheet,std::string& sTableName, ExcelShee
 	xml_node<>* rot = doc.allocate_node(rapidxml::node_pi, doc.allocate_string("xml version='1.0' encoding='utf-8'"));
 	doc.append_node(rot);
 
-	xml_node<>* table = doc.allocate_node(node_element, "table", nullptr);
+	xml_node<>* table = doc.allocate_node(node_element, "TABLE", nullptr);
 	doc.append_node(table);
 
-	int row(3), col(0);
+	int row(DATA_ROW), col(DATA_COLUMN);
+	int row_index(0);
 	while (1)
 	{
-		xml_node<>* value = doc.allocate_node(node_element, "value", nullptr);
+		xml_node<>* value = doc.allocate_node(node_element, "DATA", nullptr);
+		int col_index(0);
 		for (auto& info : esf.sTitle)
 		{
-			esf.sTitle[col];
-			esf.sProtoType[col];
+			auto sName = esf.sTitle[col_index];
+			auto sType = esf.sProtoType[col_index];
 
 			std::string sData;
-			if (!parseData(sData, pSheet, row, col, esf.sProtoType[col]))
+			if (sName == "")
 			{
-				static char error_msg[1024 * 1024] = { 0 };
-				sprintf_s(error_msg, "Éú³ÉÅäÖÃÊ§°Ü£¡\nÅäÖÃ±í[%s-%s]\nÐÐ[%d]\nÁÐ[%d]\n[%s]\n½âÎöÊ§°Ü£¡"
-					, sTableName.c_str(), esf.sName.c_str(), row, col, sData.c_str());
-				::AfxMessageBox(error_msg, MB_ICONERROR);
-				//::AfxMessageBox("Éú³ÉÅäÖÃÊ§°Ü£¡", MB_ICONERROR);
-				return false;
+				++col_index;
+				continue;
 			}
-			value->append_node(doc.allocate_node(node_element, esf.sTitle[col].c_str(), doc.allocate_string(sData.c_str())));
-			++col;
-
+			else
+			{
+				if (!parseData(sData, pSheet, row + row_index, col + col_index, sType))
+				{
+					static char error_msg[1024 * 1024] = { 0 };
+					sprintf_s(error_msg, "Éú³ÉÅäÖÃÊ§°Ü£¡\nÅäÖÃ±í[%s-%s]\n×Ö¶ÎÃû[%s]\nÐÐ[%d]\nÁÐ[%d]\n[%s]\n½âÎöÊ§°Ü£¡"
+						, sTableName.c_str(), esf.sName.c_str(), sName.c_str(),row + row_index, col + col_index, sData.c_str());
+					::AfxMessageBox(error_msg, MB_ICONERROR);
+					//::AfxMessageBox("Éú³ÉÅäÖÃÊ§°Ü£¡", MB_ICONERROR);
+					return false;
+				}
+				value->append_node(
+					doc.allocate_node(node_element, esf.sTitle[col_index].c_str(), doc.allocate_string(sData.c_str()))
+				);
+				++col_index;
+			}
 		}
 		table->append_node(value);
-		++row;
-		col = 0;
-		int nId = pSheet->readNum(row, col);
+		++row_index;
+		int nId = pSheet->readNum(row + row_index, col);
 		if (nId == 0)
 		{
 			break;
