@@ -232,6 +232,7 @@
     <ClInclude Include="..\src\gameserver\AStarPoint.h" />
     <ClInclude Include="..\src\gameserver\BattleBase.h" />
     <ClInclude Include="..\src\gameserver\BattleCommDef.h" />
+    <ClInclude Include="..\src\gameserver\BattleConfig.h" />
     <ClInclude Include="..\src\gameserver\BattleManager.h" />
     <ClInclude Include="..\src\gameserver\DBManager.h" />
     <ClInclude Include="..\src\gameserver\GameCommDef.h" />
@@ -247,6 +248,7 @@
     <ClInclude Include="..\src\gameserver\MailManager.h" />
     <ClInclude Include="..\src\gameserver\AStarPathFinder.h" />
     <ClInclude Include="..\src\gameserver\Point2D.h" />
+    <ClInclude Include="..\src\gameserver\PointDistanceCalcT.h" />
     <ClInclude Include="..\src\gameserver\RefreshManager.h" />
     <ClInclude Include="..\src\gameserver\RefreshT.h" />
     <ClInclude Include="..\src\gameserver\StatsServer.h" />

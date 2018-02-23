@@ -352,6 +352,12 @@
     <ClInclude Include="..\src\gameserver\ItemManager.h">
       <Filter>Logic\ManagerLogic\ItemManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\gameserver\PointDistanceCalcT.h">
+      <Filter>Logic\BattleLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\BattleConfig.h">
+      <Filter>Logic\BattleLogic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\common\command\MPMsgBase.proto">

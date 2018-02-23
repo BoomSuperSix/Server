@@ -4,6 +4,7 @@
 #include "GameNetProxy.h"
 #include "UserErrCode.pb.h"
 #include "MPModuleFactory.h"
+#include "XmlManager.h"
 
 enum eGameAutoRegisterType
 {
