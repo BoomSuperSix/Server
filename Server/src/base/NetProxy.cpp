@@ -8,9 +8,7 @@
 #include "MPRUDPClient.h"
 #include "MPHttpServer.h"
 #include "CommDef.h"
-#ifdef SSJ_DEBUG
 #include "MPTimeTester.h"
-#endif
 
 NetProxy::NetProxy(const time_t nGapMilliSeconds)
 	: m_mNetModules(), m_bFinal(false), m_nGapMilliSeconds(nGapMilliSeconds)

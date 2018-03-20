@@ -9,7 +9,7 @@
 #include <netinet/in.h>
 #endif
 #include "event2/bufferevent.h"
-#include "event2/http_struct.h"
+//#include "event2/http_struct.h"
 #include "event2/buffer.h"
 #include "evhttp.h"
 #include "enet/enet.h"

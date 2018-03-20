@@ -54,6 +54,7 @@ if(CMAKE_BUILD_TYPE MATCHES "Debug")
 		libmongocxx.a
 		libprotobuf.a
 		libjsoncpp.a
+		libenet.a
 		pthread
 		rt
 		z
@@ -101,6 +102,7 @@ else()
 		libprotobuf.a
 		librocketmq.a
 		libjsoncpp.a
+		libenet.a
 		pthread
 		rt
 		z

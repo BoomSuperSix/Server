@@ -1,6 +1,8 @@
 #include "AStarPathFinder.h"
 #include <algorithm>
 #include <iostream>
+#include <cmath>
+#include <cstdlib>
 #include "MPLogger.h"
 
 AStarPathFinder::AStarPathFinder(CHECK_FUNC_TYPE f)
@@ -108,7 +110,8 @@ std::vector<AStarPoint> AStarPathFinder::calcSurroundPoints(const POS_VEC& vBody
 	for (int i = 0; i < SURROUND_SLOT_NUM; ++i)
 	{
 		//获得周围的点
-		auto surround = AStarPoint(point.GetPos() + SURROUND_SHIFT[i]);
+		auto pos = point.GetPos() + SURROUND_SHIFT[i];
+		auto surround = AStarPoint(pos);
 		//设置权重
 		surround.SetG(SURROUND_WEIGHT[i]);
 		bool bValid(true);
@@ -306,7 +309,7 @@ void AStarPathFinder::TestMe()
 			bool bBlock(false);
 			for (auto& block : vBlocks)
 			{
-				if (x == block.GetX() & y == block.GetY())
+				if (x == block.GetX() && y == block.GetY())
 				{
 					bBlock = true;
 					break;
