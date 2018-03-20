@@ -8,7 +8,6 @@ public:
 	~BattleUser();
 public:
 	void ReuseInit(uint64_t nSockIndex,uint64_t uid,uint64_t nRoomId);
-	void Clear();
 
 	uint64_t GetFD()const;
 	uint64_t GetUID()const;

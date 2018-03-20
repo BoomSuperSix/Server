@@ -183,8 +183,13 @@
     <ClCompile Include="..\src\dbproto\DBGameServer.pb.cc" />
     <ClCompile Include="..\src\gameserver\AStarPathFinder.cpp" />
     <ClCompile Include="..\src\gameserver\AStarPoint.cpp" />
+    <ClCompile Include="..\src\gameserver\Battle.cpp" />
     <ClCompile Include="..\src\gameserver\BattleBase.cpp" />
+    <ClCompile Include="..\src\gameserver\BattleFactory.cpp" />
+    <ClCompile Include="..\src\gameserver\BattleFighter.cpp" />
+    <ClCompile Include="..\src\gameserver\BattleLogic.cpp" />
     <ClCompile Include="..\src\gameserver\BattleManager.cpp" />
+    <ClCompile Include="..\src\gameserver\BattleUser.cpp" />
     <ClCompile Include="..\src\gameserver\DBManager.cpp" />
     <ClCompile Include="..\src\gameserver\GameUser.cpp" />
     <ClCompile Include="..\src\gameserver\GameUserManager.cpp" />
@@ -230,10 +235,15 @@
     <ClInclude Include="..\src\base\XmlManager.h" />
     <ClInclude Include="..\src\dbproto\DBGameServer.pb.h" />
     <ClInclude Include="..\src\gameserver\AStarPoint.h" />
+    <ClInclude Include="..\src\gameserver\Battle.h" />
     <ClInclude Include="..\src\gameserver\BattleBase.h" />
     <ClInclude Include="..\src\gameserver\BattleCommDef.h" />
     <ClInclude Include="..\src\gameserver\BattleConfig.h" />
+    <ClInclude Include="..\src\gameserver\BattleFactory.h" />
+    <ClInclude Include="..\src\gameserver\BattleFighter.h" />
+    <ClInclude Include="..\src\gameserver\BattleInfo.h" />
     <ClInclude Include="..\src\gameserver\BattleManager.h" />
+    <ClInclude Include="..\src\gameserver\BattleUser.h" />
     <ClInclude Include="..\src\gameserver\DBManager.h" />
     <ClInclude Include="..\src\gameserver\GameCommDef.h" />
     <ClInclude Include="..\src\gameserver\GameManagerModuleDefine.h" />
@@ -243,6 +253,7 @@
     <ClInclude Include="..\src\gameserver\GameUserManager.h" />
     <ClInclude Include="..\src\gameserver\GateServer.h" />
     <ClInclude Include="..\src\gameserver\GateServerManager.h" />
+    <ClInclude Include="..\src\gameserver\BattleLogic.h" />
     <ClInclude Include="..\src\gameserver\ItemManager.h" />
     <ClInclude Include="..\src\gameserver\Mail.h" />
     <ClInclude Include="..\src\gameserver\MailManager.h" />

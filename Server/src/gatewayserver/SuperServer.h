@@ -12,7 +12,6 @@ public:
 	inline const int GetPort()const { return m_nPort; }
 public:
 	void ReuseInit(uint64_t nSockIndex, const char* ip, int nPort);
-	void Clear();
 
 	void VerifySuperServer();
 private:

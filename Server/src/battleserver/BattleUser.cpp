@@ -16,10 +16,6 @@ void BattleUser::ReuseInit(uint64_t nSockIndex,uint64_t uid,uint64_t nRoomId)
 	m_nRoomId = nRoomId;
 }
 
-void BattleUser::Clear()
-{
-}
-
 uint64_t BattleUser::GetFD()const
 {
 	return m_nSockIndex;

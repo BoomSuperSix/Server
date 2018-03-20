@@ -28,6 +28,9 @@ typedef std::shared_ptr<EX_SOCK_RECEIVE_FUNCTOR> EX_SOCK_RECEIVE_FUNCTOR_PTR;
 typedef std::function<bool(const MPGUID uid,MPMsg::MsgBase& msg)> EX_PB_RECEIVE_FUNCTOR;
 typedef std::shared_ptr<EX_PB_RECEIVE_FUNCTOR> EX_PB_RECEIVE_FUNCTOR_PTR;
 
+typedef std::function<void(const std::string&,std::string&)> HTTP_RECEIVE_FUNCTOR;
+typedef std::shared_ptr<HTTP_RECEIVE_FUNCTOR> HTTP_RECEIVE_FUNCTOR_PTR;
+
 using namespace meplay;
 
 class NetProxy
@@ -44,19 +47,16 @@ public:
 	virtual void LogicRun() = 0;
 	virtual const MPGUID GetGUIDBySock(const uint8_t nType,const MPSOCK nSockIndex)const = 0;
 public:
+	//tcp server
 	bool AddTCPServerModule(uint8_t nType, const uint32_t nMaxClient, const char* ip, const uint16_t nPort, const uint8_t nThreadCount = 4);
+	//tcp client
 	void AddTCPClientModule(uint8_t nType, const char* ip, const uint16_t nPort,bool bAutoConnect = true);
-	bool AddUDPServerModule(uint8_t nType, const uint16_t nPort,const uint8_t nThreadCount = 4);
-
-	bool AddRUDPServerModule(
-		uint8_t nType, 
-		const uint32_t nMaxClient, 
-		const char* ip, 
-		const uint16_t nPort, 
-		const uint8_t nThreadCount = 4
-	);
-
+	//rudp server
+	bool AddRUDPServerModule( uint8_t nType, const uint32_t nMaxClient, const char* ip, const uint16_t nPort, const uint8_t nThreadCount = 4 );
+	//rudp client
 	void AddRUDPClientModule(uint8_t nType, const char* ip, const uint16_t nPort, bool bAutoConnect = true);
+	//http server
+	bool AddHTTPServerModule(uint8_t nType, const uint16_t nPort, const uint8_t nThreadCount = 1);
 
 	void Start();
 	void Final(const char* reason);
@@ -76,6 +76,8 @@ public:
 	void InvalidMessage(const uint8_t nType,const MPSOCK nSockIndex, const int nMsgID, const char * msg, const uint32_t nLen);
 
 	void OnMsgCB(const uint8_t nType,const MPSOCK nSockIndex, const char * msg, const uint32_t nLen);
+	//bool OnHttpMsgCB(const uint8_t nType, std::string sPath,std::string sResult);
+	bool OnHttpMsgCB(const uint8_t nType, const std::string& sPath,const std::string& sRequest, std::string& sResponse);
 
 	void OnConnCB(const uint8_t nType, const MPSOCK nSockIndex);
 	void OnDisConnCB(const uint8_t nType, const MPSOCK nSockIndex);
@@ -142,6 +144,17 @@ public:
 		return true;
 	}
 
+	
+	//http
+	template<typename BaseType>
+	bool AddHttpCallBack(const uint32_t nType, BaseType* pBase, std::string sPath, 
+		void(BaseType::*handleRecieve)(const std::string& sParam, std::string& sResponse))
+	{
+		auto f = std::bind(handleRecieve, pBase, std::placeholders::_1, std::placeholders::_2);
+		HTTP_RECEIVE_FUNCTOR_PTR pFunc(new HTTP_RECEIVE_FUNCTOR(f));
+		return m_mHttpCallBacks[nType].emplace(sPath, pFunc).second;
+	}
+
 	std::shared_ptr<MPNet> GetNetModule(uint32_t nType);
 
 	void TryDump();
@@ -167,6 +180,7 @@ private:
 	std::map<uint8_t, std::unordered_map<uint16_t, SOCK_RECEIVE_FUNCTOR_PTR>> m_mSockCallBacks;
 	std::map<uint8_t, std::list<EX_SOCK_RECEIVE_FUNCTOR_PTR>> m_mExSockCallBacks;
 	std::map<uint8_t, std::list<EX_PB_RECEIVE_FUNCTOR_PTR>> m_mExPBCallBacks;
+	std::map<uint8_t, std::unordered_map<std::string, HTTP_RECEIVE_FUNCTOR_PTR>> m_mHttpCallBacks;
 
 	std::atomic<bool> m_bFinal;
 

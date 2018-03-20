@@ -6,6 +6,7 @@
 #include "MPTCPClient.h"
 #include "MPRUDPServer.h"
 #include "MPRUDPClient.h"
+#include "MPHttpServer.h"
 #include "CommDef.h"
 #ifdef SSJ_DEBUG
 #include "MPTimeTester.h"
@@ -38,7 +39,7 @@ void NetProxy::Start()
 		if (millisec < 0)
 		{
 			MP_WARN("Loop TimeOut %d", -millisec);
-			//MP_DEBUG("mill %d", millisec);
+			millisec = 0;
 		}
 		std::this_thread::sleep_for(std::chrono::milliseconds(millisec));
 	}
@@ -55,29 +56,22 @@ void NetProxy::NetStart()
 
 void NetProxy::NetRun()
 {
-#ifdef SSJ_DEBUG
-	meplay::MPTimeTester tester("NetLoopTester", 200);
-#endif
+	meplay::MPTimeTester tester("NetLoopTester", m_nGapMilliSeconds);
+
 	asyncRead();
-#ifdef SSJ_DEBUG
-	tester.Show(200);
-#endif
+	tester.Show(m_nGapMilliSeconds);
+
 	asyncWrite();
-#ifdef SSJ_DEBUG
-	tester.Show(200);
-#endif
+	tester.Show(m_nGapMilliSeconds);
+
 	asyncConn();
-#ifdef SSJ_DEBUG
-	tester.Show(200);
-#endif
+	tester.Show(m_nGapMilliSeconds);
+
 	asyncDisconn();
-#ifdef SSJ_DEBUG
-	tester.Show(200);
-#endif
+	tester.Show(m_nGapMilliSeconds);
+
 	tickNetModule();
-#ifdef SSJ_DEBUG
 	tester.Show(200);
-#endif
 }
 
 void NetProxy::NetFinal()
@@ -176,38 +170,6 @@ void NetProxy::AddTCPClientModule(uint8_t nType, const char* ip, const uint16_t 
 	MP_SYSTEM("Init ClientNetModule Success![%d][IP: %s][Port : %d]", nType, ip, nPort);
 }
 
-bool NetProxy::AddUDPServerModule(uint8_t nType, const uint16_t nPort, const uint8_t nThreadCount)
-{
-	//auto pNet = GetNetModule(nType);
-	//if (pNet == nullptr)
-	//{
-
-	//	pNet = std::shared_ptr<MPUDPServer>(new MPUDPServer(
-	//		"NetProxy", 
-	//		nType, 
-	//		this, 
-	//		&NetProxy::OnConnCB, 
-	//		&NetProxy::OnDisConnCB, 
-	//		&NetProxy::OnMsgCB
-	//	));
-	//	if (pNet->InitializationAsServer(0/*nMaxClient*/, nPort, nThreadCount) < 0)
-	//	{
-	//		MP_ERROR("Init ServerNetModule Error![%d][MaxClient : %d][Port : %d]", nType, 0/*nMaxClient*/, nPort);
-	//		ImmediatelyFinal("Init Server Net Faild!");
-	//		return false;
-	//	}
-	//	MP_SYSTEM("Init ServerNetModule Success![%d][MaxClient : %d][Port : %d]", nType, 0/*nMaxClient*/, nPort);
-	//	m_mNetModules.emplace(nType, pNet);
-	//}
-	//else
-	//{
-	//	MP_ERROR("Already Has ServerNetModule ![%d][MaxClient : %d][Port : %d]", nType, 0/*nMaxClient*/, nPort);
-	//	ImmediatelyFinal("Init Server Net Faild!");
-	//	return false;
-	//}
-	return true;
-}
-
 bool NetProxy::AddRUDPServerModule(
 	uint8_t nType,
 	const uint32_t nMaxClient,
@@ -271,6 +233,30 @@ void NetProxy::AddRUDPClientModule(uint8_t nType, const char* ip, const uint16_t
 	MP_SYSTEM("Init ClientNetModule Success![%d][IP: %s][Port : %d]", nType, ip, nPort);
 }
 
+bool NetProxy::AddHTTPServerModule(uint8_t nType, const uint16_t nPort, const uint8_t nThreadCount)
+{
+	auto pNet = GetNetModule(nType);
+	if (pNet == nullptr)
+	{
+		pNet = std::shared_ptr<MPHTTPServer>(new MPHTTPServer("NetProxy",nType,this,&NetProxy::OnHttpMsgCB));
+		m_mNetModules.emplace(nType, pNet);
+	}
+	else
+	{
+		MP_SYSTEM("Already Has HttpServerModule [%d][Port : %d]", nType);
+		return false;
+	}
+
+	if (!pNet->InitializationAsServer(nullptr, 0, nPort, nThreadCount))
+	{
+		MP_SYSTEM("Init HttpServerModule Failed![%d][Port : %d]", nType, nPort);
+		return false;
+	}
+
+	MP_SYSTEM("Init HttpServerModule Success![%d][Port : %d]", nType, nPort);
+	return true;
+}
+
 void NetProxy::InvalidMessage(const uint8_t nType, const MPSOCK nSockIndex, const int nMsgID, const char * msg, const uint32_t nLen)
 {
 	MP_ERROR("Unknown Message !Type : %d , Sock : %lld ,MessageID: %d , Len : %d", nType, nSockIndex, nMsgID, nLen);
@@ -303,7 +289,6 @@ void NetProxy::OnRecieveMessage(const uint8_t nType,const MPSOCK nSockIndex, con
 		}
 
 	}
-	
 }
 
 void NetProxy::OnMsgCB(const uint8_t nType, const MPSOCK nSockIndex, const char * msg, const uint32_t nLen)
@@ -351,6 +336,31 @@ void NetProxy::OnMsgCB(const uint8_t nType, const MPSOCK nSockIndex, const char 
 #endif
 		}
 	}
+}
+
+bool NetProxy::OnHttpMsgCB(const uint8_t nType,const std::string& sPath,const std::string& sRequest,std::string& sResponse)
+{
+	MP_DEBUG("This is http callback.fd : %d,path : %s,param : %s", nType, sPath.c_str(),sRequest.c_str());
+	auto pNet = GetNetModule(nType);
+	if (pNet == nullptr)
+	{
+		return false;
+	}
+
+	auto itNetType = m_mHttpCallBacks.find(nType);
+	if (itNetType == m_mHttpCallBacks.end())
+	{
+		return false;
+	}
+
+	auto itCB = itNetType->second.find(sPath);
+	if (itCB == itNetType->second.end())
+	{
+		return false;
+	}
+
+	itCB->second->operator()(sRequest, sResponse);
+	return true;
 }
 
 void NetProxy::OnConnCB(const uint8_t nType, const MPSOCK nSockIndex)

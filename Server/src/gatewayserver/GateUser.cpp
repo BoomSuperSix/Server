@@ -16,10 +16,6 @@ void GateUser::ReuseInit(uint64_t nSockIndex, const std::string& sIP)
 	m_sIP = sIP;
 }
 
-void GateUser::Clear()
-{
-}
-
 uint64_t GateUser::GetFD()const
 {
 	return m_nSockIndex;

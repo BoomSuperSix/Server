@@ -45,6 +45,7 @@ bool ManagerModuleManager::Awake()
 	for (uint32_t order = 0; order < m_nModuleNum; ++order)
 	{
 		auto index = m_vOrder[order];
+		MP_INFO("Module [%d : %s] Awake!", index, GET_MODULE_NAME(index));
 		auto pModule = m_vModules[index];
 		if (!pModule->Awake())
 		{
@@ -57,6 +58,7 @@ bool ManagerModuleManager::Awake()
 	for (uint32_t order = 0; order < m_nModuleNum; ++order)
 	{
 		auto index = m_vOrder[order];
+		MP_INFO("Module [%d : %s] AfterAwake!", index, GET_MODULE_NAME(index));
 		auto pModule = m_vModules[index];
 		if (!pModule->AfterAwake())
 		{
@@ -95,6 +97,7 @@ bool ManagerModuleManager::ShutDown()
 	for (uint32_t order = m_nModuleNum ; order != 0 ; --order)
 	{
 		auto index = m_vOrder[order - 1];
+		MP_INFO("Module [%d : %s] BeforeShutDown!", index, GET_MODULE_NAME(index));
 		auto pModule = m_vModules[index];
 		if (!pModule->BeforeShutDown())
 		{
@@ -107,6 +110,7 @@ bool ManagerModuleManager::ShutDown()
 	for (uint32_t order = m_nModuleNum ; order != 0; --order)
 	{
 		auto index = m_vOrder[order - 1];
+		MP_INFO("Module [%d : %s] ShutDown!", index, GET_MODULE_NAME(index));
 		auto pModule = m_vModules[index];
 		if (!m_vModules[index]->ShutDown())
 		{

@@ -39,11 +39,6 @@ void ExcelParseMgr::ParseExcel()
 		return;
 	}
 
-	//放弃了暂时
-	if (!saveToProto())
-	{
-	}
-
 	addProgress(10000);
 	updateProgressInfo("生成完成！");
 	m_bFinish = true;
@@ -155,7 +150,12 @@ bool ExcelParseMgr::parseSheetHead(ISheetT<char>* pSheet,ExcelFormat& ef)
 {
 	updateProgressInfo(ef.sFileName + " " + pSheet->name());
 	ExcelSheetFormat esf;
-	esf.sName = pSheet->name();
+	auto pTableName = pSheet->readStr(DESC_ROW, TABLE_NAME_COLUMN);
+	if (pTableName == nullptr)
+	{
+		return false;
+	}
+	esf.sName = pTableName;
 
 	auto s = pSheet->readStr(SERVER_ROW, DATA_COLUMN);
 	if (s == nullptr)

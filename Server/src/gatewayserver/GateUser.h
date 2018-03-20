@@ -10,7 +10,6 @@ public:
 	~GateUser();
 public:
 	void ReuseInit(uint64_t nSockIndex, const std::string& sIP);
-	void Clear();
 
 	uint64_t GetFD()const;
 

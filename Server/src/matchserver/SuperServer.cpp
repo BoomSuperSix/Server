@@ -23,10 +23,6 @@ void SuperServer::ReuseInit(uint64_t nSockIndex, const char* ip, int nPort)
 	//m_VerifyTime = m_LoginTime;
 }
 
-void SuperServer::Clear()
-{
-}
-
 void SuperServer::VerifySuperServer()
 {
 	//Message msg;

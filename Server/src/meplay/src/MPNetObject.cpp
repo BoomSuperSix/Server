@@ -108,3 +108,52 @@ uint32_t MPRUDPObject::createRUDPFD()
 {
 	return ++m_nSeed;
 }
+
+MPHttpObject::MPHttpObject(struct evhttp_request* request)
+	:m_pRequest(request)
+{
+	m_nFD = createHttpFD();
+}
+
+MPHttpObject::~MPHttpObject()
+{
+}
+
+void MPHttpObject::Send(const char * data, uint32_t len)
+{
+	struct evbuffer* evbuf = evbuffer_new();
+	if (evbuf == nullptr)
+	{
+		MP_ERROR("Create evbuffer failed!\n");
+		return;
+	}
+
+	evbuffer_add_printf(evbuf, data);
+	evhttp_send_reply(m_pRequest, HTTP_OK, "OK", evbuf);
+	evbuffer_free(evbuf);
+}
+
+void MPHttpObject::Post(const char * data, uint32_t len)
+{
+
+}
+
+void MPHttpObject::Get(const char * data, uint32_t len)
+{
+}
+
+const char * MPHttpObject::Path()
+{
+	//m_pRequest->
+	return nullptr;
+}
+
+void MPHttpObject::Close()
+{
+}
+
+uint32_t MPHttpObject::m_nSeed = 0;
+uint32_t MPHttpObject::createHttpFD()
+{
+	return ++m_nSeed;
+}

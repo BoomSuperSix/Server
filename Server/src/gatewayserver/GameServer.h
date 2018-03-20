@@ -14,7 +14,6 @@ public:
 	inline const int GetPort()const { return m_nPort; }
 public:
 	void ReuseInit(uint64_t nSockIndex,const char* ip,int nPort);
-	void Clear() {};
 private:
 	uint64_t m_nSockIndex;
 	std::string m_sIP;

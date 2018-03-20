@@ -76,6 +76,21 @@
     <Filter Include="Logic\ManagerLogic\ItemManager">
       <UniqueIdentifier>{ba28cf58-7929-4d6e-8fea-3757071f1739}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Logic\BattleLogic\Battle">
+      <UniqueIdentifier>{dda503c2-7210-4f07-a54e-305c07e43916}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\BattleLogic\BattleManager">
+      <UniqueIdentifier>{92807a5a-620a-40cc-b22d-ff560c1233be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\BattleLogic\BattleFactory">
+      <UniqueIdentifier>{3451f4b3-6657-4832-8698-f3c7a2dc90c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\BattleLogic\BattleUser">
+      <UniqueIdentifier>{c5fc7461-60bb-4752-b6e7-5f786ce5a036}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic\BattleLogic\BattleUtil">
+      <UniqueIdentifier>{1757efe4-785e-4073-83c8-a3ca411631ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\base\XmlManager.cpp">
@@ -160,8 +175,6 @@
     <ClCompile Include="..\src\gameserver\UserModuleDefine.cpp">
       <Filter>Logic\UserLogic\UserModuleBase</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\gameserver\BattleBase.cpp" />
-    <ClCompile Include="..\src\gameserver\BattleManager.cpp" />
     <ClCompile Include="..\src\gameserver\DBManager.cpp">
       <Filter>Logic\ManagerLogic\DBManager</Filter>
     </ClCompile>
@@ -192,17 +205,38 @@
     <ClCompile Include="..\src\netproto\Game2Super.pb.cc">
       <Filter>proto\pbcc</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\gameserver\AStarPoint.cpp">
-      <Filter>Logic\BattleLogic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\gameserver\Point2D.cpp">
-      <Filter>Logic\BattleLogic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\gameserver\AStarPathFinder.cpp">
-      <Filter>Logic\BattleLogic</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\gameserver\ItemManager.cpp">
       <Filter>Logic\ManagerLogic\ItemManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\Battle.cpp">
+      <Filter>Logic\BattleLogic\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\BattleBase.cpp">
+      <Filter>Logic\BattleLogic\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\BattleManager.cpp">
+      <Filter>Logic\BattleLogic\BattleManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\BattleFactory.cpp">
+      <Filter>Logic\BattleLogic\BattleFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\BattleUser.cpp">
+      <Filter>Logic\BattleLogic\BattleUser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\BattleFighter.cpp">
+      <Filter>Logic\BattleLogic\BattleUser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\AStarPathFinder.cpp">
+      <Filter>Logic\BattleLogic\BattleUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\AStarPoint.cpp">
+      <Filter>Logic\BattleLogic\BattleUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\Point2D.cpp">
+      <Filter>Logic\BattleLogic\BattleUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameserver\BattleLogic.cpp">
+      <Filter>Logic\BattleLogic\Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -296,8 +330,6 @@
     <ClInclude Include="..\src\gameserver\UserBase.h">
       <Filter>Logic\UserLogic\UserBase</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\gameserver\BattleBase.h" />
-    <ClInclude Include="..\src\gameserver\BattleManager.h" />
     <ClInclude Include="..\src\gameserver\DBManager.h">
       <Filter>Logic\ManagerLogic\DBManager</Filter>
     </ClInclude>
@@ -337,26 +369,50 @@
     <ClInclude Include="..\src\netproto\Game2Super.pb.h">
       <Filter>proto\pbcc</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\gameserver\ItemManager.h">
+      <Filter>Logic\ManagerLogic\ItemManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\Battle.h">
+      <Filter>Logic\BattleLogic\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\BattleBase.h">
+      <Filter>Logic\BattleLogic\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\BattleManager.h">
+      <Filter>Logic\BattleLogic\BattleManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\BattleFactory.h">
+      <Filter>Logic\BattleLogic\BattleFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\BattleUser.h">
+      <Filter>Logic\BattleLogic\BattleUser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\BattleFighter.h">
+      <Filter>Logic\BattleLogic\BattleUser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\AStarPathFinder.h">
+      <Filter>Logic\BattleLogic\BattleUtil</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\gameserver\AStarPoint.h">
-      <Filter>Logic\BattleLogic</Filter>
+      <Filter>Logic\BattleLogic\BattleUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\BattleConfig.h">
+      <Filter>Logic\BattleLogic\BattleUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\Point2D.h">
+      <Filter>Logic\BattleLogic\BattleUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameserver\PointDistanceCalcT.h">
+      <Filter>Logic\BattleLogic\BattleUtil</Filter>
     </ClInclude>
     <ClInclude Include="..\src\gameserver\BattleCommDef.h">
       <Filter>Logic\BattleLogic</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\gameserver\Point2D.h">
-      <Filter>Logic\BattleLogic</Filter>
+    <ClInclude Include="..\src\gameserver\BattleInfo.h">
+      <Filter>Logic\BattleLogic\BattleManager</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\gameserver\AStarPathFinder.h">
-      <Filter>Logic\BattleLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\gameserver\ItemManager.h">
-      <Filter>Logic\ManagerLogic\ItemManager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\gameserver\PointDistanceCalcT.h">
-      <Filter>Logic\BattleLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\gameserver\BattleConfig.h">
-      <Filter>Logic\BattleLogic</Filter>
+    <ClInclude Include="..\src\gameserver\BattleLogic.h">
+      <Filter>Logic\BattleLogic\Battle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

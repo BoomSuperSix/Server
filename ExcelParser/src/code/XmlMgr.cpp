@@ -84,7 +84,7 @@ bool XmlMgr::WriteToXml(ISheetT<char>* pSheet,std::string& sTableName, ExcelShee
 
 	auto& sOutPath = FilePathMgr::GetInstance()->GetOpenOutPath();
 	std::fstream fs;
-	fs.open(sOutPath + "\\" + sTableName + esf.sName + ".xml", std::fstream::out);
+	fs.open(sOutPath + "\\" + esf.sName + ".xml", std::fstream::out);
 	fs << doc;
 
 	fs.close();

@@ -7,6 +7,7 @@
 #include "DBClientMgr.h"
 #include "GameUserManager.h"
 #include "Game2Super.pb.h"
+#include "BattleManager.h"
 
 MP_SINGLETON_IMPLEMENT(GameNetProxy);
 
@@ -38,9 +39,14 @@ void GameNetProxy::LogicStart()
 	{
 		ImmediatelyFinal("Mgr Awake Failed!");
 	}
+
+	g_pBattleMgr->ThreadStart();
+
 }
 void GameNetProxy::LogicFinal()
 {
+	g_pBattleMgr->ThreadFinal();
+
 	m_Mgrs.ShutDown();
 }
 

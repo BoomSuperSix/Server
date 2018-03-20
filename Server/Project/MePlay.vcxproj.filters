@@ -226,6 +226,9 @@
     <ClInclude Include="..\src\meplay\include\MPRUDPClient.h">
       <Filter>NetWork</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\meplay\include\MPHttpServer.h">
+      <Filter>NetWork</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\meplay\src\DBClient.cpp">
@@ -370,6 +373,9 @@
       <Filter>NetWork</Filter>
     </ClCompile>
     <ClCompile Include="..\src\meplay\src\MPRUDPClient.cpp">
+      <Filter>NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\meplay\src\MPHttpServer.cpp">
       <Filter>NetWork</Filter>
     </ClCompile>
   </ItemGroup>

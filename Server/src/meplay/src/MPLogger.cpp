@@ -164,7 +164,10 @@ bool MPLogger::Init(const std::string& filename, uint32_t filesize, const std::s
 void MPLogger::Info(const char* format, ...)
 {
 	std::lock_guard<std::mutex> lck(mtx);
-	assert(m_sFileName != "");
+	if (m_sFileName == "")
+	{
+		return;
+	}
 	char szBuffer[1024 * 10] = { 0 };
 
 	va_list args;
@@ -179,7 +182,10 @@ void MPLogger::Info(const char* format, ...)
 void MPLogger::Warn(const char* format, ...)
 {
 	std::lock_guard<std::mutex> lck(mtx);
-	assert(m_sFileName != "");
+	if(m_sFileName == "")
+	{
+		return;
+	}
 	char szBuffer[1024 * 10] = { 0 };
 
 	va_list args;
@@ -194,7 +200,10 @@ void MPLogger::Debug(const char* format, ...)
 {
 #ifdef _DEBUG
 	std::lock_guard<std::mutex> lck(mtx);
-	assert(m_sFileName != "");
+	if (m_sFileName == "")
+	{
+		return;
+	}
 	char szBuffer[1024 * 10] = { 0 };
 
 	va_list args;
@@ -210,7 +219,10 @@ void MPLogger::Debug(const char* format, ...)
 void MPLogger::Error(const char* format, ...)
 {
 	std::lock_guard<std::mutex> lck(mtx);
-	assert(m_sFileName != "");
+	if (m_sFileName == "")
+	{
+		return;
+	}
 	char szBuffer[1024 * 10] = { 0 };
 
 	va_list args;
@@ -225,7 +237,10 @@ void MPLogger::Error(const char* format, ...)
 void MPLogger::System(const char* format, ...)
 {
 	std::lock_guard<std::mutex> lck(mtx);
-	assert(m_sFileName != "");
+	if (m_sFileName == "")
+	{
+		return;
+	}
 	char szBuffer[1024 * 10] = { 0 };
 
 	va_list args;

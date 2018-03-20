@@ -9,7 +9,6 @@ ItemManager::~ItemManager()
 }
 bool ItemManager::Awake()
 {
-	GET_XML_DATA("Item", "ID", "MainType", "SubType");
 	return true;
 }
 

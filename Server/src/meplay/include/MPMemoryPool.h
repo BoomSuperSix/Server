@@ -51,7 +51,6 @@ private:
 			std::lock_guard<std::mutex> lck(mtx);
 			pRet = m_objMemoryPool.back();
 			m_objMemoryPool.pop_back();
-			((T*)pRet)->Clear();
 			pRet->ReuseInit(static_cast<Args&>(args)...);
 		}
 		return pRet;

@@ -16,6 +16,8 @@ public:
 public:
 	void AddGameServer(uint64_t nSockIndex, const char* ip, int nPort);
 	void DelGameServer(uint64_t nSockIndex);
+
+	void TestHTTPCB(const std::string& sParam, std::string& sResponse);
 private:
 	std::map<const uint64_t, GameServerPtr> m_mGameServers;
 };

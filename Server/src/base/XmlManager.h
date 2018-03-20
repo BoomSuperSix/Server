@@ -64,5 +64,4 @@ public:
 	static bool ParseXml2Json(const std::string& file);
 private:
 };
-
 #define g_pXmlMgr XmlManager::GetInstance()

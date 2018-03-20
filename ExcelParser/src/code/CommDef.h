@@ -6,4 +6,5 @@
 #define SERVER_ROW 3
 #define DATA_ROW 4
 
+#define TABLE_NAME_COLUMN 0
 #define DATA_COLUMN 1

@@ -4,7 +4,6 @@ MP_SINGLETON_IMPLEMENT(XmlManager);
 
 XmlManager::XmlManager()
 {
-	
 }
 
 XmlManager::~XmlManager()

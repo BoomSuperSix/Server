@@ -1,14 +1,19 @@
 ﻿#pragma once
 #include <memory>
 #include <string>
+#include <map>
+#include <optional>
 #ifdef WIN_SYSTEM
 #include <WinSock2.h>
 #else
 #include <netinet/in.h>
 #endif
 #include "event2/bufferevent.h"
-#include "MPNetDefine.h"
+#include "event2/http_struct.h"
+#include "event2/buffer.h"
+#include "evhttp.h"
 #include "enet/enet.h"
+#include "MPNetDefine.h"
 
 namespace evpp {
 	class TCPConn;
@@ -65,6 +70,25 @@ namespace meplay {
 	private:
 		static uint32_t m_nSeed;
 		ENetPeer* m_pPeer;
+	};
+
+	class MPHttpObject : public MPNetObject
+	{
+	public:
+		MPHttpObject(struct evhttp_request* request);
+		virtual ~MPHttpObject();
+	public:
+		virtual void Send(const char * data, uint32_t len)override;
+		virtual void Close()override;
+	public:
+		void Post(const char * data,uint32_t len);
+		void Get(const char * data,uint32_t len);
+		const char * Path();
+	private:
+		uint32_t createHttpFD();
+	private:
+		struct evhttp_request* m_pRequest;
+		static uint32_t m_nSeed;
 	};
 }
 

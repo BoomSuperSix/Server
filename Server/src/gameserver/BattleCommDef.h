@@ -4,68 +4,48 @@
 #include "Point2D.h"
 #include <vector>
 #include <map>
+#include <memory>
 
 typedef Point2D POS_TYPE;
 typedef std::vector<Point2D> POS_VEC;
-#define UNINIT_POINT_POS -1
-#define POINT_MIN_X	0
-#define POINT_MAX_X 10 
-#define POINT_MIN_Y 0
-#define POINT_MAX_Y 3
-#define ROUND_PREVIEW_NUM 6
-#define NORMAL_ANGER -50
-#define BE_HIT_ANGER -30
-
-typedef char DISTANCE_TYPE;
-typedef char MOBILITY_TYPE;
-
-enum FIGHTER_TYPE
-{
-	FIGHTER_UNKNOWN = 0,
-	FIGHTER_LEADER = 1,
-	FIGHTER_HERO = 2,
-	FIGHTER_HIRE = 3,
-	FIGHTER_NPC = 4,
-};
 
 enum GAME_GROUP
 {
-	GG_NOGROUP = -1,	// 无阵营
-	GG_ATTACK = 0,	// 进攻方
-	GG_DEFENSE = 1,	// 防守方
+	GG_NOGROUP		= -1,	// 无阵营
+	GG_ATTACK		= 0,	// 进攻方
+	GG_DEFENSE		= 1,	// 防守方
 
 	GG_MAX,
 };
 
 enum FIGHTER_STATUS
 {
-	FS_UNKNOWN = 0, //未知
-	FS_SYSTEM = 1, //系统
-	FS_WAIT = 2, //等待
-	FS_MOVE = 3, //移动
-	FS_SKILL = 4, //技能
-	FS_PASSIVE = 5, //被动
-	FS_AURA = 6, //光环
-	FS_COMBO = 7, //连击
-	FS_BEATBACK = 8, //反击
+	FS_DEAD			= 0, //死亡
+	FS_MOVE			= 1, //移动
+	FS_SKILL		= 2, //攻击
+	FS_ULTRA		= 3, //大招
+	FS_PASSIVE		= 4, //被动
+	FS_AURA			= 5, //光环
+	FS_BEATBACK		= 6, //反击
+	FS_COMBO		= 7, //连击
 };
 
 #define BATTLE_USER_WAIT_SEC 600
 #define BATTLE_WAIT_REWARD_SEC 600
 
-enum BATTLE_STATUS
-{
-	BS_UNINITIALIZED = 0,
-	BS_INITIALIZED = 1,
-	BS_WAITLOADOK = 2,
-	BS_FINISH = 3,
-	BS_RUN = 4,
-	BS_SKIPBATTLE = 5,
-	BS_WAITACTION = 6,
-	BS_REWARD = 7,
-	BS_END = 8,
-	BS_ERROREND = 9,
-};
+//enum BATTLE_STATUS
+//{
+//	BS_UNINITIALIZED = 0,
+//	BS_INITIALIZED = 1,
+//	BS_WAITLOADOK = 2,
+//	BS_FINISH = 3,
+//	BS_RUN = 4,
+//	BS_SKIPBATTLE = 5,
+//	BS_WAITACTION = 6,
+//	BS_REWARD = 7,
+//	BS_END = 8,
+//	BS_ERROREND = 9,
+//};
 
 //不可以斜走
 #define SURROUND_SLOT_NUM 4
@@ -96,9 +76,6 @@ enum BATTLE_WEIGHT
 };
 #define SURROUND_WEIGHT std::vector<uint32_t>{U_WEIGHT,R_WEIGHT,D_WEIGHT,L_WEIGHT, UR_WEIGHT, UL_WEIGHT, DR_WEIGHT, DL_WEIGHT}
 
-
-
-
 #define INVALID_WEIGHT std::numeric_limits<int16_t>::max()
 
 #define LU_SHIFT Point2D(-1,1)
@@ -118,7 +95,31 @@ enum BATTLE_WEIGHT
 //#define FIGHTER_WEIGHT BATTLE_SLOT_MAX*LD_WEIGHT+1
 #define FIGHTER_WEIGHT BATTLE_SLOT_MAX*LD_WEIGHT
 
-#define OFFSET_SLOT_MAX 85
+enum BATTLE_TYPE
+{
+	eBattleType_PVE		= 1,
+	eBattleType_PVP		= 2,
+};
+
+class BattleFighter;
+typedef std::shared_ptr<BattleFighter> BattleFighterPtr;
+typedef std::vector<BattleFighterPtr> BattleTeam;
+typedef std::vector<BattleTeam> BattleGroup;
+
+typedef uint64_t BATTLE_ID_TYPE;
+#define INVALID_BATTLE_ID 0
+
+enum BattleStatus
+{
+	eBattleStatus_Unknown	= 0,
+	eBattleStatus_Init		= 1,
+	eBattleStatus_Start		= 2,
+	eBattleStatus_Run		= 3,
+	eBattleStatus_End		= 4,
+
+	eBattleStatus_ErrorEnd	= 99,
+};
+
 
 enum DIRECTION_TYPE
 {
