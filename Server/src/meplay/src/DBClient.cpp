@@ -227,14 +227,16 @@ int DBClient::execQuery(
 	return (int)vResult.size();
 }
 
-void DBClient::CreateIndex(const std::string& col, const std::vector<std::string>& keys, bool unique)
+void DBClient::CreateIndex(const std::string& col, const std::vector<std::tuple<std::string,bool>>& keys, bool unique)
 {
 	std::stringstream ss;
 	bsoncxx::builder::stream::document index_builder;
 	mongocxx::options::index index_options{};
-	for (auto& key : keys)
+	for (auto& ki : keys)
 	{
-		index_builder << key << 1;
+		auto& key = std::get<0>(ki);
+		auto bIncr = std::get<1>(ki) == true ? 1 : -1;
+		index_builder << key << bIncr;
 		ss << key << " ";
 	}
 	index_options.unique(unique);

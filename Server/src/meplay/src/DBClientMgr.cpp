@@ -19,9 +19,9 @@ void DBClientMgr::CreateIndex(std::shared_ptr<DBClient> pConn)
 		{
 			auto& col = std::get<0>(index);
 			auto& keys = std::get<1>(index);
-			bool unique = std::get<2>(index);
+			bool bUnique = std::get<2>(index);
 			
-			pConn->CreateIndex(col, keys, unique);
+			pConn->CreateIndex(col, keys, bUnique);
 		}
 		return;
 	}

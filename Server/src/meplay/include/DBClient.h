@@ -7,7 +7,6 @@
 #include <mongocxx/instance.hpp>
 #include <google/protobuf/message.h>
 
-
 using QueryData = std::tuple<std::string, std::string, std::string>;
 
 class DBClient
@@ -65,7 +64,7 @@ public:
 		return count;
 	}
 
-	void CreateIndex(const std::string&, const std::vector<std::string>&, bool);
+	void CreateIndex(const std::string&, const std::vector<std::tuple<std::string,bool>>&, bool);
 private:
 	int execInsert(google::protobuf::Message& data);
 

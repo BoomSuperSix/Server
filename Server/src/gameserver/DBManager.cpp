@@ -57,6 +57,10 @@ void DBManager::SaveToDB(uint32_t nType, google::protobuf::Message& filter, goog
 void DBManager::registerDBKeys()
 {
 	//keys should be lower case
-	DBClientMgr::GetInstance()->RegisterIndex(eGameDB_Normal, CREATE_INDEX("GameUserLogon", KEYS("account"), true));
-	DBClientMgr::GetInstance()->RegisterIndex(eGameDB_Normal, CREATE_INDEX("TimeStamp", KEYS("id","main_type","sub_type"), true));
+	DBClientMgr::GetInstance()->RegisterIndex(
+		eGameDB_Normal, 
+		CREATE_INDEX(
+			"GameUserLogon", 
+			KEYS(std::make_tuple("account" ,true )), true)));
+	DBClientMgr::GetInstance()->RegisterIndex(eGameDB_Normal, CREATE_INDEX("TimeStamp", KEYS({ "id" ,true }, { "main_type",true }, { "sub_type",false }), true)));
 }

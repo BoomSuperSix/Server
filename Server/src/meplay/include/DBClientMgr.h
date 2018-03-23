@@ -9,15 +9,15 @@
 #include <google/protobuf/message.h>
 #include "DBClient.h"
 
-using INDEX_INFO = std::tuple<std::string, std::vector<std::string>, bool>;
+using INDEX_INFO = std::tuple<std::string, std::vector<std::tuple<std::string,bool>>, bool>;
 using INDEX_VEC_TYPE = std::vector<INDEX_INFO>;
 using INDEX_MAP_TYPE = std::map<uint32_t, INDEX_VEC_TYPE>;
 
 #define KEYS(x,...) \
-	std::vector<std::string>{x,##__VA_ARGS__}
+	std::vector<std::tuple<std::string,bool>>{x,##__VA_ARGS__}
 
 #define CREATE_INDEX(COL,INDEX,UNIQUE) \
-	std::make_tuple(COL,INDEX,UNIQUE)
+	std::make_tuple(COL,INDEX,UNIQUE
 
 class DBClientMgr
 {
